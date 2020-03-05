@@ -19,6 +19,7 @@
     },
     "homepage": "https://github.com/ahmetbcakici/MeetingPlanner-client#readme",
     "dependencies": {
+        "bulma": "^0.8.0",
         "isomorphic-unfetch": "^3.0.0",
         "next": "^9.2.2",
         "react": "^16.13.0",
