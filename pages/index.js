@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 const Index = () => (
 	<Layout>
 		<div>
+			{/* First Section */}
 			<div className="has-background-white-ter">
 				<div className="container">
 					<div className="columns">
@@ -215,9 +216,8 @@ const Index = () => (
 
 			{/* Fourth Section */}
 			<div className="has-background-white-ter">
-				<br />
-				<br />
 				<div className="container">
+					<br />
 					<p className="is-size-3 has-text-centered">Xoyondo can do more for you...</p>
 					<p className="is-size-6 has-text-centered">
 						If you don't want to plan a meeting, we offer two more poll types that can be useful in various
@@ -227,77 +227,123 @@ const Index = () => (
 					<div className="columns">
 						<div className="column is-1"></div>
 						<div className="column">
-							<p className="is-size-3 has-text-link">Opinion polls</p>
-							<p className="is-size-6 has-text-grey-light">
-								With opinion polls you and your participants can easily choose the best option.
-							</p>
-							<div class="field">
-								<div class="control">
-									<input
-										className="input is-inline is-size-5"
-										type="text"
-										placeholder="What are you planning?"
-									/>
-									<button className="button is-info is-size-5">Plan</button>
+							<section class="section is-small">
+								<br />
+								<p className="is-size-3 has-text-link">Opinion polls</p>
+								<p className="is-size-6 has-text-grey-light">
+									With opinion polls you and your participants can easily choose the best option.
+								</p>
+								<div className="columns">
+									<div className="column is-12">
+										<div class="field">
+											<div class="control">
+												<input
+													className="input is-inline is-size-5"
+													type="text"
+													placeholder="What are you planning?"
+												/>
+												<button className="button is-info is-size-5">Plan</button>
+											</div>
+										</div>
+									</div>
 								</div>
-							</div>
+							</section>
 						</div>
 						<div className="column">
-							<div className="box is-inline-block">
-								<table className="table has-background-dark has-text-light">
-									<tr>
-										<th className="has-text-light">Firstname</th>
-										<th className="has-text-light">Lastname</th>
-										<th className="has-text-light">Age</th>
-										<th className="has-text-light">Age</th>
-										<th className="has-text-light">Age</th>
-										<th className="has-text-light">Age</th>
-									</tr>
-									<tr>
-										<td>Jill</td>
-										<td>Smith</td>
-										<td>50</td>
-										<td>50</td>
-										<td>50</td>
-										<td>50</td>
-									</tr>
-									<tr>
-										<td>Eve</td>
-										<td>Jackson</td>
-										<td>94</td>
-										<td>94</td>
-										<td>94</td>
-										<td>94</td>
-									</tr>
-									<tr>
-										<td>Eve</td>
-										<td>Jackson</td>
-										<td>94</td>
-										<td>94</td>
-										<td>94</td>
-										<td>94</td>
-									</tr>
-									<tr>
-										<td>Eve</td>
-										<td>Jackson</td>
-										<td>94</td>
-										<td>94</td>
-										<td>94</td>
-										<td>94</td>
-									</tr>
-									<tr>
-										<td>Eve</td>
-										<td>Jackson</td>
-										<td>94</td>
-										<td>94</td>
-										<td>94</td>
-										<td>94</td>
-									</tr>
-								</table>
+							<section class="section is-small">
+								<div className="box is-inline-block">
+									<table className="table has-background-dark has-text-light">
+										<tr>
+											<th className="has-text-light">Firstname</th>
+											<th className="has-text-light">Lastname</th>
+											<th className="has-text-light">Age</th>
+											<th className="has-text-light">Age</th>
+										</tr>
+										<tr>
+											<td>Jill</td>
+											<td>Smith</td>
+											<td>50</td>
+											<td>50</td>
+										</tr>
+										<tr>
+											<td>Eve</td>
+											<td>Jackson</td>
+											<td>94</td>
+											<td>94</td>
+										</tr>
+										<tr>
+											<td>Eve</td>
+											<td>Jackson</td>
+											<td>94</td>
+											<td>94</td>
+										</tr>
+									</table>
+								</div>
+							</section>
+						</div>
+					</div>
+
+					{/* Second Row */}
+					<div className="columns">
+						<div className="column is-1"></div>
+						<div className="column">
+							<section class="section is-small">
+								<br />
+								<div className="box is-inline-block">
+									<img src="https://xoyondo.com/img/apoll_en2.png" alt="" />
+								</div>
+							</section>
+						</div>
+						<div className="column">
+							<section class="section is-small">
+								<br />
+								<p className="is-size-3 has-text-link">Anonymous polls</p>
+								<p className="is-size-6 has-text-grey-light">
+									Anonymous polls let your participants decide on an option without specifying their
+									names.
+								</p>
+								<div className="columns">
+									<div className="column is-12">
+										<div class="field">
+											<div class="control">
+												<input
+													className="input is-inline is-size-5"
+													type="text"
+													placeholder="What are you planning?"
+												/>
+												<button className="button is-info is-size-5">Plan</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{/* Fifth Section */}
+			<div className="has-background-white">
+				<div className="container">
+					<br />
+					<br />
+					<section className="section is-small">
+						<div className="columns">
+							<div className="column is-1"></div>
+							<div className="column is-5">
+								<br/>
+								<p className="is-size-3 has-text-dark">All your polls in one place</p>
+								<p className="is-size-5 has-text-grey-light">
+									{' '}
+									With a free Xoyondo account you have all your polls in one place. The Dashboard
+									offers direct access to your polls and lets you know about recent activities.
+								</p>
+							</div>
+							<div className="column has-text-centered">
+								<img src="https://xoyondo.com/img/Dashboard-en.png" alt="" />
 							</div>
 						</div>
-						<div className="column is-1"></div>
-					</div>
+					</section>
 				</div>
 			</div>
 		</div>
