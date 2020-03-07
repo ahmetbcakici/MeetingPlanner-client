@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -148,7 +148,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 8
     },
     __self: undefined
-  }, "Get started:"), "\u2003 Home\u2003 \xB7 \u2003Meeting polls\u2003 \xB7 \u2003Opinion polls\u2003 \xB7 \u2003Anonymous polls\u2003 \xB7 \u2003Message boards"), __jsx("br", {
+  }, "Get started:"), "\xA0\xA0 Home\xA0\xA0 \xB7 \xA0\xA0Meeting polls\xA0\xA0 \xB7 \xA0\xA0Opinion polls\xA0\xA0 \xB7 \xA0\xA0Anonymous polls\xA0\xA0 \xB7 \xA0\xA0Message boards"), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11
@@ -167,7 +167,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 13
     },
     __self: undefined
-  }, "Support:"), "\u2003 FAQ\u2003 \xB7 \u2003Blog\u2003 \xB7 \u2003Lost admin link\u2003 \xB7 \u2003Meeting planner\u2003 \xB7 \u2003Polling app"), __jsx("br", {
+  }, "Support:"), "\xA0\xA0 FAQ\xA0\xA0 \xB7 \xA0\xA0Blog\xA0\xA0 \xB7 \xA0\xA0Lost admin link\xA0\xA0 \xB7 \xA0\xA0Meeting planner\xA0\xA0 \xB7 \xA0\xA0Polling app"), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 16
@@ -186,7 +186,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 18
     },
     __self: undefined
-  }, "About us:"), "\u2003 Contact\u2003 \xB7 \u2003Impressum\u2003 \xB7 \u2003Privacy policy\u2003 \xB7 \u2003Terms"), __jsx("br", {
+  }, "About us:"), "\xA0\xA0 Contact\xA0\xA0 \xB7 \xA0\xA0Impressum\xA0\xA0 \xB7 \xA0\xA0Privacy policy\xA0\xA0 \xB7 \xA0\xA0Terms"), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 21
@@ -206,13 +206,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: undefined
   }, __jsx("i", {
-    className: "fab fa-facebook-square is-size-4",
+    className: "fab fa-facebook-square is-size-4 has-text-grey-dark",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 24
     },
     __self: undefined
-  })), "\u2003", __jsx("a", {
+  })), "\xA0\xA0", __jsx("a", {
     href: "#",
     __source: {
       fileName: _jsxFileName,
@@ -220,7 +220,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: undefined
   }, __jsx("i", {
-    class: "fab fa-twitter-square is-size-4",
+    class: "fab fa-twitter-square is-size-4 has-text-grey-dark",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 28
@@ -230,25 +230,25 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     className: "has-background-dark has-text-centered has-text-grey-lighter",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 35
     },
     __self: undefined
   }, __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 36
     },
     __self: undefined
   }), "\xA9 2020 Xoyondo", __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 38
     },
     __self: undefined
   }), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 39
     },
     __self: undefined
   })));
@@ -2240,17 +2240,204 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     lineNumber: 5
   },
   __self: undefined
-}, __jsx("h1", {
+}, __jsx("div", {
+  className: "has-background-white",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 6
   },
   __self: undefined
-}, "Login Page"))));
+}, __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 7
+  },
+  __self: undefined
+}), __jsx("div", {
+  className: "columns",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 8
+  },
+  __self: undefined
+}, __jsx("div", {
+  className: "column",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 9
+  },
+  __self: undefined
+}), __jsx("div", {
+  className: "column is-4",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 10
+  },
+  __self: undefined
+}, __jsx("p", {
+  className: "title has-text-link has-text-centered has-text-weight-normal",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 11
+  },
+  __self: undefined
+}, "Sign in to Xoyondo"), __jsx("div", {
+  className: "box",
+  style: {
+    backgroundColor: '#C8E4FF'
+  },
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 14
+  },
+  __self: undefined
+}, __jsx("div", {
+  className: "field",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 15
+  },
+  __self: undefined
+}, __jsx("label", {
+  className: "label",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 16
+  },
+  __self: undefined
+}, "Username"), __jsx("div", {
+  className: "control has-icons-left has-icons-right",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 17
+  },
+  __self: undefined
+}, __jsx("input", {
+  className: "input",
+  type: "text",
+  placeholder: "Your username",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 18
+  },
+  __self: undefined
+}), __jsx("span", {
+  className: "icon is-small is-left",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 19
+  },
+  __self: undefined
+}, __jsx("i", {
+  className: "fas fa-user",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 20
+  },
+  __self: undefined
+})))), __jsx("div", {
+  className: "field",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 25
+  },
+  __self: undefined
+}, __jsx("label", {
+  className: "label",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 26
+  },
+  __self: undefined
+}, "Password"), __jsx("div", {
+  className: "control has-icons-left has-icons-right",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 27
+  },
+  __self: undefined
+}, __jsx("input", {
+  className: "input",
+  type: "password",
+  placeholder: "Your password",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 28
+  },
+  __self: undefined
+}), __jsx("span", {
+  className: "icon is-small is-left",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 29
+  },
+  __self: undefined
+}, __jsx("i", {
+  className: "fas fa-key",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 30
+  },
+  __self: undefined
+})))), __jsx("div", {
+  className: "field",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 35
+  },
+  __self: undefined
+}, __jsx("div", {
+  className: "control",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 36
+  },
+  __self: undefined
+}, __jsx("button", {
+  className: "button is-link is-fullwidth",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 37
+  },
+  __self: undefined
+}, "Login")))), __jsx("p", {
+  className: "has-text-centered",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 41
+  },
+  __self: undefined
+}, "You don't have an account yet? ", __jsx("a", {
+  href: "/register",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 42
+  },
+  __self: undefined
+}, "Register free."))), __jsx("div", {
+  className: "column",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 45
+  },
+  __self: undefined
+}))), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 48
+  },
+  __self: undefined
+}), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 49
+  },
+  __self: undefined
+}))));
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!******************************!*\
   !*** multi ./pages/login.js ***!
   \******************************/

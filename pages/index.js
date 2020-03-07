@@ -9,17 +9,17 @@ const Index = () => (
 					<div className="columns">
 						<div className="column is-1"></div>
 						<div className="column">
-							<section class="section is-medium">
+							<section className="section is-medium">
 								<br />
-								<h1 class="title has-text-info is-2">Schedule meetings faster!</h1>
-								<h2 class="subtitle">
+								<h1 className="title has-text-info is-2">Schedule meetings faster!</h1>
+								<h2 className="subtitle">
 									Xoyondo is the fastest way to schedule your <strong>meetings</strong> and{' '}
 									<strong>events</strong>. It's free! No registration required.
 								</h2>
 								<div className="columns">
 									<div className="column is-12">
-										<div class="field">
-											<div class="control">
+										<div className="field">
+											<div className="control">
 												<input
 													className="input is-inline is-size-5"
 													type="text"
@@ -33,7 +33,7 @@ const Index = () => (
 							</section>
 						</div>
 						<div className="column">
-							<section class="section is-medium">
+							<section className="section is-medium">
 								<div className="box is-inline-block">
 									<table className="table has-background-dark has-text-light">
 										<tr>
@@ -227,7 +227,7 @@ const Index = () => (
 					<div className="columns">
 						<div className="column is-1"></div>
 						<div className="column">
-							<section class="section is-small">
+							<section className="section is-small">
 								<br />
 								<p className="is-size-3 has-text-link">Opinion polls</p>
 								<p className="is-size-6 has-text-grey-light">
@@ -235,8 +235,8 @@ const Index = () => (
 								</p>
 								<div className="columns">
 									<div className="column is-12">
-										<div class="field">
-											<div class="control">
+										<div className="field">
+											<div className="control">
 												<input
 													className="input is-inline is-size-5"
 													type="text"
@@ -250,7 +250,7 @@ const Index = () => (
 							</section>
 						</div>
 						<div className="column">
-							<section class="section is-small">
+							<section className="section is-small">
 								<div className="box is-inline-block">
 									<table className="table has-background-dark has-text-light">
 										<tr>
@@ -287,7 +287,7 @@ const Index = () => (
 					<div className="columns">
 						<div className="column is-1"></div>
 						<div className="column">
-							<section class="section is-small">
+							<section className="section is-small">
 								<br />
 								<div className="box is-inline-block">
 									<img src="https://xoyondo.com/img/apoll_en2.png" alt="" />
@@ -295,7 +295,7 @@ const Index = () => (
 							</section>
 						</div>
 						<div className="column">
-							<section class="section is-small">
+							<section className="section is-small">
 								<br />
 								<p className="is-size-3 has-text-link">Anonymous polls</p>
 								<p className="is-size-6 has-text-grey-light">
@@ -304,8 +304,8 @@ const Index = () => (
 								</p>
 								<div className="columns">
 									<div className="column is-12">
-										<div class="field">
-											<div class="control">
+										<div className="field">
+											<div className="control">
 												<input
 													className="input is-inline is-size-5"
 													type="text"

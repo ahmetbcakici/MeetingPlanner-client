@@ -55,7 +55,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 8
     },
     __self: this
-  }, "Get started:"), "\u2003 Home\u2003 \xB7 \u2003Meeting polls\u2003 \xB7 \u2003Opinion polls\u2003 \xB7 \u2003Anonymous polls\u2003 \xB7 \u2003Message boards"), __jsx("br", {
+  }, "Get started:"), "\xA0\xA0 Home\xA0\xA0 \xB7 \xA0\xA0Meeting polls\xA0\xA0 \xB7 \xA0\xA0Opinion polls\xA0\xA0 \xB7 \xA0\xA0Anonymous polls\xA0\xA0 \xB7 \xA0\xA0Message boards"), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11
@@ -74,7 +74,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 13
     },
     __self: this
-  }, "Support:"), "\u2003 FAQ\u2003 \xB7 \u2003Blog\u2003 \xB7 \u2003Lost admin link\u2003 \xB7 \u2003Meeting planner\u2003 \xB7 \u2003Polling app"), __jsx("br", {
+  }, "Support:"), "\xA0\xA0 FAQ\xA0\xA0 \xB7 \xA0\xA0Blog\xA0\xA0 \xB7 \xA0\xA0Lost admin link\xA0\xA0 \xB7 \xA0\xA0Meeting planner\xA0\xA0 \xB7 \xA0\xA0Polling app"), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 16
@@ -93,7 +93,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 18
     },
     __self: this
-  }, "About us:"), "\u2003 Contact\u2003 \xB7 \u2003Impressum\u2003 \xB7 \u2003Privacy policy\u2003 \xB7 \u2003Terms"), __jsx("br", {
+  }, "About us:"), "\xA0\xA0 Contact\xA0\xA0 \xB7 \xA0\xA0Impressum\xA0\xA0 \xB7 \xA0\xA0Privacy policy\xA0\xA0 \xB7 \xA0\xA0Terms"), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 21
@@ -113,13 +113,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("i", {
-    className: "fab fa-facebook-square is-size-4",
+    className: "fab fa-facebook-square is-size-4 has-text-grey-dark",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 24
     },
     __self: this
-  })), "\u2003", __jsx("a", {
+  })), "\xA0\xA0", __jsx("a", {
     href: "#",
     __source: {
       fileName: _jsxFileName,
@@ -127,7 +127,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("i", {
-    "class": "fab fa-twitter-square is-size-4",
+    "class": "fab fa-twitter-square is-size-4 has-text-grey-dark",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 28
@@ -137,25 +137,25 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     className: "has-background-dark has-text-centered has-text-grey-lighter",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 35
     },
     __self: this
   }, __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 36
     },
     __self: this
   }), "\xA9 2020 Xoyondo", __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 38
     },
     __self: this
   }), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 39
     },
     __self: this
   })));
@@ -10783,7 +10783,7 @@ var Index = function Index() {
     },
     __self: this
   }, __jsx("section", {
-    "class": "section is-medium",
+    className: "section is-medium",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 12
@@ -10796,14 +10796,14 @@ var Index = function Index() {
     },
     __self: this
   }), __jsx("h1", {
-    "class": "title has-text-info is-2",
+    className: "title has-text-info is-2",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 14
     },
     __self: this
   }, "Schedule meetings faster!"), __jsx("h2", {
-    "class": "subtitle",
+    className: "subtitle",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 15
@@ -10836,14 +10836,14 @@ var Index = function Index() {
     },
     __self: this
   }, __jsx("div", {
-    "class": "field",
+    className: "field",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 21
     },
     __self: this
   }, __jsx("div", {
-    "class": "control",
+    className: "control",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 22
@@ -10873,7 +10873,7 @@ var Index = function Index() {
     },
     __self: this
   }, __jsx("section", {
-    "class": "section is-medium",
+    className: "section is-medium",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 36
@@ -11700,7 +11700,7 @@ var Index = function Index() {
     },
     __self: this
   }, __jsx("section", {
-    "class": "section is-small",
+    className: "section is-small",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 230
@@ -11741,14 +11741,14 @@ var Index = function Index() {
     },
     __self: this
   }, __jsx("div", {
-    "class": "field",
+    className: "field",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 238
     },
     __self: this
   }, __jsx("div", {
-    "class": "control",
+    className: "control",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 239
@@ -11778,7 +11778,7 @@ var Index = function Index() {
     },
     __self: this
   }, __jsx("section", {
-    "class": "section is-small",
+    className: "section is-small",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 253
@@ -11944,7 +11944,7 @@ var Index = function Index() {
     },
     __self: this
   }, __jsx("section", {
-    "class": "section is-small",
+    className: "section is-small",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 290
@@ -11979,7 +11979,7 @@ var Index = function Index() {
     },
     __self: this
   }, __jsx("section", {
-    "class": "section is-small",
+    className: "section is-small",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 298
@@ -12020,14 +12020,14 @@ var Index = function Index() {
     },
     __self: this
   }, __jsx("div", {
-    "class": "field",
+    className: "field",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 307
     },
     __self: this
   }, __jsx("div", {
-    "class": "control",
+    className: "control",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 308
@@ -12145,7 +12145,7 @@ var Index = function Index() {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!**********************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5CAhmet%20Bugra%20Cakici%5CDesktop%5CMeetingPlaner-client%5Cpages%5Cindex.js ***!
   \**********************************************************************************************************************************************************/
@@ -12168,5 +12168,5 @@ module.exports = dll_0fb095e325d7ebf261c3;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

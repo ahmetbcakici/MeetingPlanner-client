@@ -5,36 +5,29 @@ export default () => {
 				<div class="container">
 					<section className="section has-text-centered">
 						<p>
-							<b className="has-text-grey">Get started:</b>&emsp; Home&emsp; · &emsp;Meeting polls&emsp; ·
-							&emsp;Opinion polls&emsp; · &emsp;Anonymous polls&emsp; · &emsp;Message boards
+							<b className="has-text-grey">Get started:</b>&nbsp;&nbsp; Home&nbsp;&nbsp; · &nbsp;&nbsp;Meeting polls&nbsp;&nbsp; ·
+							&nbsp;&nbsp;Opinion polls&nbsp;&nbsp; · &nbsp;&nbsp;Anonymous polls&nbsp;&nbsp; · &nbsp;&nbsp;Message boards
 						</p>
 						<br />
 						<p>
-							<b className="has-text-grey">Support:</b>&emsp; FAQ&emsp; · &emsp;Blog&emsp; · &emsp;Lost
-							admin link&emsp; · &emsp;Meeting planner&emsp; · &emsp;Polling app
+							<b className="has-text-grey">Support:</b>&nbsp;&nbsp; FAQ&nbsp;&nbsp; · &nbsp;&nbsp;Blog&nbsp;&nbsp; · &nbsp;&nbsp;Lost
+							admin link&nbsp;&nbsp; · &nbsp;&nbsp;Meeting planner&nbsp;&nbsp; · &nbsp;&nbsp;Polling app
 						</p>
 						<br />
 						<p>
-							<b className="has-text-grey">About us:</b>&emsp; Contact&emsp; · &emsp;Impressum&emsp; ·
-							&emsp;Privacy policy&emsp; · &emsp;Terms
+							<b className="has-text-grey">About us:</b>&nbsp;&nbsp; Contact&nbsp;&nbsp; · &nbsp;&nbsp;Impressum&nbsp;&nbsp; ·
+							&nbsp;&nbsp;Privacy policy&nbsp;&nbsp; · &nbsp;&nbsp;Terms
 						</p>
 						<br />
 						<p>
 							<a href="#">
-								<i className="fab fa-facebook-square is-size-4"></i>
+								<i className="fab fa-facebook-square is-size-4 has-text-grey-dark"></i>
 							</a>
-							&emsp;
+							&nbsp;&nbsp;
 							<a href="#">
-								<i class="fab fa-twitter-square is-size-4"></i>
+								<i class="fab fa-twitter-square is-size-4 has-text-grey-dark"></i>
 							</a>
 						</p>
-						{/* <div className="block">x</div> */}
-						{/* <p>
-						<strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is
-						licensed
-						<a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is
-						licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-					</p> */}
 					</section>
 				</div>
 			</footer>
