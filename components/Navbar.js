@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export default () => (
-	<nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+	<nav className="navbar is-info" role="navigation" aria-label="main navigation">
 		<div className="container">
 			<div className="navbar-brand">
 				<a className="navbar-item" href="/">
@@ -26,7 +26,7 @@ export default () => (
 						<div className="buttons">
 							<a className="button is-light is-rounded is-outlined">Let's Plan!</a>
 							<Link href="/login">
-								<a className="button is-primary">
+								<a className="button is-info">
 									<i className="fas fa-user"></i>
 								</a>
 							</Link>

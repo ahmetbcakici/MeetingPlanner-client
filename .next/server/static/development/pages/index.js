@@ -280,7 +280,7 @@ var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /* harmony default export */ __webpack_exports__["default"] = (() => __jsx("nav", {
-  className: "navbar is-primary",
+  className: "navbar is-info",
   role: "navigation",
   "aria-label": "main navigation",
   __source: {
@@ -395,7 +395,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
   },
   __self: undefined
 }, __jsx("a", {
-  className: "button is-primary",
+  className: "button is-info",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 29
@@ -2138,92 +2138,111 @@ const Index = () => __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["defau
   },
   __self: undefined
 }, __jsx("div", {
-  className: "has-background-white-ter",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 5
   },
   __self: undefined
 }, __jsx("div", {
-  className: "container",
+  className: "has-background-white-ter",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 6
   },
   __self: undefined
 }, __jsx("div", {
-  className: "columns ",
+  className: "container",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 7
   },
   __self: undefined
 }, __jsx("div", {
-  className: "column",
+  className: "columns",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 8
   },
   __self: undefined
-}, __jsx("section", {
-  class: "section",
+}, __jsx("div", {
+  className: "column is-1",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 9
   },
   __self: undefined
-}, __jsx("h1", {
-  class: "title has-text-info",
+}), __jsx("div", {
+  className: "column",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 10
+  },
+  __self: undefined
+}, __jsx("section", {
+  class: "section is-medium",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 11
+  },
+  __self: undefined
+}, __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 12
+  },
+  __self: undefined
+}), __jsx("h1", {
+  class: "title has-text-info is-2",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 13
   },
   __self: undefined
 }, "Schedule meetings faster!"), __jsx("h2", {
   class: "subtitle",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 11
+    lineNumber: 14
   },
   __self: undefined
 }, "Xoyondo is the fastest way to schedule your ", __jsx("strong", {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 12
+    lineNumber: 15
   },
   __self: undefined
 }, "meetings"), " and", ' ', __jsx("strong", {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 13
+    lineNumber: 16
   },
   __self: undefined
 }, "events"), ". It's free! No registration required."), __jsx("div", {
   className: "columns",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 15
+    lineNumber: 18
   },
   __self: undefined
 }, __jsx("div", {
   className: "column is-12",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 16
+    lineNumber: 19
   },
   __self: undefined
 }, __jsx("div", {
   class: "field",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 17
+    lineNumber: 20
   },
   __self: undefined
 }, __jsx("div", {
   class: "control",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 18
+    lineNumber: 21
   },
   __self: undefined
 }, __jsx("input", {
@@ -2232,84 +2251,1187 @@ const Index = () => __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["defau
   placeholder: "What are you planning?",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 19
+    lineNumber: 22
   },
   __self: undefined
 }), __jsx("button", {
   className: "button is-info is-size-5",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 20
+    lineNumber: 27
   },
   __self: undefined
 }, "Plan"))))))), __jsx("div", {
   className: "column",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 27
-  },
-  __self: undefined
-}, "sad")))), __jsx("br", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 31
-  },
-  __self: undefined
-}), __jsx("br", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 32
-  },
-  __self: undefined
-}), __jsx("br", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 33
-  },
-  __self: undefined
-}), __jsx("br", {
-  __source: {
-    fileName: _jsxFileName,
     lineNumber: 34
   },
   __self: undefined
-}), __jsx("br", {
+}, __jsx("section", {
+  class: "section is-medium",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 35
   },
   __self: undefined
-}), __jsx("br", {
+}, __jsx("div", {
+  className: "box is-inline-block",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 36
   },
   __self: undefined
-}), __jsx("br", {
+}, __jsx("table", {
+  className: "table has-background-dark has-text-light",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 37
   },
   __self: undefined
-}), __jsx("br", {
+}, __jsx("tr", {
   __source: {
     fileName: _jsxFileName,
     lineNumber: 38
   },
   __self: undefined
-}), __jsx("br", {
+}, __jsx("th", {
+  className: "has-text-light",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 39
   },
   __self: undefined
-}), __jsx("br", {
+}, "Firstname"), __jsx("th", {
+  className: "has-text-light",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 40
   },
   __self: undefined
-}));
+}, "Lastname"), __jsx("th", {
+  className: "has-text-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 41
+  },
+  __self: undefined
+}, "Age"), __jsx("th", {
+  className: "has-text-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 42
+  },
+  __self: undefined
+}, "Age"), __jsx("th", {
+  className: "has-text-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 43
+  },
+  __self: undefined
+}, "Age"), __jsx("th", {
+  className: "has-text-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 44
+  },
+  __self: undefined
+}, "Age")), __jsx("tr", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 46
+  },
+  __self: undefined
+}, __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 47
+  },
+  __self: undefined
+}, "Jill"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 48
+  },
+  __self: undefined
+}, "Smith"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 49
+  },
+  __self: undefined
+}, "50"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 50
+  },
+  __self: undefined
+}, "50"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 51
+  },
+  __self: undefined
+}, "50"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 52
+  },
+  __self: undefined
+}, "50")), __jsx("tr", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 54
+  },
+  __self: undefined
+}, __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 55
+  },
+  __self: undefined
+}, "Eve"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 56
+  },
+  __self: undefined
+}, "Jackson"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 57
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 58
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 59
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 60
+  },
+  __self: undefined
+}, "94")), __jsx("tr", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 62
+  },
+  __self: undefined
+}, __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 63
+  },
+  __self: undefined
+}, "Eve"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 64
+  },
+  __self: undefined
+}, "Jackson"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 65
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 66
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 67
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 68
+  },
+  __self: undefined
+}, "94")), __jsx("tr", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 70
+  },
+  __self: undefined
+}, __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 71
+  },
+  __self: undefined
+}, "Eve"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 72
+  },
+  __self: undefined
+}, "Jackson"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 73
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 74
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 75
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 76
+  },
+  __self: undefined
+}, "94")), __jsx("tr", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 78
+  },
+  __self: undefined
+}, __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 79
+  },
+  __self: undefined
+}, "Eve"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 80
+  },
+  __self: undefined
+}, "Jackson"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 81
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 82
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 83
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 84
+  },
+  __self: undefined
+}, "94"))))))))), __jsx("div", {
+  className: "has-background-white",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 96
+  },
+  __self: undefined
+}, __jsx("div", {
+  className: "container",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 97
+  },
+  __self: undefined
+}, __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 98
+  },
+  __self: undefined
+}), __jsx("p", {
+  className: "is-size-4 has-text-centered",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 99
+  },
+  __self: undefined
+}, "Find a date for your event that works for everybody."), __jsx("p", {
+  className: "is-size-6 has-text-centered",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 100
+  },
+  __self: undefined
+}, "This is how it works:"), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 101
+  },
+  __self: undefined
+}), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 102
+  },
+  __self: undefined
+}), __jsx("div", {
+  className: "columns",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 103
+  },
+  __self: undefined
+}, __jsx("div", {
+  className: "column has-text-centered",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 104
+  },
+  __self: undefined
+}, __jsx("img", {
+  src: "https://xoyondo.com/img/calendar-dates-en.png",
+  alt: "",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 105
+  },
+  __self: undefined
+}), __jsx("p", {
+  className: "is-size-4 has-text-link",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 106
+  },
+  __self: undefined
+}, "Select dates and times"), __jsx("p", {
+  className: "is-size-6 has-text-grey-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 107
+  },
+  __self: undefined
+}, "Select several possible dates for your event or meeting. Additionally different times (e.g. 2-3pm, 4-5pm) can be specified for each day.")), __jsx("div", {
+  className: "column has-text-centered",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 112
+  },
+  __self: undefined
+}, __jsx("img", {
+  src: "https://xoyondo.com/img/invite-participants.png",
+  alt: "",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 113
+  },
+  __self: undefined
+}), __jsx("p", {
+  className: "is-size-4 has-text-link",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 114
+  },
+  __self: undefined
+}, "Invite participants"), __jsx("p", {
+  className: "is-size-6 has-text-grey-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 115
+  },
+  __self: undefined
+}, "Invite the participants to your meeting poll by email or directly via Xoyondo. They will obtain a link to your personal poll website.")), __jsx("div", {
+  className: "column has-text-centered",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 120
+  },
+  __self: undefined
+}, __jsx("img", {
+  src: "https://xoyondo.com/img/meeting-poll-en-2.png",
+  alt: "",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 121
+  },
+  __self: undefined
+}), __jsx("p", {
+  className: "is-size-4 has-text-link",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 122
+  },
+  __self: undefined
+}, "Get the optimal date"), __jsx("p", {
+  className: "is-size-6 has-text-grey-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 123
+  },
+  __self: undefined
+}, "Each participant indicates which dates and times are suitable. The optimal date for your event can now be easily determined."))), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 130
+  },
+  __self: undefined
+}), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 131
+  },
+  __self: undefined
+}), __jsx("p", {
+  className: "has-text-centered",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 132
+  },
+  __self: undefined
+}, __jsx("a", {
+  className: "button is-info",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 133
+  },
+  __self: undefined
+}, "Start your own meeting poll!")))), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 138
+  },
+  __self: undefined
+}), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 139
+  },
+  __self: undefined
+}), __jsx("div", {
+  className: "has-background-info has-text-light has-text-centered",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 141
+  },
+  __self: undefined
+}, __jsx("div", {
+  className: "container",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 142
+  },
+  __self: undefined
+}, __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 143
+  },
+  __self: undefined
+}), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 144
+  },
+  __self: undefined
+}), __jsx("p", {
+  className: "is-size-4 ",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 145
+  },
+  __self: undefined
+}, "Features:"), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 146
+  },
+  __self: undefined
+}), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 147
+  },
+  __self: undefined
+}), __jsx("div", {
+  className: "columns",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 148
+  },
+  __self: undefined
+}, __jsx("div", {
+  className: "column",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 149
+  },
+  __self: undefined
+}, __jsx("p", {
+  className: "is-size-3 has-text-warning",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 150
+  },
+  __self: undefined
+}, __jsx("i", {
+  className: "fa fa-bar-chart",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 151
+  },
+  __self: undefined
+})), __jsx("p", {
+  className: "is-size-4",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 153
+  },
+  __self: undefined
+}, "Easy scheduling and polling"), __jsx("p", {
+  className: "is-size-6 has-text-grey-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 154
+  },
+  __self: undefined
+}, "Easily schedule meetings, create polls and message boards.")), __jsx("div", {
+  className: "column is-1",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 158
+  },
+  __self: undefined
+}), __jsx("div", {
+  className: "column",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 159
+  },
+  __self: undefined
+}, __jsx("p", {
+  className: "is-size-3 has-text-warning",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 160
+  },
+  __self: undefined
+}, __jsx("i", {
+  className: "fa fa-check-square-o",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 161
+  },
+  __self: undefined
+})), __jsx("p", {
+  className: "is-size-4",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 163
+  },
+  __self: undefined
+}, "Unlimited polls and participants"), __jsx("p", {
+  className: "is-size-6 has-text-grey-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 164
+  },
+  __self: undefined
+}, "Create as many polls as you want. Invite as many participants as you want.")), __jsx("div", {
+  className: "column is-1",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 168
+  },
+  __self: undefined
+}), __jsx("div", {
+  className: "column",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 169
+  },
+  __self: undefined
+}, __jsx("p", {
+  className: "is-size-3 has-text-warning",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 170
+  },
+  __self: undefined
+}, __jsx("i", {
+  className: "fa fa-star",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 171
+  },
+  __self: undefined
+})), __jsx("p", {
+  className: "is-size-4",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 173
+  },
+  __self: undefined
+}, "Personal Xoyondo page"), __jsx("p", {
+  className: "is-size-6 has-text-grey-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 174
+  },
+  __self: undefined
+}, "Publish your polls on a public personal page with a URL of your choice."))), __jsx("div", {
+  className: "columns",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 179
+  },
+  __self: undefined
+}, __jsx("div", {
+  className: "column",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 180
+  },
+  __self: undefined
+}, __jsx("p", {
+  className: "is-size-3 has-text-warning",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 181
+  },
+  __self: undefined
+}, __jsx("i", {
+  className: "fa fa-list-ol",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 182
+  },
+  __self: undefined
+})), __jsx("p", {
+  className: "is-size-4",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 184
+  },
+  __self: undefined
+}, "Request additional user information"), __jsx("p", {
+  className: "is-size-6 has-text-grey-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 185
+  },
+  __self: undefined
+}, "Collect additional information from your participants when they vote in your poll (e.g. their email address)")), __jsx("div", {
+  className: "column is-1",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 190
+  },
+  __self: undefined
+}), __jsx("div", {
+  className: "column",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 191
+  },
+  __self: undefined
+}, __jsx("p", {
+  className: "is-size-3 has-text-warning",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 192
+  },
+  __self: undefined
+}, __jsx("i", {
+  className: "fa fa-file-o",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 193
+  },
+  __self: undefined
+})), __jsx("p", {
+  className: "is-size-4",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 195
+  },
+  __self: undefined
+}, "Attach files"), __jsx("p", {
+  className: "is-size-6 has-text-grey-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 196
+  },
+  __self: undefined
+}, "Upload documents and images and attach them to your polls")), __jsx("div", {
+  className: "column is-1",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 200
+  },
+  __self: undefined
+}), __jsx("div", {
+  className: "column",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 201
+  },
+  __self: undefined
+}, __jsx("p", {
+  className: "is-size-3 has-text-warning",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 202
+  },
+  __self: undefined
+}, __jsx("i", {
+  className: "fa fa-picture-o",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 203
+  },
+  __self: undefined
+})), __jsx("p", {
+  className: "is-size-4",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 205
+  },
+  __self: undefined
+}, "Individual branding and poll design"), __jsx("p", {
+  className: "is-size-6 has-text-grey-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 206
+  },
+  __self: undefined
+}, "Replace the Xoyondo logo with your own, create custom poll designs.")))), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 212
+  },
+  __self: undefined
+}), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 213
+  },
+  __self: undefined
+})), __jsx("div", {
+  className: "has-background-white-ter",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 217
+  },
+  __self: undefined
+}, __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 218
+  },
+  __self: undefined
+}), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 219
+  },
+  __self: undefined
+}), __jsx("div", {
+  className: "container",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 220
+  },
+  __self: undefined
+}, __jsx("p", {
+  className: "is-size-3 has-text-centered",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 221
+  },
+  __self: undefined
+}, "Xoyondo can do more for you..."), __jsx("p", {
+  className: "is-size-6 has-text-centered",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 222
+  },
+  __self: undefined
+}, "If you don't want to plan a meeting, we offer two more poll types that can be useful in various situations."), __jsx("br", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 226
+  },
+  __self: undefined
+}), __jsx("div", {
+  className: "columns",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 227
+  },
+  __self: undefined
+}, __jsx("div", {
+  className: "column is-1",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 228
+  },
+  __self: undefined
+}), __jsx("div", {
+  className: "column",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 229
+  },
+  __self: undefined
+}, __jsx("p", {
+  className: "is-size-3 has-text-link",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 230
+  },
+  __self: undefined
+}, "Opinion polls"), __jsx("p", {
+  className: "is-size-6 has-text-grey-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 231
+  },
+  __self: undefined
+}, "With opinion polls you and your participants can easily choose the best option."), __jsx("div", {
+  class: "field",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 234
+  },
+  __self: undefined
+}, __jsx("div", {
+  class: "control",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 235
+  },
+  __self: undefined
+}, __jsx("input", {
+  className: "input is-inline is-size-5",
+  type: "text",
+  placeholder: "What are you planning?",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 236
+  },
+  __self: undefined
+}), __jsx("button", {
+  className: "button is-info is-size-5",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 241
+  },
+  __self: undefined
+}, "Plan")))), __jsx("div", {
+  className: "column",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 245
+  },
+  __self: undefined
+}, __jsx("div", {
+  className: "box is-inline-block",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 246
+  },
+  __self: undefined
+}, __jsx("table", {
+  className: "table has-background-dark has-text-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 247
+  },
+  __self: undefined
+}, __jsx("tr", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 248
+  },
+  __self: undefined
+}, __jsx("th", {
+  className: "has-text-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 249
+  },
+  __self: undefined
+}, "Firstname"), __jsx("th", {
+  className: "has-text-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 250
+  },
+  __self: undefined
+}, "Lastname"), __jsx("th", {
+  className: "has-text-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 251
+  },
+  __self: undefined
+}, "Age"), __jsx("th", {
+  className: "has-text-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 252
+  },
+  __self: undefined
+}, "Age"), __jsx("th", {
+  className: "has-text-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 253
+  },
+  __self: undefined
+}, "Age"), __jsx("th", {
+  className: "has-text-light",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 254
+  },
+  __self: undefined
+}, "Age")), __jsx("tr", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 256
+  },
+  __self: undefined
+}, __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 257
+  },
+  __self: undefined
+}, "Jill"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 258
+  },
+  __self: undefined
+}, "Smith"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 259
+  },
+  __self: undefined
+}, "50"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 260
+  },
+  __self: undefined
+}, "50"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 261
+  },
+  __self: undefined
+}, "50"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 262
+  },
+  __self: undefined
+}, "50")), __jsx("tr", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 264
+  },
+  __self: undefined
+}, __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 265
+  },
+  __self: undefined
+}, "Eve"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 266
+  },
+  __self: undefined
+}, "Jackson"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 267
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 268
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 269
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 270
+  },
+  __self: undefined
+}, "94")), __jsx("tr", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 272
+  },
+  __self: undefined
+}, __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 273
+  },
+  __self: undefined
+}, "Eve"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 274
+  },
+  __self: undefined
+}, "Jackson"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 275
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 276
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 277
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 278
+  },
+  __self: undefined
+}, "94")), __jsx("tr", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 280
+  },
+  __self: undefined
+}, __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 281
+  },
+  __self: undefined
+}, "Eve"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 282
+  },
+  __self: undefined
+}, "Jackson"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 283
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 284
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 285
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 286
+  },
+  __self: undefined
+}, "94")), __jsx("tr", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 288
+  },
+  __self: undefined
+}, __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 289
+  },
+  __self: undefined
+}, "Eve"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 290
+  },
+  __self: undefined
+}, "Jackson"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 291
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 292
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 293
+  },
+  __self: undefined
+}, "94"), __jsx("td", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 294
+  },
+  __self: undefined
+}, "94"))))), __jsx("div", {
+  className: "column is-1",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 299
+  },
+  __self: undefined
+}))))));
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 
