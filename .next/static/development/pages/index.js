@@ -286,6 +286,7 @@ var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return __jsx("nav", {
     className: "navbar is-info",
@@ -293,21 +294,21 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     "aria-label": "main navigation",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 4
+      lineNumber: 6
     },
     __self: this
   }, __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5
+      lineNumber: 7
     },
     __self: this
   }, __jsx("div", {
     className: "navbar-brand",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
+      lineNumber: 8
     },
     __self: this
   }, __jsx("a", {
@@ -315,7 +316,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 9
     },
     __self: this
   }, __jsx("img", {
@@ -324,7 +325,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     height: "28",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 10
     },
     __self: this
   })), __jsx("a", {
@@ -335,28 +336,28 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     "data-target": "navbarBasicExample",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 13
     },
     __self: this
   }, __jsx("span", {
     "aria-hidden": "true",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
-    },
-    __self: this
-  }), __jsx("span", {
-    "aria-hidden": "true",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18
-    },
-    __self: this
-  }), __jsx("span", {
-    "aria-hidden": "true",
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 19
+    },
+    __self: this
+  }), __jsx("span", {
+    "aria-hidden": "true",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    },
+    __self: this
+  }), __jsx("span", {
+    "aria-hidden": "true",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21
     },
     __self: this
   }))), __jsx("div", {
@@ -364,56 +365,176 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     className: "navbar-menu",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 25
     },
     __self: this
   }, __jsx("div", {
     className: "navbar-end",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 26
     },
     __self: this
   }, __jsx("div", {
     className: "navbar-item",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 27
     },
     __self: this
   }, __jsx("div", {
     className: "buttons",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 28
+    },
+    __self: this
+  }, __jsx("div", {
+    "class": "dropdown is-hoverable",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: this
+  }, __jsx("div", {
+    "class": "dropdown-trigger",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: this
+  }, __jsx("button", {
+    "class": "button is-light is-rounded is-outlined",
+    "aria-haspopup": "true",
+    "aria-controls": "dropdown-menu4",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: this
+  }, __jsx("span", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    },
+    __self: this
+  }, "Let's Plan!"), __jsx("span", {
+    "class": "icon is-small",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36
+    },
+    __self: this
+  }, __jsx("i", {
+    "class": "fas fa-angle-down",
+    "aria-hidden": "true",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37
+    },
+    __self: this
+  })))), __jsx("div", {
+    "class": "dropdown-menu",
+    id: "dropdown-menu4",
+    role: "menu",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: this
+  }, __jsx("div", {
+    "class": "dropdown-content",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: this
+  }, __jsx("div", {
+    "class": "dropdown-content",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43
     },
     __self: this
   }, __jsx("a", {
-    className: "button is-light is-rounded is-outlined",
+    href: "#",
+    "class": "dropdown-item",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 44
     },
     __self: this
-  }, "Let's Plan!"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  }, __jsx("i", {
+    className: "fa fa-calendar",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45
+    },
+    __self: this
+  }), "\xA0 Schedule a meeting"), __jsx("a", {
+    href: "#",
+    "class": "dropdown-item",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47
+    },
+    __self: this
+  }, __jsx("i", {
+    className: "fa fa-check-square-o",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: this
+  }), "\xA0 Generate opinion poll"), __jsx("a", {
+    href: "#",
+    "class": "dropdown-item",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50
+    },
+    __self: this
+  }, __jsx("i", {
+    className: "fa fa-bar-chart-o",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51
+    },
+    __self: this
+  }), "\xA0 Generate anonymous poll"), __jsx("a", {
+    href: "#",
+    "class": "dropdown-item",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53
+    },
+    __self: this
+  }, __jsx("i", {
+    className: "fa fa-comments-o",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54
+    },
+    __self: this
+  }), "\xA0 Generate message board"))))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/login",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 60
     },
     __self: this
   }, __jsx("a", {
     className: "button is-info",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 61
     },
     __self: this
   }, __jsx("i", {
     className: "fas fa-user",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 62
     },
     __self: this
   })))))))));
