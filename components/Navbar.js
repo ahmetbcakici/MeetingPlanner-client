@@ -41,7 +41,7 @@ export default () => {
 									<div class="dropdown-menu" id="dropdown-menu4" role="menu">
 										<div class="dropdown-content">
 											<div class="dropdown-content">
-												<a href="#" class="dropdown-item">
+												<a href="/plan/meeting" class="dropdown-item">
 													<i className="fa fa-calendar"></i>&nbsp; Schedule a meeting
 												</a>
 												<a href="#" class="dropdown-item">
