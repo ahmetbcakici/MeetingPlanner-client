@@ -48,15 +48,24 @@ export default () => {
 														<i className="fa fa-calendar"></i>&nbsp; Schedule a meeting
 													</a>
 												</Link>
-												<a href="#" class="dropdown-item">
-													<i className="fa fa-check-square-o"></i>&nbsp; Generate opinion poll
-												</a>
-												<a href="#" class="dropdown-item">
-													<i className="fa fa-bar-chart-o"></i>&nbsp; Generate anonymous poll
-												</a>
-												<a href="#" class="dropdown-item">
-													<i className="fa fa-comments-o"></i>&nbsp; Generate message board
-												</a>
+												<Link href="/plan/opoll">
+													<a class="dropdown-item">
+														<i className="fa fa-check-square-o"></i>&nbsp; Generate opinion
+														poll
+													</a>
+												</Link>
+												<Link href="/plan/apoll">
+													<a class="dropdown-item">
+														<i className="fa fa-bar-chart-o"></i>&nbsp; Generate anonymous
+														poll
+													</a>
+												</Link>
+												<Link href="/plan/message">
+													<a class="dropdown-item">
+														<i className="fa fa-comments-o"></i>&nbsp; Generate message
+														board
+													</a>
+												</Link>
 											</div>
 										</div>
 									</div>

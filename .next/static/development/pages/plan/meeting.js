@@ -483,70 +483,88 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 48
     },
     __self: this
-  }), "\xA0 Schedule a meeting")), __jsx("a", {
-    href: "#",
-    "class": "dropdown-item",
+  }), "\xA0 Schedule a meeting")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/plan/opoll",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 51
+    },
+    __self: this
+  }, __jsx("a", {
+    "class": "dropdown-item",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52
     },
     __self: this
   }, __jsx("i", {
     className: "fa fa-check-square-o",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 53
     },
     __self: this
-  }), "\xA0 Generate opinion poll"), __jsx("a", {
-    href: "#",
+  }), "\xA0 Generate opinion poll")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/plan/apoll",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57
+    },
+    __self: this
+  }, __jsx("a", {
     "class": "dropdown-item",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 58
     },
     __self: this
   }, __jsx("i", {
     className: "fa fa-bar-chart-o",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 59
     },
     __self: this
-  }), "\xA0 Generate anonymous poll"), __jsx("a", {
-    href: "#",
+  }), "\xA0 Generate anonymous poll")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/plan/message",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63
+    },
+    __self: this
+  }, __jsx("a", {
     "class": "dropdown-item",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 64
     },
     __self: this
   }, __jsx("i", {
     className: "fa fa-comments-o",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 65
     },
     __self: this
-  }), "\xA0 Generate message board"))))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  }), "\xA0 Generate message board")))))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/login",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 73
     },
     __self: this
   }, __jsx("a", {
     className: "button is-info",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 74
     },
     __self: this
   }, __jsx("i", {
     className: "fas fa-user",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66
+      lineNumber: 75
     },
     __self: this
   })))))))));
@@ -11025,7 +11043,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("label", {
-    className: "label",
+    className: "label has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 34
@@ -11054,7 +11072,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("label", {
-    className: "label",
+    className: "label has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 41
@@ -11083,7 +11101,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("label", {
-    className: "label",
+    className: "label has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 48
@@ -11112,7 +11130,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("label", {
-    className: "label",
+    className: "label has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 55

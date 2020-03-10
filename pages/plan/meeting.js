@@ -31,28 +31,28 @@ export default () => (
 						</p>
 						<div className="box" style={{ backgroundColor: '#C8E4FF' }}>
 							<div className="field">
-								<label className="label">Poll title:</label>
+								<label className="label has-text-weight-normal">Poll title:</label>
 								<div className="control">
 									<input className="input" type="text" />
 								</div>
 							</div>
 
 							<div className="field">
-								<label className="label">Additional descriptions:</label>
+								<label className="label has-text-weight-normal">Additional descriptions:</label>
 								<div className="control has-icons-left has-icons-right">
 									<textarea class="textarea" rows="3"></textarea>
 								</div>
 							</div>
 
 							<div className="field">
-								<label className="label">Your name:</label>
+								<label className="label has-text-weight-normal">Your name:</label>
 								<div className="control">
 									<input className="input" type="text" />
 								</div>
 							</div>
 
 							<div className="field">
-								<label className="label">Your email address:</label>
+								<label className="label has-text-weight-normal">Your email address:</label>
 								<div className="control">
 									<input className="input" type="email" />
 								</div>
