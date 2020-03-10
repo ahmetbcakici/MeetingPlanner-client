@@ -6,9 +6,11 @@ export default () => {
 		<nav className="navbar is-info" role="navigation" aria-label="main navigation">
 			<div className="container">
 				<div className="navbar-brand">
-					<a className="navbar-item" href="/">
-						<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
-					</a>
+					<Link href="/">
+						<a className="navbar-item">
+							<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
+						</a>
+					</Link>
 
 					<a
 						role="button"
@@ -41,9 +43,11 @@ export default () => {
 									<div class="dropdown-menu" id="dropdown-menu4" role="menu">
 										<div class="dropdown-content">
 											<div class="dropdown-content">
-												<a href="/plan/meeting" class="dropdown-item">
-													<i className="fa fa-calendar"></i>&nbsp; Schedule a meeting
-												</a>
+												<Link href="/plan/meeting">
+													<a class="dropdown-item">
+														<i className="fa fa-calendar"></i>&nbsp; Schedule a meeting
+													</a>
+												</Link>
 												<a href="#" class="dropdown-item">
 													<i className="fa fa-check-square-o"></i>&nbsp; Generate opinion poll
 												</a>
