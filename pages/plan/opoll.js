@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
+import MoreOptions from '../../components/MoreOptions';
 
 export default () => {
 	const [styleClassFirst, setStyleClassFirst] = useState('passive');
@@ -68,7 +69,6 @@ export default () => {
 													<input
 														className="input"
 														type="text"
-														placeholder="Your phone number"
 													/>
 												</p>
 
@@ -82,46 +82,14 @@ export default () => {
 									</div>
 								</div>
 
-								<div className="field">
-									<label
-										className="label has-text-weight-normal has-text-link"
-										style={{ cursor: 'pointer', userSelect: 'none' }}
-										id="firstMoreOptions"
-										onClick={handleMoreOptions}>
-										<i
-											className={
-												styleClassFirst === 'passive'
-													? 'fas fa-caret-right'
-													: 'fas fa-caret-down'
-											}></i>
-										&nbsp; More options:
-									</label>
-								</div>
-
-								<div>
-									<div style={{ transition: '300ms' }} className={styleClassFirst}>
-										<label className="checkbox is-block">
-											&emsp;
-											<input type="checkbox" />
-											&nbsp;Yes-No-Maybe poll.
-										</label>
-										<label className="checkbox is-block">
-											&emsp;
-											<input type="checkbox" />
-											&nbsp;Anonymous opinion poll
-										</label>
-										<label className="checkbox is-block">
-											&emsp;
-											<input type="checkbox" />
-											&nbsp;Participants can only vote for one option
-										</label>
-										<label className="checkbox is-block">
-											&emsp;
-											<input type="checkbox" />
-											&nbsp;Display participants in alphabetical order
-										</label>
-									</div>
-								</div>
+								<MoreOptions
+									options={[
+										'Yes-No-Maybe poll.',
+										'Anonymous opinion poll',
+										'Participants can only vote for one option',
+										'Display participants in alphabetical order',
+									]}
+								/>
 							</div>
 							<br />
 
@@ -149,50 +117,13 @@ export default () => {
 								<br />
 								<br />
 
-								<div className="field">
-									<label
-										className="label has-text-weight-normal has-text-link"
-										style={{ cursor: 'pointer', userSelect: 'none' }}
-										id="secondMoreOptions"
-										onClick={handleMoreOptions}>
-										<i
-											className={
-												styleClassSecond === 'passive'
-													? 'fas fa-caret-right'
-													: 'fas fa-caret-down'
-											}></i>
-										&nbsp; More options:
-									</label>
-								</div>
-
-								<div className="field">
-									<div
-										style={{
-											transition: '300ms',
-										}}
-										className={styleClassSecond}>
-										<label className="checkbox is-block">
-											&emsp;
-											<input type="checkbox" />
-											&nbsp;Yes-No-Maybe poll.
-										</label>
-										<label className="checkbox is-block">
-											&emsp;
-											<input type="checkbox" />
-											&nbsp;Anonymous opinion poll
-										</label>
-										<label className="checkbox is-block">
-											&emsp;
-											<input type="checkbox" />
-											&nbsp;Participants can only vote for one option
-										</label>
-										<label className="checkbox is-block">
-											&emsp;
-											<input type="checkbox" />
-											&nbsp;Display participants in alphabetical order
-										</label>
-									</div>
-								</div>
+								<MoreOptions
+									options={[
+										'Allow participants to leave comments',
+										'Simplified editing',
+										'I want to be notified by email about activities in this poll',
+									]}
+								/>
 
 								<div className="field">
 									<div className="control">
