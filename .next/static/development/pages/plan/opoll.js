@@ -8079,6 +8079,201 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
+/***/ "./node_modules/process/browser.js":
+/*!*****************************************!*\
+  !*** ./node_modules/process/browser.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+
 /***/ "./node_modules/prop-types-exact/build/helpers/isPlainObject.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/prop-types-exact/build/helpers/isPlainObject.js ***!
@@ -10032,6 +10227,699 @@ try {
 
 /***/ }),
 
+/***/ "./node_modules/string-hash/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/string-hash/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function hash(str) {
+  var hash = 5381,
+      i    = str.length;
+
+  while(i) {
+    hash = (hash * 33) ^ str.charCodeAt(--i);
+  }
+
+  /* JavaScript does bitwise operations (like XOR, above) on 32-bit signed
+   * integers. Since we want the results to be always positive, convert the
+   * signed int to an unsigned by doing an unsigned bitshift. */
+  return hash >>> 0;
+}
+
+module.exports = hash;
+
+
+/***/ }),
+
+/***/ "./node_modules/styled-jsx/dist/lib/stylesheet.js":
+/*!********************************************************!*\
+  !*** ./node_modules/styled-jsx/dist/lib/stylesheet.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+exports.__esModule = true;
+exports["default"] = void 0;
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/*
+Based on Glamor's sheet
+https://github.com/threepointone/glamor/blob/667b480d31b3721a905021b26e1290ce92ca2879/src/sheet.js
+*/
+var isProd = typeof process !== 'undefined' && process.env && "development" === 'production';
+
+var isString = function isString(o) {
+  return Object.prototype.toString.call(o) === '[object String]';
+};
+
+var StyleSheet =
+/*#__PURE__*/
+function () {
+  function StyleSheet(_temp) {
+    var _ref = _temp === void 0 ? {} : _temp,
+        _ref$name = _ref.name,
+        name = _ref$name === void 0 ? 'stylesheet' : _ref$name,
+        _ref$optimizeForSpeed = _ref.optimizeForSpeed,
+        optimizeForSpeed = _ref$optimizeForSpeed === void 0 ? isProd : _ref$optimizeForSpeed,
+        _ref$isBrowser = _ref.isBrowser,
+        isBrowser = _ref$isBrowser === void 0 ? typeof window !== 'undefined' : _ref$isBrowser;
+
+    invariant(isString(name), '`name` must be a string');
+    this._name = name;
+    this._deletedRulePlaceholder = "#" + name + "-deleted-rule____{}";
+    invariant(typeof optimizeForSpeed === 'boolean', '`optimizeForSpeed` must be a boolean');
+    this._optimizeForSpeed = optimizeForSpeed;
+    this._isBrowser = isBrowser;
+    this._serverSheet = undefined;
+    this._tags = [];
+    this._injected = false;
+    this._rulesCount = 0;
+    var node = this._isBrowser && document.querySelector('meta[property="csp-nonce"]');
+    this._nonce = node ? node.getAttribute('content') : null;
+  }
+
+  var _proto = StyleSheet.prototype;
+
+  _proto.setOptimizeForSpeed = function setOptimizeForSpeed(bool) {
+    invariant(typeof bool === 'boolean', '`setOptimizeForSpeed` accepts a boolean');
+    invariant(this._rulesCount === 0, 'optimizeForSpeed cannot be when rules have already been inserted');
+    this.flush();
+    this._optimizeForSpeed = bool;
+    this.inject();
+  };
+
+  _proto.isOptimizeForSpeed = function isOptimizeForSpeed() {
+    return this._optimizeForSpeed;
+  };
+
+  _proto.inject = function inject() {
+    var _this = this;
+
+    invariant(!this._injected, 'sheet already injected');
+    this._injected = true;
+
+    if (this._isBrowser && this._optimizeForSpeed) {
+      this._tags[0] = this.makeStyleTag(this._name);
+      this._optimizeForSpeed = 'insertRule' in this.getSheet();
+
+      if (!this._optimizeForSpeed) {
+        if (!isProd) {
+          console.warn('StyleSheet: optimizeForSpeed mode not supported falling back to standard mode.');
+        }
+
+        this.flush();
+        this._injected = true;
+      }
+
+      return;
+    }
+
+    this._serverSheet = {
+      cssRules: [],
+      insertRule: function insertRule(rule, index) {
+        if (typeof index === 'number') {
+          _this._serverSheet.cssRules[index] = {
+            cssText: rule
+          };
+        } else {
+          _this._serverSheet.cssRules.push({
+            cssText: rule
+          });
+        }
+
+        return index;
+      },
+      deleteRule: function deleteRule(index) {
+        _this._serverSheet.cssRules[index] = null;
+      }
+    };
+  };
+
+  _proto.getSheetForTag = function getSheetForTag(tag) {
+    if (tag.sheet) {
+      return tag.sheet;
+    } // this weirdness brought to you by firefox
+
+
+    for (var i = 0; i < document.styleSheets.length; i++) {
+      if (document.styleSheets[i].ownerNode === tag) {
+        return document.styleSheets[i];
+      }
+    }
+  };
+
+  _proto.getSheet = function getSheet() {
+    return this.getSheetForTag(this._tags[this._tags.length - 1]);
+  };
+
+  _proto.insertRule = function insertRule(rule, index) {
+    invariant(isString(rule), '`insertRule` accepts only strings');
+
+    if (!this._isBrowser) {
+      if (typeof index !== 'number') {
+        index = this._serverSheet.cssRules.length;
+      }
+
+      this._serverSheet.insertRule(rule, index);
+
+      return this._rulesCount++;
+    }
+
+    if (this._optimizeForSpeed) {
+      var sheet = this.getSheet();
+
+      if (typeof index !== 'number') {
+        index = sheet.cssRules.length;
+      } // this weirdness for perf, and chrome's weird bug
+      // https://stackoverflow.com/questions/20007992/chrome-suddenly-stopped-accepting-insertrule
+
+
+      try {
+        sheet.insertRule(rule, index);
+      } catch (error) {
+        if (!isProd) {
+          console.warn("StyleSheet: illegal rule: \n\n" + rule + "\n\nSee https://stackoverflow.com/q/20007992 for more info");
+        }
+
+        return -1;
+      }
+    } else {
+      var insertionPoint = this._tags[index];
+
+      this._tags.push(this.makeStyleTag(this._name, rule, insertionPoint));
+    }
+
+    return this._rulesCount++;
+  };
+
+  _proto.replaceRule = function replaceRule(index, rule) {
+    if (this._optimizeForSpeed || !this._isBrowser) {
+      var sheet = this._isBrowser ? this.getSheet() : this._serverSheet;
+
+      if (!rule.trim()) {
+        rule = this._deletedRulePlaceholder;
+      }
+
+      if (!sheet.cssRules[index]) {
+        // @TBD Should we throw an error?
+        return index;
+      }
+
+      sheet.deleteRule(index);
+
+      try {
+        sheet.insertRule(rule, index);
+      } catch (error) {
+        if (!isProd) {
+          console.warn("StyleSheet: illegal rule: \n\n" + rule + "\n\nSee https://stackoverflow.com/q/20007992 for more info");
+        } // In order to preserve the indices we insert a deleteRulePlaceholder
+
+
+        sheet.insertRule(this._deletedRulePlaceholder, index);
+      }
+    } else {
+      var tag = this._tags[index];
+      invariant(tag, "old rule at index `" + index + "` not found");
+      tag.textContent = rule;
+    }
+
+    return index;
+  };
+
+  _proto.deleteRule = function deleteRule(index) {
+    if (!this._isBrowser) {
+      this._serverSheet.deleteRule(index);
+
+      return;
+    }
+
+    if (this._optimizeForSpeed) {
+      this.replaceRule(index, '');
+    } else {
+      var tag = this._tags[index];
+      invariant(tag, "rule at index `" + index + "` not found");
+      tag.parentNode.removeChild(tag);
+      this._tags[index] = null;
+    }
+  };
+
+  _proto.flush = function flush() {
+    this._injected = false;
+    this._rulesCount = 0;
+
+    if (this._isBrowser) {
+      this._tags.forEach(function (tag) {
+        return tag && tag.parentNode.removeChild(tag);
+      });
+
+      this._tags = [];
+    } else {
+      // simpler on server
+      this._serverSheet.cssRules = [];
+    }
+  };
+
+  _proto.cssRules = function cssRules() {
+    var _this2 = this;
+
+    if (!this._isBrowser) {
+      return this._serverSheet.cssRules;
+    }
+
+    return this._tags.reduce(function (rules, tag) {
+      if (tag) {
+        rules = rules.concat(Array.prototype.map.call(_this2.getSheetForTag(tag).cssRules, function (rule) {
+          return rule.cssText === _this2._deletedRulePlaceholder ? null : rule;
+        }));
+      } else {
+        rules.push(null);
+      }
+
+      return rules;
+    }, []);
+  };
+
+  _proto.makeStyleTag = function makeStyleTag(name, cssString, relativeToTag) {
+    if (cssString) {
+      invariant(isString(cssString), 'makeStyleTag acceps only strings as second parameter');
+    }
+
+    var tag = document.createElement('style');
+    if (this._nonce) tag.setAttribute('nonce', this._nonce);
+    tag.type = 'text/css';
+    tag.setAttribute("data-" + name, '');
+
+    if (cssString) {
+      tag.appendChild(document.createTextNode(cssString));
+    }
+
+    var head = document.head || document.getElementsByTagName('head')[0];
+
+    if (relativeToTag) {
+      head.insertBefore(tag, relativeToTag);
+    } else {
+      head.appendChild(tag);
+    }
+
+    return tag;
+  };
+
+  _createClass(StyleSheet, [{
+    key: "length",
+    get: function get() {
+      return this._rulesCount;
+    }
+  }]);
+
+  return StyleSheet;
+}();
+
+exports["default"] = StyleSheet;
+
+function invariant(condition, message) {
+  if (!condition) {
+    throw new Error("StyleSheet: " + message + ".");
+  }
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/styled-jsx/dist/style.js":
+/*!***********************************************!*\
+  !*** ./node_modules/styled-jsx/dist/style.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.flush = flush;
+exports["default"] = void 0;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _stylesheetRegistry = _interopRequireDefault(__webpack_require__(/*! ./stylesheet-registry */ "./node_modules/styled-jsx/dist/stylesheet-registry.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+var styleSheetRegistry = new _stylesheetRegistry["default"]();
+
+var JSXStyle =
+/*#__PURE__*/
+function (_Component) {
+  _inheritsLoose(JSXStyle, _Component);
+
+  function JSXStyle(props) {
+    var _this;
+
+    _this = _Component.call(this, props) || this;
+    _this.prevProps = {};
+    return _this;
+  }
+
+  JSXStyle.dynamic = function dynamic(info) {
+    return info.map(function (tagInfo) {
+      var baseId = tagInfo[0];
+      var props = tagInfo[1];
+      return styleSheetRegistry.computeId(baseId, props);
+    }).join(' ');
+  } // probably faster than PureComponent (shallowEqual)
+  ;
+
+  var _proto = JSXStyle.prototype;
+
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(otherProps) {
+    return this.props.id !== otherProps.id || // We do this check because `dynamic` is an array of strings or undefined.
+    // These are the computed values for dynamic styles.
+    String(this.props.dynamic) !== String(otherProps.dynamic);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    styleSheetRegistry.remove(this.props);
+  };
+
+  _proto.render = function render() {
+    // This is a workaround to make the side effect async safe in the "render" phase.
+    // See https://github.com/zeit/styled-jsx/pull/484
+    if (this.shouldComponentUpdate(this.prevProps)) {
+      // Updates
+      if (this.prevProps.id) {
+        styleSheetRegistry.remove(this.prevProps);
+      }
+
+      styleSheetRegistry.add(this.props);
+      this.prevProps = this.props;
+    }
+
+    return null;
+  };
+
+  return JSXStyle;
+}(_react.Component);
+
+exports["default"] = JSXStyle;
+
+function flush() {
+  var cssRules = styleSheetRegistry.cssRules();
+  styleSheetRegistry.flush();
+  return cssRules;
+}
+
+/***/ }),
+
+/***/ "./node_modules/styled-jsx/dist/stylesheet-registry.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/styled-jsx/dist/stylesheet-registry.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports["default"] = void 0;
+
+var _stringHash = _interopRequireDefault(__webpack_require__(/*! string-hash */ "./node_modules/string-hash/index.js"));
+
+var _stylesheet = _interopRequireDefault(__webpack_require__(/*! ./lib/stylesheet */ "./node_modules/styled-jsx/dist/lib/stylesheet.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var sanitize = function sanitize(rule) {
+  return rule.replace(/\/style/gi, '\\/style');
+};
+
+var StyleSheetRegistry =
+/*#__PURE__*/
+function () {
+  function StyleSheetRegistry(_temp) {
+    var _ref = _temp === void 0 ? {} : _temp,
+        _ref$styleSheet = _ref.styleSheet,
+        styleSheet = _ref$styleSheet === void 0 ? null : _ref$styleSheet,
+        _ref$optimizeForSpeed = _ref.optimizeForSpeed,
+        optimizeForSpeed = _ref$optimizeForSpeed === void 0 ? false : _ref$optimizeForSpeed,
+        _ref$isBrowser = _ref.isBrowser,
+        isBrowser = _ref$isBrowser === void 0 ? typeof window !== 'undefined' : _ref$isBrowser;
+
+    this._sheet = styleSheet || new _stylesheet["default"]({
+      name: 'styled-jsx',
+      optimizeForSpeed: optimizeForSpeed
+    });
+
+    this._sheet.inject();
+
+    if (styleSheet && typeof optimizeForSpeed === 'boolean') {
+      this._sheet.setOptimizeForSpeed(optimizeForSpeed);
+
+      this._optimizeForSpeed = this._sheet.isOptimizeForSpeed();
+    }
+
+    this._isBrowser = isBrowser;
+    this._fromServer = undefined;
+    this._indices = {};
+    this._instancesCounts = {};
+    this.computeId = this.createComputeId();
+    this.computeSelector = this.createComputeSelector();
+  }
+
+  var _proto = StyleSheetRegistry.prototype;
+
+  _proto.add = function add(props) {
+    var _this = this;
+
+    if (undefined === this._optimizeForSpeed) {
+      this._optimizeForSpeed = Array.isArray(props.children);
+
+      this._sheet.setOptimizeForSpeed(this._optimizeForSpeed);
+
+      this._optimizeForSpeed = this._sheet.isOptimizeForSpeed();
+    }
+
+    if (this._isBrowser && !this._fromServer) {
+      this._fromServer = this.selectFromServer();
+      this._instancesCounts = Object.keys(this._fromServer).reduce(function (acc, tagName) {
+        acc[tagName] = 0;
+        return acc;
+      }, {});
+    }
+
+    var _this$getIdAndRules = this.getIdAndRules(props),
+        styleId = _this$getIdAndRules.styleId,
+        rules = _this$getIdAndRules.rules; // Deduping: just increase the instances count.
+
+
+    if (styleId in this._instancesCounts) {
+      this._instancesCounts[styleId] += 1;
+      return;
+    }
+
+    var indices = rules.map(function (rule) {
+      return _this._sheet.insertRule(rule);
+    }) // Filter out invalid rules
+    .filter(function (index) {
+      return index !== -1;
+    });
+    this._indices[styleId] = indices;
+    this._instancesCounts[styleId] = 1;
+  };
+
+  _proto.remove = function remove(props) {
+    var _this2 = this;
+
+    var _this$getIdAndRules2 = this.getIdAndRules(props),
+        styleId = _this$getIdAndRules2.styleId;
+
+    invariant(styleId in this._instancesCounts, "styleId: `" + styleId + "` not found");
+    this._instancesCounts[styleId] -= 1;
+
+    if (this._instancesCounts[styleId] < 1) {
+      var tagFromServer = this._fromServer && this._fromServer[styleId];
+
+      if (tagFromServer) {
+        tagFromServer.parentNode.removeChild(tagFromServer);
+        delete this._fromServer[styleId];
+      } else {
+        this._indices[styleId].forEach(function (index) {
+          return _this2._sheet.deleteRule(index);
+        });
+
+        delete this._indices[styleId];
+      }
+
+      delete this._instancesCounts[styleId];
+    }
+  };
+
+  _proto.update = function update(props, nextProps) {
+    this.add(nextProps);
+    this.remove(props);
+  };
+
+  _proto.flush = function flush() {
+    this._sheet.flush();
+
+    this._sheet.inject();
+
+    this._fromServer = undefined;
+    this._indices = {};
+    this._instancesCounts = {};
+    this.computeId = this.createComputeId();
+    this.computeSelector = this.createComputeSelector();
+  };
+
+  _proto.cssRules = function cssRules() {
+    var _this3 = this;
+
+    var fromServer = this._fromServer ? Object.keys(this._fromServer).map(function (styleId) {
+      return [styleId, _this3._fromServer[styleId]];
+    }) : [];
+
+    var cssRules = this._sheet.cssRules();
+
+    return fromServer.concat(Object.keys(this._indices).map(function (styleId) {
+      return [styleId, _this3._indices[styleId].map(function (index) {
+        return cssRules[index].cssText;
+      }).join(_this3._optimizeForSpeed ? '' : '\n')];
+    }) // filter out empty rules
+    .filter(function (rule) {
+      return Boolean(rule[1]);
+    }));
+  }
+  /**
+   * createComputeId
+   *
+   * Creates a function to compute and memoize a jsx id from a basedId and optionally props.
+   */
+  ;
+
+  _proto.createComputeId = function createComputeId() {
+    var cache = {};
+    return function (baseId, props) {
+      if (!props) {
+        return "jsx-" + baseId;
+      }
+
+      var propsToString = String(props);
+      var key = baseId + propsToString; // return `jsx-${hashString(`${baseId}-${propsToString}`)}`
+
+      if (!cache[key]) {
+        cache[key] = "jsx-" + (0, _stringHash["default"])(baseId + "-" + propsToString);
+      }
+
+      return cache[key];
+    };
+  }
+  /**
+   * createComputeSelector
+   *
+   * Creates a function to compute and memoize dynamic selectors.
+   */
+  ;
+
+  _proto.createComputeSelector = function createComputeSelector(selectoPlaceholderRegexp) {
+    if (selectoPlaceholderRegexp === void 0) {
+      selectoPlaceholderRegexp = /__jsx-style-dynamic-selector/g;
+    }
+
+    var cache = {};
+    return function (id, css) {
+      // Sanitize SSR-ed CSS.
+      // Client side code doesn't need to be sanitized since we use
+      // document.createTextNode (dev) and the CSSOM api sheet.insertRule (prod).
+      if (!this._isBrowser) {
+        css = sanitize(css);
+      }
+
+      var idcss = id + css;
+
+      if (!cache[idcss]) {
+        cache[idcss] = css.replace(selectoPlaceholderRegexp, id);
+      }
+
+      return cache[idcss];
+    };
+  };
+
+  _proto.getIdAndRules = function getIdAndRules(props) {
+    var _this4 = this;
+
+    var css = props.children,
+        dynamic = props.dynamic,
+        id = props.id;
+
+    if (dynamic) {
+      var styleId = this.computeId(id, dynamic);
+      return {
+        styleId: styleId,
+        rules: Array.isArray(css) ? css.map(function (rule) {
+          return _this4.computeSelector(styleId, rule);
+        }) : [this.computeSelector(styleId, css)]
+      };
+    }
+
+    return {
+      styleId: this.computeId(id),
+      rules: Array.isArray(css) ? css : [css]
+    };
+  }
+  /**
+   * selectFromServer
+   *
+   * Collects style tags from the document with id __jsx-XXX
+   */
+  ;
+
+  _proto.selectFromServer = function selectFromServer() {
+    var elements = Array.prototype.slice.call(document.querySelectorAll('[id^="__jsx-"]'));
+    return elements.reduce(function (acc, element) {
+      var id = element.id.slice(2);
+      acc[id] = element;
+      return acc;
+    }, {});
+  };
+
+  return StyleSheetRegistry;
+}();
+
+exports["default"] = StyleSheetRegistry;
+
+function invariant(condition, message) {
+  if (!condition) {
+    throw new Error("StyleSheetRegistry: " + message + ".");
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/styled-jsx/style.js":
+/*!******************************************!*\
+  !*** ./node_modules/styled-jsx/style.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./dist/style */ "./node_modules/styled-jsx/dist/style.js")
+
+
+/***/ }),
+
 /***/ "./node_modules/url/url.js":
 /*!*********************************!*\
   !*** ./node_modules/url/url.js ***!
@@ -10877,355 +11765,345 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Layout */ "./components/Layout.js");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-jsx/style */ "./node_modules/styled-jsx/style.js");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Layout */ "./components/Layout.js");
 var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\pages\\plan\\opoll.js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('fas fa-caret-right'),
-      moreIcon = _useState[0],
-      setMoreIcon = _useState[1];
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])('passive'),
+      styleClassFirst = _useState[0],
+      setStyleClassFirst = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('none'),
-      displayMoreOptions = _useState2[0],
-      setDisplayMoreOptions = _useState2[1];
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])('passive'),
+      styleClassSecond = _useState2[0],
+      setStyleClassSecond = _useState2[1];
 
-  var handleMoreOptions = function handleMoreOptions() {
-    if (moreIcon === 'fas fa-caret-right') {
-      console.log('goster');
-      setMoreIcon('fas fa-caret-down');
-      setDisplayMoreOptions('inline');
+  var handleMoreOptions = function handleMoreOptions(e) {
+    if (e.target.id === 'firstMoreOptions') {
+      if (styleClassFirst === 'passive') setStyleClassFirst('active');else setStyleClassFirst('passive');
     } else {
-      console.log('gizle');
-      setMoreIcon('fas fa-caret-right');
-      setDisplayMoreOptions('none');
+      if (styleClassSecond === 'passive') setStyleClassSecond('active');else setStyleClassSecond('passive');
     }
   };
 
-  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    },
+    __self: this
+  }, __jsx("div", {
+    style: {
+      paddingTop: '1rem',
+      paddingBottom: '1rem'
+    },
+    className: "jsx-3359966097" + " " + "is-fullwidth has-background-white-ter",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 22
     },
     __self: this
   }, __jsx("div", {
-    className: "is-fullwidth has-background-white-ter",
-    style: {
-      paddingTop: '1rem',
-      paddingBottom: '1rem'
-    },
+    className: "jsx-3359966097" + " " + "columns has-text-centered",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 25
     },
     __self: this
   }, __jsx("div", {
-    className: "columns has-text-centered",
+    className: "jsx-3359966097" + " " + "column",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: this
+  }), __jsx("div", {
+    className: "jsx-3359966097" + " " + "column",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 27
     },
     __self: this
-  }, __jsx("div", {
-    className: "column",
+  }, "Generate polls"), __jsx("div", {
+    className: "jsx-3359966097" + " " + "column",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 28
     },
     __self: this
-  }), __jsx("div", {
-    className: "column",
+  }, __jsx("i", {
+    className: "jsx-3359966097" + " " + "fa fa-lg fa-chevron-right",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 29
     },
     __self: this
-  }, "Generate polls"), __jsx("div", {
-    className: "column",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30
-    },
-    __self: this
-  }, __jsx("i", {
-    className: "fa fa-lg fa-chevron-right",
+  })), __jsx("div", {
+    className: "jsx-3359966097" + " " + "column",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 31
     },
     __self: this
-  })), __jsx("div", {
-    className: "column",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33
-    },
-    __self: this
   }, "Invite participants"), __jsx("div", {
-    className: "column",
+    className: "jsx-3359966097" + " " + "column",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 32
     },
     __self: this
   }))), __jsx("div", {
+    className: "jsx-3359966097",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "jsx-3359966097" + " " + "has-background-white",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37
+    },
+    __self: this
+  }, __jsx("br", {
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 38
     },
     __self: this
-  }, __jsx("div", {
-    className: "has-background-white",
+  }), __jsx("br", {
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 39
     },
     __self: this
-  }, __jsx("br", {
+  }), __jsx("div", {
+    className: "jsx-3359966097" + " " + "columns",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 40
     },
     __self: this
-  }), __jsx("br", {
+  }, __jsx("div", {
+    className: "jsx-3359966097" + " " + "column",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 41
     },
     __self: this
   }), __jsx("div", {
-    className: "columns",
+    className: "jsx-3359966097" + " " + "column is-4",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 42
     },
     __self: this
-  }, __jsx("div", {
-    className: "column",
+  }, __jsx("p", {
+    className: "jsx-3359966097" + " " + "title has-text-link has-text-centered has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 43
     },
     __self: this
-  }), __jsx("div", {
-    className: "column is-4",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 44
-    },
-    __self: this
-  }, __jsx("p", {
-    className: "title has-text-link has-text-centered has-text-weight-normal",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 45
-    },
-    __self: this
   }, "Generate an opinion poll."), __jsx("div", {
-    className: "box",
     style: {
       backgroundColor: '#C8E4FF'
     },
+    className: "jsx-3359966097" + " " + "box",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "jsx-3359966097" + " " + "field",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: this
+  }, __jsx("label", {
+    className: "jsx-3359966097" + " " + "label has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 49
     },
     __self: this
-  }, __jsx("div", {
-    className: "field",
+  }, " Poll question / title: "), __jsx("div", {
+    className: "jsx-3359966097" + " " + "control",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 50
     },
     __self: this
-  }, __jsx("label", {
-    className: "label has-text-weight-normal",
+  }, __jsx("input", {
+    type: "text",
+    className: "jsx-3359966097" + " " + "input",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 51
     },
     __self: this
-  }, " Poll question / title: "), __jsx("div", {
-    className: "control",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 52
-    },
-    __self: this
-  }, __jsx("input", {
-    className: "input",
-    type: "text",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53
-    },
-    __self: this
   }))), __jsx("div", {
-    className: "field",
+    className: "jsx-3359966097" + " " + "field",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55
+    },
+    __self: this
+  }, __jsx("label", {
+    className: "jsx-3359966097" + " " + "label has-text-weight-normal",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56
+    },
+    __self: this
+  }, "Description:"), __jsx("div", {
+    className: "jsx-3359966097" + " " + "control has-icons-left has-icons-right",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 57
     },
     __self: this
-  }, __jsx("label", {
-    className: "label has-text-weight-normal",
+  }, __jsx("textarea", {
+    rows: "3",
+    className: "jsx-3359966097" + " " + "textarea",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 58
     },
     __self: this
-  }, "Description:"), __jsx("div", {
-    className: "control has-icons-left has-icons-right",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 59
-    },
-    __self: this
-  }, __jsx("textarea", {
-    className: "textarea",
-    rows: "3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 60
-    },
-    __self: this
   }))), __jsx("div", {
-    className: "field",
+    className: "jsx-3359966097" + " " + "field",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 62
+    },
+    __self: this
+  }, __jsx("label", {
+    className: "jsx-3359966097" + " " + "label has-text-weight-normal",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63
+    },
+    __self: this
+  }, "Poll answers"), __jsx("div", {
+    className: "jsx-3359966097" + " " + "field-body",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 64
     },
     __self: this
-  }, __jsx("label", {
-    className: "label has-text-weight-normal",
+  }, __jsx("div", {
+    className: "jsx-3359966097" + " " + "field is-expanded",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 65
     },
     __self: this
-  }, "Poll answers"), __jsx("div", {
-    className: "field-body",
+  }, __jsx("div", {
+    className: "jsx-3359966097" + " " + "field has-addons",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 66
     },
     __self: this
-  }, __jsx("div", {
-    className: "field is-expanded",
+  }, __jsx("p", {
+    className: "jsx-3359966097" + " " + "control is-expanded",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 67
     },
     __self: this
-  }, __jsx("div", {
-    className: "field has-addons",
+  }, __jsx("input", {
+    type: "text",
+    placeholder: "Your phone number",
+    className: "jsx-3359966097" + " " + "input",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 68
     },
     __self: this
-  }, __jsx("p", {
-    className: "control is-expanded",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 69
-    },
-    __self: this
-  }, __jsx("input", {
-    className: "input",
-    type: "text",
-    placeholder: "Your phone number",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 70
-    },
-    __self: this
   })), __jsx("p", {
-    className: "control",
+    className: "jsx-3359966097" + " " + "control",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75
+    },
+    __self: this
+  }, __jsx("a", {
+    className: "jsx-3359966097" + " " + "button is-static",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76
+    },
+    __self: this
+  }, __jsx("i", {
+    className: "jsx-3359966097" + " " + "fas fa-trash-alt",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 77
     },
     __self: this
-  }, __jsx("a", {
-    className: "button is-static",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 78
-    },
-    __self: this
-  }, __jsx("i", {
-    className: "fas fa-trash-alt",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 79
-    },
-    __self: this
   }))))))), __jsx("div", {
-    className: "field",
+    className: "jsx-3359966097" + " " + "field",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 85
     },
     __self: this
   }, __jsx("label", {
-    className: "label has-text-weight-normal has-text-link",
     style: {
       cursor: 'pointer',
       userSelect: 'none'
     },
+    id: "firstMoreOptions",
     onClick: handleMoreOptions,
+    className: "jsx-3359966097" + " " + "label has-text-weight-normal has-text-link",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 86
     },
     __self: this
   }, __jsx("i", {
-    className: moreIcon,
+    className: "jsx-3359966097" + " " + ((styleClassFirst === 'passive' ? 'fas fa-caret-right' : 'fas fa-caret-down') || ""),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92
+      lineNumber: 91
     },
     __self: this
   }), "\xA0 More options:")), __jsx("div", {
-    "class": "field",
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96
+      lineNumber: 101
     },
     __self: this
   }, __jsx("div", {
     style: {
-      display: displayMoreOptions
+      transition: '300ms'
     },
+    className: "jsx-3359966097" + " " + (styleClassFirst || ""),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 102
     },
     __self: this
   }, __jsx("label", {
-    "class": "checkbox is-block",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 98
-    },
-    __self: this
-  }, "\u2003", __jsx("input", {
-    type: "checkbox",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 100
-    },
-    __self: this
-  }), "\xA0Yes-No-Maybe poll."), __jsx("label", {
-    "class": "checkbox is-block",
+    className: "jsx-3359966097" + " " + "checkbox is-block",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 103
@@ -11233,13 +12111,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     __self: this
   }, "\u2003", __jsx("input", {
     type: "checkbox",
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 105
     },
     __self: this
-  }), "\xA0Anonymous opinion poll"), __jsx("label", {
-    "class": "checkbox is-block",
+  }), "\xA0Yes-No-Maybe poll."), __jsx("label", {
+    className: "jsx-3359966097" + " " + "checkbox is-block",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 108
@@ -11247,13 +12126,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     __self: this
   }, "\u2003", __jsx("input", {
     type: "checkbox",
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 110
     },
     __self: this
-  }), "\xA0Participants can only vote for one option"), __jsx("label", {
-    "class": "checkbox is-block",
+  }), "\xA0Anonymous opinion poll"), __jsx("label", {
+    className: "jsx-3359966097" + " " + "checkbox is-block",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 113
@@ -11261,307 +12141,341 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     __self: this
   }, "\u2003", __jsx("input", {
     type: "checkbox",
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 115
     },
     __self: this
+  }), "\xA0Participants can only vote for one option"), __jsx("label", {
+    className: "jsx-3359966097" + " " + "checkbox is-block",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 118
+    },
+    __self: this
+  }, "\u2003", __jsx("input", {
+    type: "checkbox",
+    className: "jsx-3359966097",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 120
+    },
+    __self: this
   }), "\xA0Display participants in alphabetical order")))), __jsx("br", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 121
-    },
-    __self: this
-  }), __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 123
-    },
-    __self: this
-  }, " When your poll is ready, fill in the fields below and proceed. "), __jsx("div", {
-    className: "box",
-    style: {
-      backgroundColor: '#C8E4FF'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 124
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "field",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 125
-    },
-    __self: this
-  }, __jsx("label", {
-    className: "label has-text-weight-normal",
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 126
     },
     __self: this
-  }, " Your name: "), __jsx("div", {
-    className: "control",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 127
-    },
-    __self: this
-  }, __jsx("input", {
-    className: "input",
-    type: "text",
+  }), __jsx("p", {
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 128
     },
     __self: this
-  }))), __jsx("div", {
-    className: "field",
+  }, " When your poll is ready, fill in the fields below and proceed. "), __jsx("div", {
+    style: {
+      backgroundColor: '#C8E4FF'
+    },
+    className: "jsx-3359966097" + " " + "box",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 129
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "jsx-3359966097" + " " + "field",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 130
+    },
+    __self: this
+  }, __jsx("label", {
+    className: "jsx-3359966097" + " " + "label has-text-weight-normal",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 131
+    },
+    __self: this
+  }, " Your name: "), __jsx("div", {
+    className: "jsx-3359966097" + " " + "control",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 132
     },
     __self: this
-  }, __jsx("label", {
-    className: "label has-text-weight-normal",
+  }, __jsx("input", {
+    type: "text",
+    className: "jsx-3359966097" + " " + "input",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 133
     },
     __self: this
+  }))), __jsx("div", {
+    className: "jsx-3359966097" + " " + "field",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 137
+    },
+    __self: this
+  }, __jsx("label", {
+    className: "jsx-3359966097" + " " + "label has-text-weight-normal",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 138
+    },
+    __self: this
   }, " Your email address: "), __jsx("div", {
-    className: "control",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 134
-    },
-    __self: this
-  }, __jsx("input", {
-    className: "input",
-    type: "text",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 135
-    },
-    __self: this
-  }))), __jsx("span", {
-    className: "is-size-7 has-text-grey",
+    className: "jsx-3359966097" + " " + "control",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 139
     },
     __self: this
-  }, "We will send you an email with the link to your poll and the admin area. That's all you will receive - we hate spam too."), __jsx("br", {
+  }, __jsx("input", {
+    type: "text",
+    className: "jsx-3359966097" + " " + "input",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 140
+    },
+    __self: this
+  }))), __jsx("span", {
+    className: "jsx-3359966097" + " " + "is-size-7 has-text-grey",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 144
     },
     __self: this
-  }), __jsx("br", {
+  }, "We will send you an email with the link to your poll and the admin area. That's all you will receive - we hate spam too."), __jsx("br", {
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145
+      lineNumber: 149
+    },
+    __self: this
+  }), __jsx("br", {
+    className: "jsx-3359966097",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 150
     },
     __self: this
   }), __jsx("div", {
-    className: "field",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 147
-    },
-    __self: this
-  }, __jsx("label", {
-    className: "label has-text-weight-normal has-text-link",
-    style: {
-      cursor: 'pointer',
-      userSelect: 'none'
-    },
-    onClick: handleMoreOptions,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 148
-    },
-    __self: this
-  }, __jsx("i", {
-    className: moreIcon,
+    className: "jsx-3359966097" + " " + "field",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 152
     },
     __self: this
-  }), "\xA0 More options:")), __jsx("div", {
-    "class": "field",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 156
-    },
-    __self: this
-  }, __jsx("div", {
-    style: {
-      display: displayMoreOptions
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 157
-    },
-    __self: this
   }, __jsx("label", {
-    "class": "checkbox is-block",
+    style: {
+      cursor: 'pointer',
+      userSelect: 'none'
+    },
+    id: "secondMoreOptions",
+    onClick: handleMoreOptions,
+    className: "jsx-3359966097" + " " + "label has-text-weight-normal has-text-link",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 153
+    },
+    __self: this
+  }, __jsx("i", {
+    className: "jsx-3359966097" + " " + ((styleClassSecond === 'passive' ? 'fas fa-caret-right' : 'fas fa-caret-down') || ""),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 158
     },
     __self: this
-  }, "\u2003", __jsx("input", {
-    type: "checkbox",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 160
-    },
-    __self: this
-  }), "\xA0Yes-No-Maybe poll."), __jsx("label", {
-    "class": "checkbox is-block",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 163
-    },
-    __self: this
-  }, "\u2003", __jsx("input", {
-    type: "checkbox",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 165
-    },
-    __self: this
-  }), "\xA0Anonymous opinion poll"), __jsx("label", {
-    "class": "checkbox is-block",
+  }), "\xA0 More options:")), __jsx("div", {
+    className: "jsx-3359966097" + " " + "field",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 168
     },
     __self: this
+  }, __jsx("div", {
+    style: {
+      transition: '300ms'
+    },
+    className: "jsx-3359966097" + " " + (styleClassSecond || ""),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 169
+    },
+    __self: this
+  }, __jsx("label", {
+    className: "jsx-3359966097" + " " + "checkbox is-block",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 174
+    },
+    __self: this
   }, "\u2003", __jsx("input", {
     type: "checkbox",
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 170
+      lineNumber: 176
     },
     __self: this
-  }), "\xA0Participants can only vote for one option"), __jsx("label", {
-    "class": "checkbox is-block",
+  }), "\xA0Yes-No-Maybe poll."), __jsx("label", {
+    className: "jsx-3359966097" + " " + "checkbox is-block",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 173
+      lineNumber: 179
     },
     __self: this
   }, "\u2003", __jsx("input", {
     type: "checkbox",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 175
-    },
-    __self: this
-  }), "\xA0Display participants in alphabetical order"))), __jsx("div", {
-    className: "field",
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 181
     },
     __self: this
-  }, __jsx("div", {
-    className: "control",
+  }), "\xA0Anonymous opinion poll"), __jsx("label", {
+    className: "jsx-3359966097" + " " + "checkbox is-block",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 182
+      lineNumber: 184
     },
     __self: this
-  }, __jsx("button", {
-    className: "button is-link is-fullwidth",
+  }, "\u2003", __jsx("input", {
+    type: "checkbox",
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 183
+      lineNumber: 186
     },
     __self: this
-  }, "Next")))), __jsx("div", {
-    className: "box has-background-white-ter",
+  }), "\xA0Participants can only vote for one option"), __jsx("label", {
+    className: "jsx-3359966097" + " " + "checkbox is-block",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 189
     },
     __self: this
-  }, __jsx("article", {
-    className: "media",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 190
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "media-content",
+  }, "\u2003", __jsx("input", {
+    type: "checkbox",
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 191
     },
     __self: this
-  }, __jsx("div", {
-    className: "content",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 192
-    },
-    __self: this
-  }, __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 193
-    },
-    __self: this
-  }, __jsx("strong", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 194
-    },
-    __self: this
-  }, "Tip: "), " If you have multiple polls you can easily organize and manage them with a free Xoyondo account.", ' ', __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/register",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 196
-    },
-    __self: this
-  }, __jsx("a", {
+  }), "\xA0Display participants in alphabetical order"))), __jsx("div", {
+    className: "jsx-3359966097" + " " + "field",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 197
     },
     __self: this
-  }, "Sign up!")))))))), __jsx("div", {
-    className: "column",
+  }, __jsx("div", {
+    className: "jsx-3359966097" + " " + "control",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 198
+    },
+    __self: this
+  }, __jsx("button", {
+    className: "jsx-3359966097" + " " + "button is-link is-fullwidth",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 199
+    },
+    __self: this
+  }, "Next")))), __jsx("div", {
+    className: "jsx-3359966097" + " " + "box has-background-white-ter",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 205
     },
     __self: this
-  }))), __jsx("br", {
+  }, __jsx("article", {
+    className: "jsx-3359966097" + " " + "media",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 206
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "jsx-3359966097" + " " + "media-content",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 207
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "jsx-3359966097" + " " + "content",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 208
     },
     __self: this
-  }), __jsx("br", {
+  }, __jsx("p", {
+    className: "jsx-3359966097",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 209
     },
     __self: this
-  })));
+  }, __jsx("strong", {
+    className: "jsx-3359966097",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 210
+    },
+    __self: this
+  }, "Tip: "), " If you have multiple polls you can easily organize and manage them with a free Xoyondo account.", ' ', __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/register",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 212
+    },
+    __self: this
+  }, __jsx("a", {
+    className: "jsx-3359966097",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 213
+    },
+    __self: this
+  }, "Sign up!")))))))), __jsx("div", {
+    className: "jsx-3359966097" + " " + "column",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 221
+    },
+    __self: this
+  }))), __jsx("br", {
+    className: "jsx-3359966097",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 224
+    },
+    __self: this
+  }), __jsx("br", {
+    className: "jsx-3359966097",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 225
+    },
+    __self: this
+  })), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+    id: "3359966097",
+    __self: this
+  }, ".passive.jsx-3359966097{visibility:'hidden';opacity:0;height:0;}.active.jsx-3359966097{visibility:'visible';opacity:1;height:120px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcQWhtZXQgQnVncmEgQ2FraWNpXFxEZXNrdG9wXFxNZWV0aW5nUGxhbmVyLWNsaWVudFxccGFnZXNcXHBsYW5cXG9wb2xsLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQW1PZSxBQUcwQixBQU1DLG9CQUxYLENBTUEsU0FMRCxDQU1JLFFBTGQsS0FNQSIsImZpbGUiOiJDOlxcVXNlcnNcXEFobWV0IEJ1Z3JhIENha2ljaVxcRGVza3RvcFxcTWVldGluZ1BsYW5lci1jbGllbnRcXHBhZ2VzXFxwbGFuXFxvcG9sbC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnO1xyXG5pbXBvcnQgTGluayBmcm9tICduZXh0L2xpbmsnO1xyXG5pbXBvcnQgTGF5b3V0IGZyb20gJy4uLy4uL2NvbXBvbmVudHMvTGF5b3V0JztcclxuXHJcbmV4cG9ydCBkZWZhdWx0ICgpID0+IHtcclxuXHRjb25zdCBbc3R5bGVDbGFzc0ZpcnN0LCBzZXRTdHlsZUNsYXNzRmlyc3RdID0gdXNlU3RhdGUoJ3Bhc3NpdmUnKTtcclxuXHRjb25zdCBbc3R5bGVDbGFzc1NlY29uZCwgc2V0U3R5bGVDbGFzc1NlY29uZF0gPSB1c2VTdGF0ZSgncGFzc2l2ZScpO1xyXG5cclxuXHRjb25zdCBoYW5kbGVNb3JlT3B0aW9ucyA9IGUgPT4ge1xyXG5cdFx0aWYgKGUudGFyZ2V0LmlkID09PSAnZmlyc3RNb3JlT3B0aW9ucycpIHtcclxuXHRcdFx0aWYgKHN0eWxlQ2xhc3NGaXJzdCA9PT0gJ3Bhc3NpdmUnKSBzZXRTdHlsZUNsYXNzRmlyc3QoJ2FjdGl2ZScpO1xyXG5cdFx0XHRlbHNlIHNldFN0eWxlQ2xhc3NGaXJzdCgncGFzc2l2ZScpO1xyXG5cdFx0fSBlbHNlIHtcclxuXHRcdFx0aWYgKHN0eWxlQ2xhc3NTZWNvbmQgPT09ICdwYXNzaXZlJykgc2V0U3R5bGVDbGFzc1NlY29uZCgnYWN0aXZlJyk7XHJcblx0XHRcdGVsc2Ugc2V0U3R5bGVDbGFzc1NlY29uZCgncGFzc2l2ZScpO1xyXG5cdFx0fVxyXG5cdH07XHJcblxyXG5cdHJldHVybiAoXHJcblx0XHQ8TGF5b3V0PlxyXG5cdFx0XHR7LyogQmFyIHdoaWNoIGhhcyBzdGVwcyB0byBnZW5lcmF0ZSBvcGluaW9uIHBvbGwgKi99XHJcblx0XHRcdDxkaXZcclxuXHRcdFx0XHRjbGFzc05hbWU9XCJpcy1mdWxsd2lkdGggaGFzLWJhY2tncm91bmQtd2hpdGUtdGVyXCJcclxuXHRcdFx0XHRzdHlsZT17eyBwYWRkaW5nVG9wOiAnMXJlbScsIHBhZGRpbmdCb3R0b206ICcxcmVtJyB9fT5cclxuXHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImNvbHVtbnMgaGFzLXRleHQtY2VudGVyZWRcIj5cclxuXHRcdFx0XHRcdDxkaXYgY2xhc3NOYW1lPVwiY29sdW1uXCI+PC9kaXY+XHJcblx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImNvbHVtblwiPkdlbmVyYXRlIHBvbGxzPC9kaXY+XHJcblx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImNvbHVtblwiPlxyXG5cdFx0XHRcdFx0XHQ8aSBjbGFzc05hbWU9XCJmYSBmYS1sZyBmYS1jaGV2cm9uLXJpZ2h0XCI+PC9pPlxyXG5cdFx0XHRcdFx0PC9kaXY+XHJcblx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImNvbHVtblwiPkludml0ZSBwYXJ0aWNpcGFudHM8L2Rpdj5cclxuXHRcdFx0XHRcdDxkaXYgY2xhc3NOYW1lPVwiY29sdW1uXCI+PC9kaXY+XHJcblx0XHRcdFx0PC9kaXY+XHJcblx0XHRcdDwvZGl2PlxyXG5cclxuXHRcdFx0PGRpdj5cclxuXHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImhhcy1iYWNrZ3JvdW5kLXdoaXRlXCI+XHJcblx0XHRcdFx0XHQ8YnIgLz5cclxuXHRcdFx0XHRcdDxiciAvPlxyXG5cdFx0XHRcdFx0PGRpdiBjbGFzc05hbWU9XCJjb2x1bW5zXCI+XHJcblx0XHRcdFx0XHRcdDxkaXYgY2xhc3NOYW1lPVwiY29sdW1uXCI+PC9kaXY+XHJcblx0XHRcdFx0XHRcdDxkaXYgY2xhc3NOYW1lPVwiY29sdW1uIGlzLTRcIj5cclxuXHRcdFx0XHRcdFx0XHQ8cCBjbGFzc05hbWU9XCJ0aXRsZSBoYXMtdGV4dC1saW5rIGhhcy10ZXh0LWNlbnRlcmVkIGhhcy10ZXh0LXdlaWdodC1ub3JtYWxcIj5cclxuXHRcdFx0XHRcdFx0XHRcdEdlbmVyYXRlIGFuIG9waW5pb24gcG9sbC5cclxuXHRcdFx0XHRcdFx0XHQ8L3A+XHJcblxyXG5cdFx0XHRcdFx0XHRcdDxkaXYgY2xhc3NOYW1lPVwiYm94XCIgc3R5bGU9e3sgYmFja2dyb3VuZENvbG9yOiAnI0M4RTRGRicgfX0+XHJcblx0XHRcdFx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImZpZWxkXCI+XHJcblx0XHRcdFx0XHRcdFx0XHRcdDxsYWJlbCBjbGFzc05hbWU9XCJsYWJlbCBoYXMtdGV4dC13ZWlnaHQtbm9ybWFsXCI+IFBvbGwgcXVlc3Rpb24gLyB0aXRsZTogPC9sYWJlbD5cclxuXHRcdFx0XHRcdFx0XHRcdFx0PGRpdiBjbGFzc05hbWU9XCJjb250cm9sXCI+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0PGlucHV0IGNsYXNzTmFtZT1cImlucHV0XCIgdHlwZT1cInRleHRcIiAvPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHQ8L2Rpdj5cclxuXHRcdFx0XHRcdFx0XHRcdDwvZGl2PlxyXG5cclxuXHRcdFx0XHRcdFx0XHRcdDxkaXYgY2xhc3NOYW1lPVwiZmllbGRcIj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0PGxhYmVsIGNsYXNzTmFtZT1cImxhYmVsIGhhcy10ZXh0LXdlaWdodC1ub3JtYWxcIj5EZXNjcmlwdGlvbjo8L2xhYmVsPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImNvbnRyb2wgaGFzLWljb25zLWxlZnQgaGFzLWljb25zLXJpZ2h0XCI+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0PHRleHRhcmVhIGNsYXNzTmFtZT1cInRleHRhcmVhXCIgcm93cz1cIjNcIj48L3RleHRhcmVhPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHQ8L2Rpdj5cclxuXHRcdFx0XHRcdFx0XHRcdDwvZGl2PlxyXG5cclxuXHRcdFx0XHRcdFx0XHRcdDxkaXYgY2xhc3NOYW1lPVwiZmllbGRcIj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0PGxhYmVsIGNsYXNzTmFtZT1cImxhYmVsIGhhcy10ZXh0LXdlaWdodC1ub3JtYWxcIj5Qb2xsIGFuc3dlcnM8L2xhYmVsPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImZpZWxkLWJvZHlcIj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImZpZWxkIGlzLWV4cGFuZGVkXCI+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImZpZWxkIGhhcy1hZGRvbnNcIj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0PHAgY2xhc3NOYW1lPVwiY29udHJvbCBpcy1leHBhbmRlZFwiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHRcdDxpbnB1dFxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0Y2xhc3NOYW1lPVwiaW5wdXRcIlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0dHlwZT1cInRleHRcIlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0cGxhY2Vob2xkZXI9XCJZb3VyIHBob25lIG51bWJlclwiXHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0Lz5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0PC9wPlxyXG5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0PHAgY2xhc3NOYW1lPVwiY29udHJvbFwiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHRcdDxhIGNsYXNzTmFtZT1cImJ1dHRvbiBpcy1zdGF0aWNcIj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHRcdDxpIGNsYXNzTmFtZT1cImZhcyBmYS10cmFzaC1hbHRcIj48L2k+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0PC9hPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHQ8L3A+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHQ8L2Rpdj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHQ8L2Rpdj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0PC9kaXY+XHJcblx0XHRcdFx0XHRcdFx0XHQ8L2Rpdj5cclxuXHJcblx0XHRcdFx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImZpZWxkXCI+XHJcblx0XHRcdFx0XHRcdFx0XHRcdDxsYWJlbFxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdGNsYXNzTmFtZT1cImxhYmVsIGhhcy10ZXh0LXdlaWdodC1ub3JtYWwgaGFzLXRleHQtbGlua1wiXHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0c3R5bGU9e3sgY3Vyc29yOiAncG9pbnRlcicsIHVzZXJTZWxlY3Q6ICdub25lJyB9fVxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdGlkPVwiZmlyc3RNb3JlT3B0aW9uc1wiXHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0b25DbGljaz17aGFuZGxlTW9yZU9wdGlvbnN9PlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDxpXHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHRjbGFzc05hbWU9e1xyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHRzdHlsZUNsYXNzRmlyc3QgPT09ICdwYXNzaXZlJ1xyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHRcdD8gJ2ZhcyBmYS1jYXJldC1yaWdodCdcclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHQ6ICdmYXMgZmEtY2FyZXQtZG93bidcclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdH0+PC9pPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdCZuYnNwOyBNb3JlIG9wdGlvbnM6XHJcblx0XHRcdFx0XHRcdFx0XHRcdDwvbGFiZWw+XHJcblx0XHRcdFx0XHRcdFx0XHQ8L2Rpdj5cclxuXHJcblx0XHRcdFx0XHRcdFx0XHQ8ZGl2PlxyXG5cdFx0XHRcdFx0XHRcdFx0XHQ8ZGl2IHN0eWxlPXt7IHRyYW5zaXRpb246ICczMDBtcycgfX0gY2xhc3NOYW1lPXtzdHlsZUNsYXNzRmlyc3R9PlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDxsYWJlbCBjbGFzc05hbWU9XCJjaGVja2JveCBpcy1ibG9ja1wiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0JmVtc3A7XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHQ8aW5wdXQgdHlwZT1cImNoZWNrYm94XCIgLz5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdCZuYnNwO1llcy1Oby1NYXliZSBwb2xsLlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDwvbGFiZWw+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0PGxhYmVsIGNsYXNzTmFtZT1cImNoZWNrYm94IGlzLWJsb2NrXCI+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHQmZW1zcDtcclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdDxpbnB1dCB0eXBlPVwiY2hlY2tib3hcIiAvPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0Jm5ic3A7QW5vbnltb3VzIG9waW5pb24gcG9sbFxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDwvbGFiZWw+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0PGxhYmVsIGNsYXNzTmFtZT1cImNoZWNrYm94IGlzLWJsb2NrXCI+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHQmZW1zcDtcclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdDxpbnB1dCB0eXBlPVwiY2hlY2tib3hcIiAvPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0Jm5ic3A7UGFydGljaXBhbnRzIGNhbiBvbmx5IHZvdGUgZm9yIG9uZSBvcHRpb25cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHQ8L2xhYmVsPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDxsYWJlbCBjbGFzc05hbWU9XCJjaGVja2JveCBpcy1ibG9ja1wiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0JmVtc3A7XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHQ8aW5wdXQgdHlwZT1cImNoZWNrYm94XCIgLz5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdCZuYnNwO0Rpc3BsYXkgcGFydGljaXBhbnRzIGluIGFscGhhYmV0aWNhbCBvcmRlclxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDwvbGFiZWw+XHJcblx0XHRcdFx0XHRcdFx0XHRcdDwvZGl2PlxyXG5cdFx0XHRcdFx0XHRcdFx0PC9kaXY+XHJcblx0XHRcdFx0XHRcdFx0PC9kaXY+XHJcblx0XHRcdFx0XHRcdFx0PGJyIC8+XHJcblxyXG5cdFx0XHRcdFx0XHRcdDxwPiBXaGVuIHlvdXIgcG9sbCBpcyByZWFkeSwgZmlsbCBpbiB0aGUgZmllbGRzIGJlbG93IGFuZCBwcm9jZWVkLiA8L3A+XHJcblx0XHRcdFx0XHRcdFx0PGRpdiBjbGFzc05hbWU9XCJib3hcIiBzdHlsZT17eyBiYWNrZ3JvdW5kQ29sb3I6ICcjQzhFNEZGJyB9fT5cclxuXHRcdFx0XHRcdFx0XHRcdDxkaXYgY2xhc3NOYW1lPVwiZmllbGRcIj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0PGxhYmVsIGNsYXNzTmFtZT1cImxhYmVsIGhhcy10ZXh0LXdlaWdodC1ub3JtYWxcIj4gWW91ciBuYW1lOiA8L2xhYmVsPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImNvbnRyb2xcIj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHQ8aW5wdXQgY2xhc3NOYW1lPVwiaW5wdXRcIiB0eXBlPVwidGV4dFwiIC8+XHJcblx0XHRcdFx0XHRcdFx0XHRcdDwvZGl2PlxyXG5cdFx0XHRcdFx0XHRcdFx0PC9kaXY+XHJcblxyXG5cdFx0XHRcdFx0XHRcdFx0PGRpdiBjbGFzc05hbWU9XCJmaWVsZFwiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHQ8bGFiZWwgY2xhc3NOYW1lPVwibGFiZWwgaGFzLXRleHQtd2VpZ2h0LW5vcm1hbFwiPiBZb3VyIGVtYWlsIGFkZHJlc3M6IDwvbGFiZWw+XHJcblx0XHRcdFx0XHRcdFx0XHRcdDxkaXYgY2xhc3NOYW1lPVwiY29udHJvbFwiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDxpbnB1dCBjbGFzc05hbWU9XCJpbnB1dFwiIHR5cGU9XCJ0ZXh0XCIgLz5cclxuXHRcdFx0XHRcdFx0XHRcdFx0PC9kaXY+XHJcblx0XHRcdFx0XHRcdFx0XHQ8L2Rpdj5cclxuXHJcblx0XHRcdFx0XHRcdFx0XHQ8c3BhbiBjbGFzc05hbWU9XCJpcy1zaXplLTcgaGFzLXRleHQtZ3JleVwiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRXZSB3aWxsIHNlbmQgeW91IGFuIGVtYWlsIHdpdGggdGhlIGxpbmsgdG8geW91ciBwb2xsIGFuZCB0aGUgYWRtaW4gYXJlYS4gVGhhdCdzIGFsbFxyXG5cdFx0XHRcdFx0XHRcdFx0XHR5b3Ugd2lsbCByZWNlaXZlIC0gd2UgaGF0ZSBzcGFtIHRvby5cclxuXHRcdFx0XHRcdFx0XHRcdDwvc3Bhbj5cclxuXHJcblx0XHRcdFx0XHRcdFx0XHQ8YnIgLz5cclxuXHRcdFx0XHRcdFx0XHRcdDxiciAvPlxyXG5cclxuXHRcdFx0XHRcdFx0XHRcdDxkaXYgY2xhc3NOYW1lPVwiZmllbGRcIj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0PGxhYmVsXHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0Y2xhc3NOYW1lPVwibGFiZWwgaGFzLXRleHQtd2VpZ2h0LW5vcm1hbCBoYXMtdGV4dC1saW5rXCJcclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRzdHlsZT17eyBjdXJzb3I6ICdwb2ludGVyJywgdXNlclNlbGVjdDogJ25vbmUnIH19XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0aWQ9XCJzZWNvbmRNb3JlT3B0aW9uc1wiXHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0b25DbGljaz17aGFuZGxlTW9yZU9wdGlvbnN9PlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDxpXHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHRjbGFzc05hbWU9e1xyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHRzdHlsZUNsYXNzU2Vjb25kID09PSAncGFzc2l2ZSdcclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHQ/ICdmYXMgZmEtY2FyZXQtcmlnaHQnXHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0OiAnZmFzIGZhLWNhcmV0LWRvd24nXHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHR9PjwvaT5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHQmbmJzcDsgTW9yZSBvcHRpb25zOlxyXG5cdFx0XHRcdFx0XHRcdFx0XHQ8L2xhYmVsPlxyXG5cdFx0XHRcdFx0XHRcdFx0PC9kaXY+XHJcblxyXG5cdFx0XHRcdFx0XHRcdFx0PGRpdiBjbGFzc05hbWU9XCJmaWVsZFwiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHQ8ZGl2XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0c3R5bGU9e3tcclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdHRyYW5zaXRpb246ICczMDBtcycsXHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0fX1cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRjbGFzc05hbWU9e3N0eWxlQ2xhc3NTZWNvbmR9PlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDxsYWJlbCBjbGFzc05hbWU9XCJjaGVja2JveCBpcy1ibG9ja1wiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0JmVtc3A7XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHQ8aW5wdXQgdHlwZT1cImNoZWNrYm94XCIgLz5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdCZuYnNwO1llcy1Oby1NYXliZSBwb2xsLlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDwvbGFiZWw+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0PGxhYmVsIGNsYXNzTmFtZT1cImNoZWNrYm94IGlzLWJsb2NrXCI+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHQmZW1zcDtcclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdDxpbnB1dCB0eXBlPVwiY2hlY2tib3hcIiAvPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0Jm5ic3A7QW5vbnltb3VzIG9waW5pb24gcG9sbFxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDwvbGFiZWw+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0PGxhYmVsIGNsYXNzTmFtZT1cImNoZWNrYm94IGlzLWJsb2NrXCI+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHQmZW1zcDtcclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdDxpbnB1dCB0eXBlPVwiY2hlY2tib3hcIiAvPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0Jm5ic3A7UGFydGljaXBhbnRzIGNhbiBvbmx5IHZvdGUgZm9yIG9uZSBvcHRpb25cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHQ8L2xhYmVsPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDxsYWJlbCBjbGFzc05hbWU9XCJjaGVja2JveCBpcy1ibG9ja1wiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0JmVtc3A7XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHQ8aW5wdXQgdHlwZT1cImNoZWNrYm94XCIgLz5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdCZuYnNwO0Rpc3BsYXkgcGFydGljaXBhbnRzIGluIGFscGhhYmV0aWNhbCBvcmRlclxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdDwvbGFiZWw+XHJcblx0XHRcdFx0XHRcdFx0XHRcdDwvZGl2PlxyXG5cdFx0XHRcdFx0XHRcdFx0PC9kaXY+XHJcblxyXG5cdFx0XHRcdFx0XHRcdFx0PGRpdiBjbGFzc05hbWU9XCJmaWVsZFwiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImNvbnRyb2xcIj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHQ8YnV0dG9uIGNsYXNzTmFtZT1cImJ1dHRvbiBpcy1saW5rIGlzLWZ1bGx3aWR0aFwiPk5leHQ8L2J1dHRvbj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0PC9kaXY+XHJcblx0XHRcdFx0XHRcdFx0XHQ8L2Rpdj5cclxuXHRcdFx0XHRcdFx0XHQ8L2Rpdj5cclxuXHJcblx0XHRcdFx0XHRcdFx0ey8qIEJveCBvZiB0aXAgKi99XHJcblx0XHRcdFx0XHRcdFx0PGRpdiBjbGFzc05hbWU9XCJib3ggaGFzLWJhY2tncm91bmQtd2hpdGUtdGVyXCI+XHJcblx0XHRcdFx0XHRcdFx0XHQ8YXJ0aWNsZSBjbGFzc05hbWU9XCJtZWRpYVwiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cIm1lZGlhLWNvbnRlbnRcIj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHQ8ZGl2IGNsYXNzTmFtZT1cImNvbnRlbnRcIj5cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdDxwPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHQ8c3Ryb25nPlRpcDogPC9zdHJvbmc+IElmIHlvdSBoYXZlIG11bHRpcGxlIHBvbGxzIHlvdSBjYW4gZWFzaWx5XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHRcdG9yZ2FuaXplIGFuZCBtYW5hZ2UgdGhlbSB3aXRoIGEgZnJlZSBYb3lvbmRvIGFjY291bnQueycgJ31cclxuXHRcdFx0XHRcdFx0XHRcdFx0XHRcdFx0PExpbmsgaHJlZj1cIi9yZWdpc3RlclwiPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHRcdDxhPlNpZ24gdXAhPC9hPlxyXG5cdFx0XHRcdFx0XHRcdFx0XHRcdFx0XHQ8L0xpbms+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0XHQ8L3A+XHJcblx0XHRcdFx0XHRcdFx0XHRcdFx0PC9kaXY+XHJcblx0XHRcdFx0XHRcdFx0XHRcdDwvZGl2PlxyXG5cdFx0XHRcdFx0XHRcdFx0PC9hcnRpY2xlPlxyXG5cdFx0XHRcdFx0XHRcdDwvZGl2PlxyXG5cdFx0XHRcdFx0XHQ8L2Rpdj5cclxuXHRcdFx0XHRcdFx0PGRpdiBjbGFzc05hbWU9XCJjb2x1bW5cIj48L2Rpdj5cclxuXHRcdFx0XHRcdDwvZGl2PlxyXG5cdFx0XHRcdDwvZGl2PlxyXG5cdFx0XHRcdDxiciAvPlxyXG5cdFx0XHRcdDxiciAvPlxyXG5cdFx0XHQ8L2Rpdj5cclxuXHJcblx0XHRcdDxzdHlsZSBqc3g+e2BcclxuXHRcdFx0XHQucGFzc2l2ZSB7XHJcblx0XHRcdFx0XHR2aXNpYmlsaXR5OiAnaGlkZGVuJztcclxuXHRcdFx0XHRcdG9wYWNpdHk6IDA7XHJcblx0XHRcdFx0XHRoZWlnaHQ6IDA7XHJcblx0XHRcdFx0fVxyXG5cclxuXHRcdFx0XHQuYWN0aXZlIHtcclxuXHRcdFx0XHRcdHZpc2liaWxpdHk6ICd2aXNpYmxlJztcclxuXHRcdFx0XHRcdG9wYWNpdHk6IDE7XHJcblx0XHRcdFx0XHRoZWlnaHQ6IDEyMHB4O1xyXG5cdFx0XHRcdH1cclxuXHRcdFx0YH08L3N0eWxlPlxyXG5cdFx0PC9MYXlvdXQ+XHJcblx0KTtcclxufTtcclxuIl19 */\n/*@ sourceURL=C:\\\\Users\\\\Ahmet Bugra Cakici\\\\Desktop\\\\MeetingPlaner-client\\\\pages\\\\plan\\\\opoll.js */"));
 });
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!*****************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fplan%2Fopoll&absolutePagePath=C%3A%5CUsers%5CAhmet%20Bugra%20Cakici%5CDesktop%5CMeetingPlaner-client%5Cpages%5Cplan%5Copoll.js ***!
   \*****************************************************************************************************************************************************************************/
@@ -11584,5 +12498,5 @@ module.exports = dll_0fb095e325d7ebf261c3;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[4,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=opoll.js.map

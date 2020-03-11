@@ -1,0 +1,18 @@
+.groupItem {
+    transition: 400ms;
+    color: green !important;
+}
+
+.groupItem.passive {
+    color: red !important;
+    opacity: 0;
+    visibility: hidden;
+    height: 0px;
+}
+
+.groupItem.active {
+    color: blue !important;
+    opacity: 1;
+    visibility: visible;
+    height: 120px;
+}

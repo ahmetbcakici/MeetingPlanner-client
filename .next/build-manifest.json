@@ -17,7 +17,7 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-    "/plan/meeting": [
+    "/login": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],

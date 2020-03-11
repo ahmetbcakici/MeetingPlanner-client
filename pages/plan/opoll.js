@@ -3,18 +3,16 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 
 export default () => {
-	const [moreIcon, setMoreIcon] = useState('fas fa-caret-right');
-	const [displayMoreOptions, setDisplayMoreOptions] = useState('none');
+	const [styleClassFirst, setStyleClassFirst] = useState('passive');
+	const [styleClassSecond, setStyleClassSecond] = useState('passive');
 
-	const handleMoreOptions = () => {
-		if (moreIcon === 'fas fa-caret-right') {
-			console.log('goster');
-			setMoreIcon('fas fa-caret-down');
-			setDisplayMoreOptions('inline');
+	const handleMoreOptions = e => {
+		if (e.target.id === 'firstMoreOptions') {
+			if (styleClassFirst === 'passive') setStyleClassFirst('active');
+			else setStyleClassFirst('passive');
 		} else {
-			console.log('gizle');
-			setMoreIcon('fas fa-caret-right');
-			setDisplayMoreOptions('none');
+			if (styleClassSecond === 'passive') setStyleClassSecond('active');
+			else setStyleClassSecond('passive');
 		}
 	};
 
@@ -88,29 +86,36 @@ export default () => {
 									<label
 										className="label has-text-weight-normal has-text-link"
 										style={{ cursor: 'pointer', userSelect: 'none' }}
+										id="firstMoreOptions"
 										onClick={handleMoreOptions}>
-										<i className={moreIcon}></i>&nbsp; More options:
+										<i
+											className={
+												styleClassFirst === 'passive'
+													? 'fas fa-caret-right'
+													: 'fas fa-caret-down'
+											}></i>
+										&nbsp; More options:
 									</label>
 								</div>
 
-								<div class="field">
-									<div style={{ display: displayMoreOptions }}>
-										<label class="checkbox is-block">
+								<div>
+									<div style={{ transition: '300ms' }} className={styleClassFirst}>
+										<label className="checkbox is-block">
 											&emsp;
 											<input type="checkbox" />
 											&nbsp;Yes-No-Maybe poll.
 										</label>
-										<label class="checkbox is-block">
+										<label className="checkbox is-block">
 											&emsp;
 											<input type="checkbox" />
 											&nbsp;Anonymous opinion poll
 										</label>
-										<label class="checkbox is-block">
+										<label className="checkbox is-block">
 											&emsp;
 											<input type="checkbox" />
 											&nbsp;Participants can only vote for one option
 										</label>
-										<label class="checkbox is-block">
+										<label className="checkbox is-block">
 											&emsp;
 											<input type="checkbox" />
 											&nbsp;Display participants in alphabetical order
@@ -141,36 +146,47 @@ export default () => {
 									you will receive - we hate spam too.
 								</span>
 
-								<br/>
-								<br/>
+								<br />
+								<br />
 
 								<div className="field">
 									<label
 										className="label has-text-weight-normal has-text-link"
 										style={{ cursor: 'pointer', userSelect: 'none' }}
+										id="secondMoreOptions"
 										onClick={handleMoreOptions}>
-										<i className={moreIcon}></i>&nbsp; More options:
+										<i
+											className={
+												styleClassSecond === 'passive'
+													? 'fas fa-caret-right'
+													: 'fas fa-caret-down'
+											}></i>
+										&nbsp; More options:
 									</label>
 								</div>
 
-								<div class="field">
-									<div style={{ display: displayMoreOptions }}>
-										<label class="checkbox is-block">
+								<div className="field">
+									<div
+										style={{
+											transition: '300ms',
+										}}
+										className={styleClassSecond}>
+										<label className="checkbox is-block">
 											&emsp;
 											<input type="checkbox" />
 											&nbsp;Yes-No-Maybe poll.
 										</label>
-										<label class="checkbox is-block">
+										<label className="checkbox is-block">
 											&emsp;
 											<input type="checkbox" />
 											&nbsp;Anonymous opinion poll
 										</label>
-										<label class="checkbox is-block">
+										<label className="checkbox is-block">
 											&emsp;
 											<input type="checkbox" />
 											&nbsp;Participants can only vote for one option
 										</label>
-										<label class="checkbox is-block">
+										<label className="checkbox is-block">
 											&emsp;
 											<input type="checkbox" />
 											&nbsp;Display participants in alphabetical order
@@ -208,6 +224,20 @@ export default () => {
 				<br />
 				<br />
 			</div>
+
+			<style jsx>{`
+				.passive {
+					visibility: 'hidden';
+					opacity: 0;
+					height: 0;
+				}
+
+				.active {
+					visibility: 'visible';
+					opacity: 1;
+					height: 120px;
+				}
+			`}</style>
 		</Layout>
 	);
 };
