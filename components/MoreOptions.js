@@ -21,7 +21,7 @@ export default ({ options }) => {
 			</div>
 
 			<div>
-				<div style={{ transition: '300ms' }} className={styleClass}>
+				<div style={{ transition: '250ms' }} className={styleClass}>
 					{options.map(item => (
 						<label className="checkbox is-block" style={{ paddingBottom: '.5rem' }}>
 							&emsp;
