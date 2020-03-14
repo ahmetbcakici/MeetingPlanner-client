@@ -24,6 +24,10 @@
     "/plan/meeting": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
+    ],
+    "/plan/message": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ]
   }
 }
