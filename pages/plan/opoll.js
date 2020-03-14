@@ -4,19 +4,6 @@ import Layout from '../../components/Layout';
 import MoreOptions from '../../components/MoreOptions';
 
 export default () => {
-	const [styleClassFirst, setStyleClassFirst] = useState('passive');
-	const [styleClassSecond, setStyleClassSecond] = useState('passive');
-
-	const handleMoreOptions = e => {
-		if (e.target.id === 'firstMoreOptions') {
-			if (styleClassFirst === 'passive') setStyleClassFirst('active');
-			else setStyleClassFirst('passive');
-		} else {
-			if (styleClassSecond === 'passive') setStyleClassSecond('active');
-			else setStyleClassSecond('passive');
-		}
-	};
-
 	return (
 		<Layout>
 			{/* Bar which has steps to generate opinion poll */}
@@ -42,7 +29,7 @@ export default () => {
 						<div className="column"></div>
 						<div className="column is-4">
 							<p className="title has-text-link has-text-centered has-text-weight-normal">
-								Generate an opinion poll.
+								Generate an opinion poll
 							</p>
 
 							<div className="box" style={{ backgroundColor: '#C8E4FF' }}>
@@ -66,10 +53,7 @@ export default () => {
 										<div className="field is-expanded">
 											<div className="field has-addons">
 												<p className="control is-expanded">
-													<input
-														className="input"
-														type="text"
-													/>
+													<input className="input" type="text" />
 												</p>
 
 												<p className="control">

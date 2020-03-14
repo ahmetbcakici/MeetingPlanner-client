@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default ({ options }) => {
+export default ({ options, apoll }) => {
 	const handleMoreOptions = () => {
 		styleClass === 'passive' ? setStyleClass('active') : setStyleClass('passive');
 	};
@@ -22,13 +22,56 @@ export default ({ options }) => {
 
 			<div>
 				<div style={{ transition: '250ms' }} className={styleClass}>
-					{options.map(item => (
+					{apoll ? (
+						<div>
+							<div className="field">
+								<label className="label has-text-weight-normal"> General subject of your polls: </label>
+								<div className="control">
+									<input className="input" type="text" />
+								</div>
+							</div>
+
+							<div className="field">
+								<label className="label has-text-weight-normal">Additional descriptions</label>
+								<div className="control has-icons-left has-icons-right">
+									<textarea className="textarea" rows="2"></textarea>
+								</div>
+							</div>
+
+							<div>
+								<label className="checkbox" style={{ paddingBottom: '.5rem' }}>
+									&nbsp;
+									<input type="checkbox" />
+									&nbsp;Allow participants to leave comments
+								</label>
+								<label
+									className="checkbox is-block"
+									style={{ paddingBottom: '.5rem', paddingLeft: '2.3rem' }}>
+									&nbsp;
+									<input type="checkbox" />
+									&nbsp;<span>Confidential comments: Only you (the administrator) can view the comments</span>
+								</label>
+							</div>
+						</div>
+					) : (
+						options.map(item => (
+							<div>
+								<label className="checkbox" style={{ paddingBottom: '.5rem' }}>
+									&emsp;
+									<input type="checkbox" />
+									&nbsp;{item}
+								</label>
+							</div>
+						))
+					)}
+
+					{/* {options.map(item => (
 						<label className="checkbox is-block" style={{ paddingBottom: '.5rem' }}>
 							&emsp;
 							<input type="checkbox" />
 							&nbsp;{item}
 						</label>
-					))}
+					))} */}
 				</div>
 			</div>
 
