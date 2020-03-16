@@ -10,7 +10,7 @@ export default () => (
 				<div className="column">
 					<i className="fa fa-lg fa-chevron-right"></i>
 				</div>
-				<div className="column">Invite participants</div>
+				<div className="column has-text-grey-light">Invite participants</div>
 				<div className="column"></div>
 			</div>
 		</div>

@@ -16,7 +16,7 @@ export default () => {
 					<div className="column">
 						<i className="fa fa-lg fa-chevron-right"></i>
 					</div>
-					<div className="column">Invite participants</div>
+					<div className="column has-text-grey-light">Invite participants</div>
 					<div className="column"></div>
 				</div>
 			</div>
@@ -27,7 +27,7 @@ export default () => {
 					<br />
 					<div className="columns">
 						<div className="column"></div>
-						<div className="column is-4">
+						<div className="column is-5">
 							<p className="title has-text-link has-text-centered has-text-weight-normal">
 								Generate an anonymous poll
 							</p>
