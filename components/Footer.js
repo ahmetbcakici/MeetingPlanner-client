@@ -1,8 +1,8 @@
 export default () => {
 	return (
 		<div>
-			<footer class="has-background-grey-lighter has-text-dark">
-				<div class="container">
+			<footer className="has-background-grey-lighter has-text-dark">
+				<div className="container">
 					<section className="section has-text-centered">
 						<p>
 							<b className="has-text-grey">Get started:</b>&nbsp;&nbsp; Home&nbsp;&nbsp; · &nbsp;&nbsp;Meeting polls&nbsp;&nbsp; ·
@@ -25,7 +25,7 @@ export default () => {
 							</a>
 							&nbsp;&nbsp;
 							<a href="#">
-								<i class="fab fa-twitter-square is-size-4 has-text-grey-dark"></i>
+								<i className="fab fa-twitter-square is-size-4 has-text-grey-dark"></i>
 							</a>
 						</p>
 					</section>

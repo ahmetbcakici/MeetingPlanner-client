@@ -39,7 +39,7 @@ export default () => (
 							<div className="field">
 								<label className="label has-text-weight-normal">Additional descriptions:</label>
 								<div className="control has-icons-left has-icons-right">
-									<textarea class="textarea" rows="3"></textarea>
+									<textarea className="textarea" rows="3"></textarea>
 								</div>
 							</div>
 
@@ -72,10 +72,10 @@ export default () => (
 						</div>
 
 						{/* Box of tip */}
-						<div class="box has-background-white-ter">
-							<article class="media">
-								<div class="media-content">
-									<div class="content">
+						<div className="box has-background-white-ter">
+							<article className="media">
+								<div className="media-content">
+									<div className="content">
 										<p>
 											<strong>Tip: </strong> If you have multiple polls you can easily organize
 											and manage them with a free Xoyondo account.{' '}

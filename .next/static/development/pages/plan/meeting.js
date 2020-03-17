@@ -48,8 +48,7 @@ var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var deneme = _ref.deneme,
-      post_func = _ref.post_func;
+  var getPossibleDates = _ref.getPossibleDates;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       possibleDates = _useState[0],
@@ -182,7 +181,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
   }), __jsx("a", {
     className: "button is-small is-link",
     onClick: function onClick() {
-      deneme(possibleDates);
+      getPossibleDates(possibleDates);
     },
     __source: {
       fileName: _jsxFileName,
@@ -193,19 +192,19 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     className: "column",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 50
     },
     __self: this
   })), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 52
     },
     __self: this
   }), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 53
     },
     __self: this
   }));
@@ -235,14 +234,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("footer", {
-    "class": "has-background-grey-lighter has-text-dark",
+    className: "has-background-grey-lighter has-text-dark",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 4
     },
     __self: this
   }, __jsx("div", {
-    "class": "container",
+    className: "container",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 5
@@ -340,7 +339,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("i", {
-    "class": "fab fa-twitter-square is-size-4 has-text-grey-dark",
+    className: "fab fa-twitter-square is-size-4 has-text-grey-dark",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 28
@@ -609,21 +608,21 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("div", {
-    "class": "dropdown is-hoverable",
+    className: "dropdown is-hoverable",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 31
     },
     __self: this
   }, __jsx("div", {
-    "class": "dropdown-trigger",
+    className: "dropdown-trigger",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 32
     },
     __self: this
   }, __jsx("button", {
-    "class": "button is-light is-rounded is-outlined",
+    className: "button is-light is-rounded is-outlined",
     "aria-haspopup": "true",
     "aria-controls": "dropdown-menu4",
     __source: {
@@ -638,14 +637,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, "Let's Plan!"), __jsx("span", {
-    "class": "icon is-small",
+    className: "icon is-small",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 38
     },
     __self: this
   }, __jsx("i", {
-    "class": "fas fa-angle-down",
+    className: "fas fa-angle-down",
     "aria-hidden": "true",
     __source: {
       fileName: _jsxFileName,
@@ -653,7 +652,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   })))), __jsx("div", {
-    "class": "dropdown-menu",
+    className: "dropdown-menu",
     id: "dropdown-menu4",
     role: "menu",
     __source: {
@@ -662,14 +661,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("div", {
-    "class": "dropdown-content",
+    className: "dropdown-content",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 44
     },
     __self: this
   }, __jsx("div", {
-    "class": "dropdown-content",
+    className: "dropdown-content",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 45
@@ -683,7 +682,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("a", {
-    "class": "dropdown-item",
+    className: "dropdown-item",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 47
@@ -704,7 +703,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("a", {
-    "class": "dropdown-item",
+    className: "dropdown-item",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 52
@@ -725,7 +724,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("a", {
-    "class": "dropdown-item",
+    className: "dropdown-item",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 58
@@ -746,7 +745,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     },
     __self: this
   }, __jsx("a", {
-    "class": "dropdown-item",
+    className: "dropdown-item",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 64
@@ -782,6 +781,25 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     __self: this
   })))))))));
 });
+
+/***/ }),
+
+/***/ "./config.js":
+/*!*******************!*\
+  !*** ./config.js ***!
+  \*******************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var axiosInstance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+  baseURL: 'http://localhost:8080/'
+});
+/* harmony default export */ __webpack_exports__["default"] = (axiosInstance);
 
 /***/ }),
 
@@ -13465,12 +13483,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Layout */ "./components/Layout.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _components_Date_FreeText__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Date_FreeText */ "./components/Date_FreeText.js");
-/* harmony import */ var _components_Date_Calendar__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/Date_Calendar */ "./components/Date_Calendar.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../config */ "./config.js");
+/* harmony import */ var _components_Date_FreeText__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/Date_FreeText */ "./components/Date_FreeText.js");
+/* harmony import */ var _components_Date_Calendar__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Date_Calendar */ "./components/Date_Calendar.js");
 
 
 
@@ -13481,7 +13496,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\pages\\plan\\meeting.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
-
 
 
 
@@ -13517,24 +13531,6 @@ var Meeting = /*#__PURE__*/function (_Component) {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "handleNextButton", function () {
       _this.setState({
         whichPage: 1
-      });
-    });
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "postOperation", function () {
-      var _this$state = _this.state,
-          pollTitle = _this$state.pollTitle,
-          additionalDescriptions = _this$state.additionalDescriptions,
-          userName = _this$state.userName,
-          emailAddress = _this$state.emailAddress,
-          possibleDates = _this$state.possibleDates;
-      axios__WEBPACK_IMPORTED_MODULE_11___default.a.post('http://localhost:8080', {
-        pollTitle: pollTitle,
-        additionalDescriptions: additionalDescriptions,
-        userName: userName,
-        emailAddress: emailAddress,
-        possibleDates: possibleDates
-      }).then(function (data) {
-        console.log(data);
       });
     });
 
@@ -13576,6 +13572,24 @@ var Meeting = /*#__PURE__*/function (_Component) {
       });
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "postOperation", function () {
+      var _this$state = _this.state,
+          pollTitle = _this$state.pollTitle,
+          additionalDescriptions = _this$state.additionalDescriptions,
+          userName = _this$state.userName,
+          emailAddress = _this$state.emailAddress,
+          possibleDates = _this$state.possibleDates;
+      _config__WEBPACK_IMPORTED_MODULE_10__["default"].post('api', {
+        pollTitle: pollTitle,
+        additionalDescriptions: additionalDescriptions,
+        userName: userName,
+        emailAddress: emailAddress,
+        possibleDates: possibleDates
+      }).then(function (data) {
+        console.log(data);
+      });
+    });
+
     return _this;
   }
 
@@ -13586,7 +13600,7 @@ var Meeting = /*#__PURE__*/function (_Component) {
         return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_9__["default"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 62
+            lineNumber: 67
           },
           __self: this
         }, __jsx("div", {
@@ -13597,130 +13611,130 @@ var Meeting = /*#__PURE__*/function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 64
+            lineNumber: 69
           },
           __self: this
         }, __jsx("div", {
           className: "columns has-text-centered",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 67
+            lineNumber: 72
           },
           __self: this
         }, __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 68
-          },
-          __self: this
-        }), __jsx("div", {
-          className: "column",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 69
-          },
-          __self: this
-        }, "General information"), __jsx("div", {
-          className: "column",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 70
-          },
-          __self: this
-        }, __jsx("i", {
-          className: "fa fa-lg fa-chevron-right",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 71
-          },
-          __self: this
-        })), __jsx("div", {
-          className: "column has-text-grey-light",
-          __source: {
-            fileName: _jsxFileName,
             lineNumber: 73
           },
           __self: this
-        }, "Choose dates and times"), __jsx("div", {
+        }), __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
             lineNumber: 74
           },
           __self: this
+        }, "General information"), __jsx("div", {
+          className: "column",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 75
+          },
+          __self: this
         }, __jsx("i", {
           className: "fa fa-lg fa-chevron-right",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 75
+            lineNumber: 76
+          },
+          __self: this
+        })), __jsx("div", {
+          className: "column has-text-grey-light",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 78
+          },
+          __self: this
+        }, "Choose dates and times"), __jsx("div", {
+          className: "column",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 79
+          },
+          __self: this
+        }, __jsx("i", {
+          className: "fa fa-lg fa-chevron-right",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 80
           },
           __self: this
         })), __jsx("div", {
           className: "column  has-text-grey-light",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 77
+            lineNumber: 82
           },
           __self: this
         }, "Invite participants"), __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 78
+            lineNumber: 83
           },
           __self: this
         }))), __jsx("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 82
+            lineNumber: 87
           },
           __self: this
         }, __jsx("div", {
           className: "has-background-white",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 83
+            lineNumber: 88
           },
           __self: this
         }, __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 84
+            lineNumber: 89
           },
           __self: this
         }), __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 85
+            lineNumber: 90
           },
           __self: this
         }), __jsx("div", {
           className: "columns",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 86
+            lineNumber: 91
           },
           __self: this
         }, __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 87
+            lineNumber: 92
           },
           __self: this
         }), __jsx("div", {
           className: "column is-5",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 88
+            lineNumber: 93
           },
           __self: this
         }, __jsx("p", {
           className: "title has-text-link has-text-centered has-text-weight-normal",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 89
+            lineNumber: 94
           },
           __self: this
         }, "Schedule a meetings"), __jsx("div", {
@@ -13730,28 +13744,28 @@ var Meeting = /*#__PURE__*/function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 92
+            lineNumber: 97
           },
           __self: this
         }, __jsx("div", {
           className: "field",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 93
+            lineNumber: 98
           },
           __self: this
         }, __jsx("label", {
           className: "label has-text-weight-normal",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 94
+            lineNumber: 99
           },
           __self: this
         }, "Poll title:"), __jsx("div", {
           className: "control",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 95
+            lineNumber: 100
           },
           __self: this
         }, __jsx("input", {
@@ -13761,59 +13775,59 @@ var Meeting = /*#__PURE__*/function (_Component) {
           onChange: this.setPollTitle,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 96
+            lineNumber: 101
           },
           __self: this
         }))), __jsx("div", {
           className: "field",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 105
+            lineNumber: 110
           },
           __self: this
         }, __jsx("label", {
           className: "label has-text-weight-normal",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 106
+            lineNumber: 111
           },
           __self: this
         }, "Additional descriptions:"), __jsx("div", {
           className: "control has-icons-left has-icons-right",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 109
+            lineNumber: 114
           },
           __self: this
         }, __jsx("textarea", {
-          "class": "textarea",
+          className: "textarea",
           rows: "3",
           value: this.state.additionalDescriptions,
           onChange: this.setAdditionalDescriptions,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 110
+            lineNumber: 115
           },
           __self: this
         }))), __jsx("div", {
           className: "field",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 118
+            lineNumber: 123
           },
           __self: this
         }, __jsx("label", {
           className: "label has-text-weight-normal",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 119
+            lineNumber: 124
           },
           __self: this
         }, "Your name:"), __jsx("div", {
           className: "control",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 120
+            lineNumber: 125
           },
           __self: this
         }, __jsx("input", {
@@ -13823,28 +13837,28 @@ var Meeting = /*#__PURE__*/function (_Component) {
           onChange: this.setUserName,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 121
+            lineNumber: 126
           },
           __self: this
         }))), __jsx("div", {
           className: "field",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 130
+            lineNumber: 135
           },
           __self: this
         }, __jsx("label", {
           className: "label has-text-weight-normal",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 131
+            lineNumber: 136
           },
           __self: this
         }, "Your email address:"), __jsx("div", {
           className: "control",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 132
+            lineNumber: 137
           },
           __self: this
         }, __jsx("input", {
@@ -13854,40 +13868,40 @@ var Meeting = /*#__PURE__*/function (_Component) {
           onChange: this.setEmailAddress,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 133
+            lineNumber: 138
           },
           __self: this
         }))), __jsx("span", {
           className: "is-size-7 has-text-grey",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 142
+            lineNumber: 147
           },
           __self: this
         }, "We will send you an email with the link to your poll and the admin area. That's all you will receive - we hate spam too."), __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 147
+            lineNumber: 152
           },
           __self: this
         }), __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 148
+            lineNumber: 153
           },
           __self: this
         }), __jsx("div", {
           className: "field",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 149
+            lineNumber: 154
           },
           __self: this
         }, __jsx("div", {
           className: "control",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 150
+            lineNumber: 155
           },
           __self: this
         }, __jsx("button", {
@@ -13895,73 +13909,73 @@ var Meeting = /*#__PURE__*/function (_Component) {
           onClick: this.handleNextButton,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 151
+            lineNumber: 156
           },
           __self: this
         }, "Next")))), __jsx("div", {
-          "class": "box has-background-white-ter",
+          className: "box has-background-white-ter",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 161
+            lineNumber: 166
           },
           __self: this
         }, __jsx("article", {
-          "class": "media",
+          className: "media",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 162
+            lineNumber: 167
           },
           __self: this
         }, __jsx("div", {
-          "class": "media-content",
+          className: "media-content",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 163
+            lineNumber: 168
           },
           __self: this
         }, __jsx("div", {
-          "class": "content",
+          className: "content",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 164
+            lineNumber: 169
           },
           __self: this
         }, __jsx("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 165
+            lineNumber: 170
           },
           __self: this
         }, __jsx("strong", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 166
+            lineNumber: 171
           },
           __self: this
         }, "Tip: "), " If you have multiple polls you can easily organize and manage them with a free Xoyondo account.", ' ', __jsx("a", {
           href: "/register",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 168
+            lineNumber: 173
           },
           __self: this
         }, "Sign up!"))))))), __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 175
+            lineNumber: 180
           },
           __self: this
         }))), __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 178
+            lineNumber: 183
           },
           __self: this
         }), __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 179
+            lineNumber: 184
           },
           __self: this
         })));
@@ -13969,59 +13983,43 @@ var Meeting = /*#__PURE__*/function (_Component) {
         return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_9__["default"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 185
+            lineNumber: 190
           },
           __self: this
         }, __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 186
+            lineNumber: 191
           },
           __self: this
         }), __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 187
+            lineNumber: 192
           },
           __self: this
         }), __jsx("p", {
           className: "title has-text-link has-text-centered has-text-weight-normal",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 188
+            lineNumber: 193
           },
           __self: this
         }, "Choose your dates"), __jsx("div", {
           className: "columns has-text-centered",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 189
+            lineNumber: 194
           },
           __self: this
         }, __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 190
+            lineNumber: 195
           },
           __self: this
         }), __jsx("div", {
-          className: "column is-4 has-background-white-ter",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 191
-          },
-          __self: this
-        }, __jsx("a", {
-          className: "btn",
-          onClick: this.setWhichSection,
-          id: "0",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 192
-          },
-          __self: this
-        }, "calendar")), __jsx("div", {
           className: "column is-4 has-background-white-ter",
           __source: {
             fileName: _jsxFileName,
@@ -14031,31 +14029,46 @@ var Meeting = /*#__PURE__*/function (_Component) {
         }, __jsx("a", {
           className: "btn",
           onClick: this.setWhichSection,
-          id: "1",
+          id: "0",
           __source: {
             fileName: _jsxFileName,
             lineNumber: 197
+          },
+          __self: this
+        }, "calendar")), __jsx("div", {
+          className: "column is-4 has-background-white-ter",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 201
+          },
+          __self: this
+        }, __jsx("a", {
+          className: "btn",
+          onClick: this.setWhichSection,
+          id: "1",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 202
           },
           __self: this
         }, "free text")), __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 201
-          },
-          __self: this
-        })), this.state.whichSection === 0 ? __jsx(_components_Date_Calendar__WEBPACK_IMPORTED_MODULE_13__["default"], {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 204
-          },
-          __self: this
-        }) : __jsx(_components_Date_FreeText__WEBPACK_IMPORTED_MODULE_12__["default"], {
-          deneme: this.setPossibleDates,
-          post_func: this.postOperation,
-          __source: {
-            fileName: _jsxFileName,
             lineNumber: 206
+          },
+          __self: this
+        })), this.state.whichSection === 0 ? __jsx(_components_Date_Calendar__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 209
+          },
+          __self: this
+        }) : __jsx(_components_Date_FreeText__WEBPACK_IMPORTED_MODULE_11__["default"], {
+          getPossibleDates: this.setPossibleDates,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 211
           },
           __self: this
         }));

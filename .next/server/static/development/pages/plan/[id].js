@@ -88,10 +88,29 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./config.js":
+/*!*******************!*\
+  !*** ./config.js ***!
+  \*******************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+const axiosInstance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+  baseURL: 'http://localhost:8080/'
+});
+/* harmony default export */ __webpack_exports__["default"] = (axiosInstance);
+
+/***/ }),
 
 /***/ "./pages/plan/[id].js":
 /*!****************************!*\
@@ -106,30 +125,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config */ "./config.js");
 var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\pages\\plan\\[id].js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+
 /* harmony default export */ __webpack_exports__["default"] = (() => {
   const router = Object(next_router__WEBPACK_IMPORTED_MODULE_1__["useRouter"])();
+
+  const getPlan = () => {
+    _config__WEBPACK_IMPORTED_MODULE_2__["default"].get('api', {
+      params: {
+        itemID: router.query.id
+      }
+    }).then(res => {
+      console.log(res);
+    });
+  };
+
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 14
     },
     __self: undefined
   }, __jsx("h1", {
+    onClick: getPlan,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 15
     },
     __self: undefined
-  }, router.query.id));
-});
+  }, "nbr"));
+}); // 5e708dce790a493928aac6f0
 
 /***/ }),
 
-/***/ 6:
+/***/ 4:
 /*!**********************************!*\
   !*** multi ./pages/plan/[id].js ***!
   \**********************************/
@@ -138,6 +171,17 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 module.exports = __webpack_require__(/*! C:\Users\Ahmet Bugra Cakici\Desktop\MeetingPlaner-client\pages\plan\[id].js */"./pages/plan/[id].js");
 
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
 
 /***/ }),
 

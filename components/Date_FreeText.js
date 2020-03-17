@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default ({deneme,post_func}) => {
+export default ({ getPossibleDates }) => {
 	const [possibleDates, setPossibleDates] = useState('');
 
 	return (
@@ -38,7 +38,13 @@ export default ({deneme,post_func}) => {
 
 						<br />
 
-						<a className="button is-small is-link" onClick={() => {deneme(possibleDates)}}>Next</a>
+						<a
+							className="button is-small is-link"
+							onClick={() => {
+								getPossibleDates(possibleDates);
+							}}>
+							Next
+						</a>
 					</div>
 				</div>
 				<div className="column"></div>

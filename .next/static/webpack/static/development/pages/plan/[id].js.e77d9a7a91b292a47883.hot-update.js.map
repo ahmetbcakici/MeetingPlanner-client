@@ -1,1 +1,0 @@
-{"version":3,"file":"static/webpack/static\\development\\pages\\plan\\[id].js.e77d9a7a91b292a47883.hot-update.js","sources":["webpack:///./pages/plan/.js"],"sourcesContent":["export default (id) => <div>ass:{id}</div>;\r\n"],"mappings":";;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;;A","sourceRoot":""}

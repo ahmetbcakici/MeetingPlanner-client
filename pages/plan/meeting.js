@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Layout from '../../components/Layout';
-import Link from 'next/link';
-import axios from 'axios';
+import axiosInstance from '../../config';
 import Date_FreeText from '../../components/Date_FreeText';
 import Date_Calendar from '../../components/Date_Calendar';
 
@@ -18,16 +17,6 @@ export default class Meeting extends Component {
 
 	handleNextButton = () => {
 		this.setState({ whichPage: 1 });
-	};
-
-	postOperation = () => {
-		const { pollTitle, additionalDescriptions, userName, emailAddress, possibleDates } = this.state;
-
-		axios
-			.post('http://localhost:8080', { pollTitle, additionalDescriptions, userName, emailAddress, possibleDates })
-			.then(data => {
-				console.log(data);
-			});
 	};
 
 	setWhichSection = e => {
@@ -54,6 +43,22 @@ export default class Meeting extends Component {
 		this.setState({ possibleDates: pd }, () => {
 			this.postOperation();
 		});
+	};
+
+	postOperation = () => {
+		const { pollTitle, additionalDescriptions, userName, emailAddress, possibleDates } = this.state;
+
+		axiosInstance
+			.post('api', {
+				pollTitle,
+				additionalDescriptions,
+				userName,
+				emailAddress,
+				possibleDates,
+			})
+			.then(data => {
+				console.log(data);
+			});
 	};
 
 	render() {
@@ -108,7 +113,7 @@ export default class Meeting extends Component {
 											</label>
 											<div className="control has-icons-left has-icons-right">
 												<textarea
-													class="textarea"
+													className="textarea"
 													rows="3"
 													value={this.state.additionalDescriptions}
 													onChange={this.setAdditionalDescriptions}></textarea>
@@ -158,10 +163,10 @@ export default class Meeting extends Component {
 									</div>
 
 									{/* Box of tip */}
-									<div class="box has-background-white-ter">
-										<article class="media">
-											<div class="media-content">
-												<div class="content">
+									<div className="box has-background-white-ter">
+										<article className="media">
+											<div className="media-content">
+												<div className="content">
 													<p>
 														<strong>Tip: </strong> If you have multiple polls you can easily
 														organize and manage them with a free Xoyondo account.{' '}
@@ -203,7 +208,7 @@ export default class Meeting extends Component {
 					{this.state.whichSection === 0 ? (
 						<Date_Calendar />
 					) : (
-						<Date_FreeText deneme={this.setPossibleDates} post_func={this.postOperation} />
+						<Date_FreeText getPossibleDates={this.setPossibleDates} />
 					)}
 				</Layout>
 			);

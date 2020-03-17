@@ -28,40 +28,40 @@ export default () => {
 					<div className="navbar-end">
 						<div className="navbar-item">
 							<div className="buttons">
-								<div class="dropdown is-hoverable">
-									<div class="dropdown-trigger">
+								<div className="dropdown is-hoverable">
+									<div className="dropdown-trigger">
 										<button
-											class="button is-light is-rounded is-outlined"
+											className="button is-light is-rounded is-outlined"
 											aria-haspopup="true"
 											aria-controls="dropdown-menu4">
 											<span>Let's Plan!</span>
-											<span class="icon is-small">
-												<i class="fas fa-angle-down" aria-hidden="true"></i>
+											<span className="icon is-small">
+												<i className="fas fa-angle-down" aria-hidden="true"></i>
 											</span>
 										</button>
 									</div>
-									<div class="dropdown-menu" id="dropdown-menu4" role="menu">
-										<div class="dropdown-content">
-											<div class="dropdown-content">
+									<div className="dropdown-menu" id="dropdown-menu4" role="menu">
+										<div className="dropdown-content">
+											<div className="dropdown-content">
 												<Link href="/plan/meeting">
-													<a class="dropdown-item">
+													<a className="dropdown-item">
 														<i className="fa fa-calendar"></i>&nbsp; Schedule a meeting
 													</a>
 												</Link>
 												<Link href="/plan/opoll">
-													<a class="dropdown-item">
+													<a className="dropdown-item">
 														<i className="fa fa-check-square-o"></i>&nbsp; Generate opinion
 														poll
 													</a>
 												</Link>
 												<Link href="/plan/apoll">
-													<a class="dropdown-item">
+													<a className="dropdown-item">
 														<i className="fa fa-bar-chart-o"></i>&nbsp; Generate anonymous
 														poll
 													</a>
 												</Link>
 												<Link href="/plan/message">
-													<a class="dropdown-item">
+													<a className="dropdown-item">
 														<i className="fa fa-comments-o"></i>&nbsp; Generate message
 														board
 													</a>
