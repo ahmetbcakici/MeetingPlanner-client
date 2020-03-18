@@ -205,7 +205,7 @@ export default class Meeting extends Component {
 						</div>
 						<div className="column"></div>
 					</div>
-					{this.state.whichSection === 0 ? (
+					{this.state.whichSection === 1 ? ( // note: should be 0 as default
 						<Date_Calendar />
 					) : (
 						<Date_FreeText getPossibleDates={this.setPossibleDates} />

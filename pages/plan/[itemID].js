@@ -8,25 +8,18 @@ const ItemDetailsPage = () => {
 	const { itemID } = router.query;
 	const [itemDetails, setItemDetails] = useState('');
 
+	useEffect(() => {
+		getPlan();
+	});
+
 	const getPlan = async () => {
 		const doc = await axiosInstance.get('api', { params: { itemID } });
 		setItemDetails(doc.data);
 	};
 
-	useEffect(() => {
-		getPlan();
-	});
-
-	const tester = () => {
-		itemDetails.possibleDates.forEach(element => {
-			console.log(element);
-		});
-	};
-
 	return (
 		<Layout>
 			<div className="container">
-				<h1>{itemID}</h1>
 				<br />
 				<div className="columns">
 					<div className="column is-1"></div>
@@ -46,48 +39,45 @@ const ItemDetailsPage = () => {
 										: "Please indicate when you are available. Then click 'Save'."}
 								</p>
 								<br />
-								{/* table here */}
-								<div>
-									<table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-										<thead>
-											<th style={{ border: 'none' }}></th>
+								<table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+									<thead>
+										<th style={{ border: 'none' }}></th>
 
-											{itemDetails.possibleDates
-												? itemDetails.possibleDates.map(element => (
-														<th className="has-background-grey-lighter has-text-centered">
-															{element}
-														</th>
-												  ))
-												: null}
-										</thead>
-										<tbody>
-											<tr className="be-first">
-												<td className="has-background-primary has-text-white" colSpan="2">
-													Be the first to vote in this poll!
-												</td>
-											</tr>
-											<tr style={{ backgroundColor: '#C8E4FF' }}>
-												<td style={{ borderColor: 'white' }}>
-													<div class="field">
-														<div class="control">
-															<input
-																class="input is-primary"
-																type="text"
-																placeholder="Your name"
-															/>
-														</div>
+										{/* Put possible dates as table headers */}
+										{itemDetails.possibleDates
+											? itemDetails.possibleDates.map(element => (
+													<th className="has-background-grey-lighter has-text-centered">
+														{element}
+													</th>
+											  ))
+											: null}
+									</thead>
+									<tbody>
+										<tr className="be-first">
+											<td className="has-background-primary has-text-white" colSpan="2">
+												Be the first to vote in this poll!
+											</td>
+										</tr>
+										<tr style={{ backgroundColor: '#C8E4FF' }}>
+											<td style={{ borderColor: 'white' }}>
+												<div class="field">
+													<div class="control">
+														<input
+															class="input is-primary"
+															type="text"
+															placeholder="Your name"
+														/>
 													</div>
-												</td>
-												<td style={{ borderColor: 'white' }} className="has-text-centered">
-													<label class="checkbox">
-														<input type="checkbox" />
-													</label>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								{/* table here */}
+												</div>
+											</td>
+											<td style={{ borderColor: 'white' }} className="has-text-centered">
+												<label class="checkbox">
+													<input type="checkbox" />
+												</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>
 								<br />
 							</div>
 							<div className="column is-5"></div>
