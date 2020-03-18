@@ -17,11 +17,7 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-    "/plan/[id]": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/plan/meeting": [
+    "/plan/[itemID]": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
