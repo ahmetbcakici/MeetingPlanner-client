@@ -7,14 +7,37 @@ const ItemDetailsPage = () => {
 	const router = useRouter();
 	const { itemID } = router.query;
 	const [itemDetails, setItemDetails] = useState('');
+	const [partipicantName, setPartipicantName] = useState('');
+	const [optionsSelected, setOptionsSelected] = useState('');
 
 	useEffect(() => {
 		getPlan();
 	});
 
 	const getPlan = async () => {
-		const doc = await axiosInstance.get('api', { params: { itemID } });
+		const doc = await axiosInstance.get('api/freeone', { params: { itemID } });
 		setItemDetails(doc.data);
+	};
+
+	const postParticipant = async () => {
+		const doc = await axiosInstance.post(
+			'api/participant',
+			{ partipicantName, optionsSelected },
+			{ params: { itemID } }
+		);
+		// const doc = await axiosInstance.post('api/participant', { params: { itemID } });
+		console.log(doc);
+	};
+
+	const checkboxTest = async e => {
+		if (e.target.checked) {
+			setOptionsSelected([...optionsSelected, e.target.id]);
+			return;
+		}
+		let tempOptionsSelected = [...optionsSelected];
+		const check = tempOptionsSelected.indexOf(e.target.id);
+		if (check > -1) tempOptionsSelected.splice(check, 1);
+		setOptionsSelected(tempOptionsSelected);
 	};
 
 	return (
@@ -25,7 +48,10 @@ const ItemDetailsPage = () => {
 					<div className="column is-1"></div>
 					<div className="column">
 						<div className="is-fullwidth" style={{ padding: '.5rem', backgroundColor: '#C8E4FF' }}>
-							<p onClick={tester}>
+							<p
+								onClick={() => {
+									console.log(optionsSelected);
+								}}>
 								Poll by <strong>{itemDetails.nameGenerater}</strong>
 							</p>
 						</div>
@@ -45,7 +71,7 @@ const ItemDetailsPage = () => {
 
 										{/* Put possible dates as table headers */}
 										{itemDetails.possibleDates
-											? itemDetails.possibleDates.map(element => (
+											? itemDetails.possibleDates.map((element, index) => (
 													<th className="has-background-grey-lighter has-text-centered">
 														{element}
 													</th>
@@ -54,7 +80,7 @@ const ItemDetailsPage = () => {
 									</thead>
 									<tbody>
 										<tr className="be-first">
-											<td className="has-background-primary has-text-white" colSpan="2">
+											<td className="has-background-primary has-text-white" colSpan="100%">
 												Be the first to vote in this poll!
 											</td>
 										</tr>
@@ -66,18 +92,38 @@ const ItemDetailsPage = () => {
 															class="input is-primary"
 															type="text"
 															placeholder="Your name"
+															onChange={e => {
+																setPartipicantName(e.target.value);
+															}}
 														/>
 													</div>
 												</div>
 											</td>
-											<td style={{ borderColor: 'white' }} className="has-text-centered">
-												<label class="checkbox">
-													<input type="checkbox" />
-												</label>
-											</td>
+
+											{/* Columns which has checkbox to check possible dates*/}
+											{itemDetails.possibleDates
+												? itemDetails.possibleDates.map((element, index) => (
+														<td
+															style={{ borderColor: 'white' }}
+															className="has-text-centered">
+															<label class="checkbox">
+																<input
+																	type="checkbox"
+																	id={index}
+																	onChange={checkboxTest}
+																/>
+															</label>
+														</td>
+												  ))
+												: null}
 										</tr>
 									</tbody>
 								</table>
+								<p>
+									<a className="button is-link has-text-right" onClick={postParticipant}>
+										Save
+									</a>
+								</p>
 								<br />
 							</div>
 							<div className="column is-5"></div>

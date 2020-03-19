@@ -39,17 +39,20 @@ export default class Meeting extends Component {
 		this.setState({ emailAddress: e.target.value });
 	};
 
-	setPossibleDates = pd => {
-		this.setState({ possibleDates: pd }, () => {
-			this.postOperation();
+	setPossibleDates = async pd => {
+		let pdFilterSpaces = [];
+		await pd.map(item => {
+			if (item) pdFilterSpaces.push(item);
 		});
+		await this.setState({ possibleDates: pdFilterSpaces });
+		this.postOperation();
 	};
 
 	postOperation = () => {
 		const { pollTitle, additionalDescriptions, userName, emailAddress, possibleDates } = this.state;
 
 		axiosInstance
-			.post('api', {
+			.post('api/freeone', {
 				pollTitle,
 				additionalDescriptions,
 				userName,

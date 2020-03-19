@@ -136,11 +136,9 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "react-dom");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\components\\Date_FreeText.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /* harmony default export */ __webpack_exports__["default"] = (({
   getPossibleDates
@@ -2728,12 +2726,15 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       });
     });
 
-    _defineProperty(this, "setPossibleDates", pd => {
-      this.setState({
-        possibleDates: pd
-      }, () => {
-        this.postOperation();
+    _defineProperty(this, "setPossibleDates", async pd => {
+      let pdFilterSpaces = [];
+      await pd.map(item => {
+        if (item) pdFilterSpaces.push(item);
       });
+      await this.setState({
+        possibleDates: pdFilterSpaces
+      });
+      this.postOperation();
     });
 
     _defineProperty(this, "postOperation", () => {
@@ -2744,7 +2745,7 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         emailAddress,
         possibleDates
       } = this.state;
-      _config__WEBPACK_IMPORTED_MODULE_2__["default"].post('api', {
+      _config__WEBPACK_IMPORTED_MODULE_2__["default"].post('api/freeone', {
         pollTitle,
         additionalDescriptions,
         userName,
@@ -2761,7 +2762,7 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 67
+          lineNumber: 70
         },
         __self: this
       }, __jsx("div", {
@@ -2772,130 +2773,130 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 69
+          lineNumber: 72
         },
         __self: this
       }, __jsx("div", {
         className: "columns has-text-centered",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 72
+          lineNumber: 75
         },
         __self: this
       }, __jsx("div", {
         className: "column",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 73
+          lineNumber: 76
         },
         __self: this
       }), __jsx("div", {
         className: "column",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 74
+          lineNumber: 77
         },
         __self: this
       }, "General information"), __jsx("div", {
         className: "column",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 75
+          lineNumber: 78
         },
         __self: this
       }, __jsx("i", {
         className: "fa fa-lg fa-chevron-right",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 76
+          lineNumber: 79
         },
         __self: this
       })), __jsx("div", {
         className: "column has-text-grey-light",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 78
+          lineNumber: 81
         },
         __self: this
       }, "Choose dates and times"), __jsx("div", {
         className: "column",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 79
+          lineNumber: 82
         },
         __self: this
       }, __jsx("i", {
         className: "fa fa-lg fa-chevron-right",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80
+          lineNumber: 83
         },
         __self: this
       })), __jsx("div", {
         className: "column  has-text-grey-light",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82
+          lineNumber: 85
         },
         __self: this
       }, "Invite participants"), __jsx("div", {
         className: "column",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 83
+          lineNumber: 86
         },
         __self: this
       }))), __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 87
+          lineNumber: 90
         },
         __self: this
       }, __jsx("div", {
         className: "has-background-white",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 88
+          lineNumber: 91
         },
         __self: this
       }, __jsx("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89
+          lineNumber: 92
         },
         __self: this
       }), __jsx("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 90
+          lineNumber: 93
         },
         __self: this
       }), __jsx("div", {
         className: "columns",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91
+          lineNumber: 94
         },
         __self: this
       }, __jsx("div", {
         className: "column",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92
+          lineNumber: 95
         },
         __self: this
       }), __jsx("div", {
         className: "column is-5",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 93
+          lineNumber: 96
         },
         __self: this
       }, __jsx("p", {
         className: "title has-text-link has-text-centered has-text-weight-normal",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 94
+          lineNumber: 97
         },
         __self: this
       }, "Schedule a meetings"), __jsx("div", {
@@ -2905,28 +2906,28 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97
+          lineNumber: 100
         },
         __self: this
       }, __jsx("div", {
         className: "field",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98
+          lineNumber: 101
         },
         __self: this
       }, __jsx("label", {
         className: "label has-text-weight-normal",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 99
+          lineNumber: 102
         },
         __self: this
       }, "Poll title:"), __jsx("div", {
         className: "control",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 100
+          lineNumber: 103
         },
         __self: this
       }, __jsx("input", {
@@ -2936,28 +2937,28 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         onChange: this.setPollTitle,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 101
+          lineNumber: 104
         },
         __self: this
       }))), __jsx("div", {
         className: "field",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 110
+          lineNumber: 113
         },
         __self: this
       }, __jsx("label", {
         className: "label has-text-weight-normal",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 111
+          lineNumber: 114
         },
         __self: this
       }, "Additional descriptions:"), __jsx("div", {
         className: "control has-icons-left has-icons-right",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 114
+          lineNumber: 117
         },
         __self: this
       }, __jsx("textarea", {
@@ -2967,28 +2968,28 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         onChange: this.setAdditionalDescriptions,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 115
+          lineNumber: 118
         },
         __self: this
       }))), __jsx("div", {
         className: "field",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 123
+          lineNumber: 126
         },
         __self: this
       }, __jsx("label", {
         className: "label has-text-weight-normal",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 124
+          lineNumber: 127
         },
         __self: this
       }, "Your name:"), __jsx("div", {
         className: "control",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 125
+          lineNumber: 128
         },
         __self: this
       }, __jsx("input", {
@@ -2998,28 +2999,28 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         onChange: this.setUserName,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 126
+          lineNumber: 129
         },
         __self: this
       }))), __jsx("div", {
         className: "field",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 135
+          lineNumber: 138
         },
         __self: this
       }, __jsx("label", {
         className: "label has-text-weight-normal",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 136
+          lineNumber: 139
         },
         __self: this
       }, "Your email address:"), __jsx("div", {
         className: "control",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 137
+          lineNumber: 140
         },
         __self: this
       }, __jsx("input", {
@@ -3029,40 +3030,40 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         onChange: this.setEmailAddress,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 138
+          lineNumber: 141
         },
         __self: this
       }))), __jsx("span", {
         className: "is-size-7 has-text-grey",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 147
+          lineNumber: 150
         },
         __self: this
       }, "We will send you an email with the link to your poll and the admin area. That's all you will receive - we hate spam too."), __jsx("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 152
+          lineNumber: 155
         },
         __self: this
       }), __jsx("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 153
+          lineNumber: 156
         },
         __self: this
       }), __jsx("div", {
         className: "field",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 154
+          lineNumber: 157
         },
         __self: this
       }, __jsx("div", {
         className: "control",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 155
+          lineNumber: 158
         },
         __self: this
       }, __jsx("button", {
@@ -3070,73 +3071,73 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         onClick: this.handleNextButton,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 156
+          lineNumber: 159
         },
         __self: this
       }, "Next")))), __jsx("div", {
         className: "box has-background-white-ter",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 166
+          lineNumber: 169
         },
         __self: this
       }, __jsx("article", {
         className: "media",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 167
+          lineNumber: 170
         },
         __self: this
       }, __jsx("div", {
         className: "media-content",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 168
+          lineNumber: 171
         },
         __self: this
       }, __jsx("div", {
         className: "content",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 169
+          lineNumber: 172
         },
         __self: this
       }, __jsx("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 170
+          lineNumber: 173
         },
         __self: this
       }, __jsx("strong", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 171
+          lineNumber: 174
         },
         __self: this
       }, "Tip: "), " If you have multiple polls you can easily organize and manage them with a free Xoyondo account.", ' ', __jsx("a", {
         href: "/register",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 173
+          lineNumber: 176
         },
         __self: this
       }, "Sign up!"))))))), __jsx("div", {
         className: "column",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 180
+          lineNumber: 183
         },
         __self: this
       }))), __jsx("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 183
+          lineNumber: 186
         },
         __self: this
       }), __jsx("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 184
+          lineNumber: 187
         },
         __self: this
       })));
@@ -3144,47 +3145,47 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 190
+          lineNumber: 193
         },
         __self: this
       }, __jsx("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 191
+          lineNumber: 194
         },
         __self: this
       }), __jsx("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 192
+          lineNumber: 195
         },
         __self: this
       }), __jsx("p", {
         className: "title has-text-link has-text-centered has-text-weight-normal",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 193
+          lineNumber: 196
         },
         __self: this
       }, "Choose your dates"), __jsx("div", {
         className: "columns has-text-centered",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 194
+          lineNumber: 197
         },
         __self: this
       }, __jsx("div", {
         className: "column",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 195
+          lineNumber: 198
         },
         __self: this
       }), __jsx("div", {
         className: "column is-4 has-background-white-ter",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 196
+          lineNumber: 199
         },
         __self: this
       }, __jsx("a", {
@@ -3193,14 +3194,14 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         id: "0",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 197
+          lineNumber: 200
         },
         __self: this
       }, "calendar")), __jsx("div", {
         className: "column is-4 has-background-white-ter",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 201
+          lineNumber: 204
         },
         __self: this
       }, __jsx("a", {
@@ -3209,28 +3210,28 @@ class Meeting extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         id: "1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 202
+          lineNumber: 205
         },
         __self: this
       }, "free text")), __jsx("div", {
         className: "column",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 206
+          lineNumber: 209
         },
         __self: this
       })), this.state.whichSection === 1 ? // note: should be 0 as default
       __jsx(_components_Date_Calendar__WEBPACK_IMPORTED_MODULE_4__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 209
+          lineNumber: 212
         },
         __self: this
       }) : __jsx(_components_Date_FreeText__WEBPACK_IMPORTED_MODULE_3__["default"], {
         getPossibleDates: this.setPossibleDates,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 211
+          lineNumber: 214
         },
         __self: this
       }));
@@ -3360,17 +3361,6 @@ module.exports = require("prop-types-exact");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
-
-/***/ }),
-
-/***/ "react-dom":
-/*!****************************!*\
-  !*** external "react-dom" ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-dom");
 
 /***/ }),
 

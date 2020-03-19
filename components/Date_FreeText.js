@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import { useState } from 'react';
 
 export default ({ getPossibleDates }) => {
 	const [possibleDates, setPossibleDates] = useState(['', '']);
@@ -9,6 +8,7 @@ export default ({ getPossibleDates }) => {
 			console.log('you can not delete');
 			return;
 		}
+		
 		let tempPossibleDates = [...possibleDates];
 		tempPossibleDates.splice(e.target.parentElement.id, 1);
 		setPossibleDates(tempPossibleDates);

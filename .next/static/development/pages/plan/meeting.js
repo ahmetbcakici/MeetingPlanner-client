@@ -44,12 +44,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 
 var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\components\\Date_FreeText.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var getPossibleDates = _ref.getPossibleDates;
@@ -11767,17 +11765,6 @@ exports.encode = exports.stringify = __webpack_require__(/*! ./encode */ "./node
 
 /***/ }),
 
-/***/ "./node_modules/react-dom/index.js":
-/*!***********************************************************************************************!*\
-  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_0fb095e325d7ebf261c3 ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(/*! dll-reference dll_0fb095e325d7ebf261c3 */ "dll-reference dll_0fb095e325d7ebf261c3"))("./node_modules/react-dom/index.js");
-
-/***/ }),
-
 /***/ "./node_modules/react-is/cjs/react-is.development.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-is/cjs/react-is.development.js ***!
@@ -13628,21 +13615,24 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Meeting; });
-/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/parse-int */ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Layout */ "./components/Layout.js");
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../config */ "./config.js");
-/* harmony import */ var _components_Date_FreeText__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/Date_FreeText */ "./components/Date_FreeText.js");
-/* harmony import */ var _components_Date_Calendar__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Date_Calendar */ "./components/Date_Calendar.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/parse-int */ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Layout */ "./components/Layout.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../config */ "./config.js");
+/* harmony import */ var _components_Date_FreeText__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Date_FreeText */ "./components/Date_FreeText.js");
+/* harmony import */ var _components_Date_Calendar__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/Date_Calendar */ "./components/Date_Calendar.js");
+
 
 
 
@@ -13652,7 +13642,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\pages\\plan\\meeting.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement;
 
 
 
@@ -13660,22 +13650,22 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
 
 
 var Meeting = /*#__PURE__*/function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(Meeting, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(Meeting, _Component);
 
   function Meeting() {
     var _getPrototypeOf2;
 
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Meeting);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Meeting);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Meeting)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Meeting)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "state", {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "state", {
       whichPage: 0,
       whichSection: 0,
       pollTitle: '',
@@ -13685,58 +13675,79 @@ var Meeting = /*#__PURE__*/function (_Component) {
       possibleDates: ''
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "handleNextButton", function () {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "handleNextButton", function () {
       _this.setState({
         whichPage: 1
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "setWhichSection", function (e) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "setWhichSection", function (e) {
       _this.setState({
-        whichSection: _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(e.target.id)
+        whichSection: _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_1___default()(e.target.id)
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "setPollTitle", function (e) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "setPollTitle", function (e) {
       _this.setState({
         pollTitle: e.target.value
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "setAdditionalDescriptions", function (e) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "setAdditionalDescriptions", function (e) {
       _this.setState({
         additionalDescriptions: e.target.value
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "setUserName", function (e) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "setUserName", function (e) {
       _this.setState({
         userName: e.target.value
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "setEmailAddress", function (e) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "setEmailAddress", function (e) {
       _this.setState({
         emailAddress: e.target.value
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "setPossibleDates", function (pd) {
-      _this.setState({
-        possibleDates: pd
-      }, function () {
-        _this.postOperation();
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "setPossibleDates", function _callee(pd) {
+      var pdFilterSpaces;
+      return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              pdFilterSpaces = [];
+              _context.next = 3;
+              return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(pd.map(function (item) {
+                if (item) pdFilterSpaces.push(item);
+              }));
+
+            case 3:
+              _context.next = 5;
+              return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(_this.setState({
+                possibleDates: pdFilterSpaces
+              }));
+
+            case 5:
+              _this.postOperation();
+
+            case 6:
+            case "end":
+              return _context.stop();
+          }
+        }
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "postOperation", function () {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "postOperation", function () {
       var _this$state = _this.state,
           pollTitle = _this$state.pollTitle,
           additionalDescriptions = _this$state.additionalDescriptions,
           userName = _this$state.userName,
           emailAddress = _this$state.emailAddress,
           possibleDates = _this$state.possibleDates;
-      _config__WEBPACK_IMPORTED_MODULE_10__["default"].post('api', {
+      _config__WEBPACK_IMPORTED_MODULE_11__["default"].post('api/freeone', {
         pollTitle: pollTitle,
         additionalDescriptions: additionalDescriptions,
         userName: userName,
@@ -13750,14 +13761,14 @@ var Meeting = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Meeting, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(Meeting, [{
     key: "render",
     value: function render() {
       if (this.state.whichPage === 0) {
-        return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_10__["default"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 67
+            lineNumber: 70
           },
           __self: this
         }, __jsx("div", {
@@ -13768,130 +13779,130 @@ var Meeting = /*#__PURE__*/function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 69
+            lineNumber: 72
           },
           __self: this
         }, __jsx("div", {
           className: "columns has-text-centered",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 72
+            lineNumber: 75
           },
           __self: this
         }, __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 73
+            lineNumber: 76
           },
           __self: this
         }), __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 74
+            lineNumber: 77
           },
           __self: this
         }, "General information"), __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 75
+            lineNumber: 78
           },
           __self: this
         }, __jsx("i", {
           className: "fa fa-lg fa-chevron-right",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 76
+            lineNumber: 79
           },
           __self: this
         })), __jsx("div", {
           className: "column has-text-grey-light",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 78
+            lineNumber: 81
           },
           __self: this
         }, "Choose dates and times"), __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 79
+            lineNumber: 82
           },
           __self: this
         }, __jsx("i", {
           className: "fa fa-lg fa-chevron-right",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 80
+            lineNumber: 83
           },
           __self: this
         })), __jsx("div", {
           className: "column  has-text-grey-light",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 82
+            lineNumber: 85
           },
           __self: this
         }, "Invite participants"), __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 83
+            lineNumber: 86
           },
           __self: this
         }))), __jsx("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 87
+            lineNumber: 90
           },
           __self: this
         }, __jsx("div", {
           className: "has-background-white",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 88
+            lineNumber: 91
           },
           __self: this
         }, __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 89
+            lineNumber: 92
           },
           __self: this
         }), __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 90
+            lineNumber: 93
           },
           __self: this
         }), __jsx("div", {
           className: "columns",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 91
+            lineNumber: 94
           },
           __self: this
         }, __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 92
+            lineNumber: 95
           },
           __self: this
         }), __jsx("div", {
           className: "column is-5",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 93
+            lineNumber: 96
           },
           __self: this
         }, __jsx("p", {
           className: "title has-text-link has-text-centered has-text-weight-normal",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 94
+            lineNumber: 97
           },
           __self: this
         }, "Schedule a meetings"), __jsx("div", {
@@ -13901,28 +13912,28 @@ var Meeting = /*#__PURE__*/function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 97
+            lineNumber: 100
           },
           __self: this
         }, __jsx("div", {
           className: "field",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 98
+            lineNumber: 101
           },
           __self: this
         }, __jsx("label", {
           className: "label has-text-weight-normal",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 99
+            lineNumber: 102
           },
           __self: this
         }, "Poll title:"), __jsx("div", {
           className: "control",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 100
+            lineNumber: 103
           },
           __self: this
         }, __jsx("input", {
@@ -13932,28 +13943,28 @@ var Meeting = /*#__PURE__*/function (_Component) {
           onChange: this.setPollTitle,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 101
+            lineNumber: 104
           },
           __self: this
         }))), __jsx("div", {
           className: "field",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 110
+            lineNumber: 113
           },
           __self: this
         }, __jsx("label", {
           className: "label has-text-weight-normal",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 111
+            lineNumber: 114
           },
           __self: this
         }, "Additional descriptions:"), __jsx("div", {
           className: "control has-icons-left has-icons-right",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 114
+            lineNumber: 117
           },
           __self: this
         }, __jsx("textarea", {
@@ -13963,28 +13974,28 @@ var Meeting = /*#__PURE__*/function (_Component) {
           onChange: this.setAdditionalDescriptions,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 115
+            lineNumber: 118
           },
           __self: this
         }))), __jsx("div", {
           className: "field",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 123
+            lineNumber: 126
           },
           __self: this
         }, __jsx("label", {
           className: "label has-text-weight-normal",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 124
+            lineNumber: 127
           },
           __self: this
         }, "Your name:"), __jsx("div", {
           className: "control",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 125
+            lineNumber: 128
           },
           __self: this
         }, __jsx("input", {
@@ -13994,28 +14005,28 @@ var Meeting = /*#__PURE__*/function (_Component) {
           onChange: this.setUserName,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 126
+            lineNumber: 129
           },
           __self: this
         }))), __jsx("div", {
           className: "field",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 135
+            lineNumber: 138
           },
           __self: this
         }, __jsx("label", {
           className: "label has-text-weight-normal",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 136
+            lineNumber: 139
           },
           __self: this
         }, "Your email address:"), __jsx("div", {
           className: "control",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 137
+            lineNumber: 140
           },
           __self: this
         }, __jsx("input", {
@@ -14025,40 +14036,40 @@ var Meeting = /*#__PURE__*/function (_Component) {
           onChange: this.setEmailAddress,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 138
+            lineNumber: 141
           },
           __self: this
         }))), __jsx("span", {
           className: "is-size-7 has-text-grey",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 147
+            lineNumber: 150
           },
           __self: this
         }, "We will send you an email with the link to your poll and the admin area. That's all you will receive - we hate spam too."), __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 152
+            lineNumber: 155
           },
           __self: this
         }), __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 153
+            lineNumber: 156
           },
           __self: this
         }), __jsx("div", {
           className: "field",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 154
+            lineNumber: 157
           },
           __self: this
         }, __jsx("div", {
           className: "control",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 155
+            lineNumber: 158
           },
           __self: this
         }, __jsx("button", {
@@ -14066,121 +14077,121 @@ var Meeting = /*#__PURE__*/function (_Component) {
           onClick: this.handleNextButton,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 156
+            lineNumber: 159
           },
           __self: this
         }, "Next")))), __jsx("div", {
           className: "box has-background-white-ter",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 166
+            lineNumber: 169
           },
           __self: this
         }, __jsx("article", {
           className: "media",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 167
+            lineNumber: 170
           },
           __self: this
         }, __jsx("div", {
           className: "media-content",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 168
+            lineNumber: 171
           },
           __self: this
         }, __jsx("div", {
           className: "content",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 169
+            lineNumber: 172
           },
           __self: this
         }, __jsx("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 170
+            lineNumber: 173
           },
           __self: this
         }, __jsx("strong", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 171
+            lineNumber: 174
           },
           __self: this
         }, "Tip: "), " If you have multiple polls you can easily organize and manage them with a free Xoyondo account.", ' ', __jsx("a", {
           href: "/register",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 173
+            lineNumber: 176
           },
           __self: this
         }, "Sign up!"))))))), __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 180
+            lineNumber: 183
           },
           __self: this
         }))), __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 183
+            lineNumber: 186
           },
           __self: this
         }), __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 184
+            lineNumber: 187
           },
           __self: this
         })));
       } else if (this.state.whichPage === 1) {
-        return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_10__["default"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 190
+            lineNumber: 193
           },
           __self: this
         }, __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 191
+            lineNumber: 194
           },
           __self: this
         }), __jsx("br", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 192
+            lineNumber: 195
           },
           __self: this
         }), __jsx("p", {
           className: "title has-text-link has-text-centered has-text-weight-normal",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 193
+            lineNumber: 196
           },
           __self: this
         }, "Choose your dates"), __jsx("div", {
           className: "columns has-text-centered",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 194
+            lineNumber: 197
           },
           __self: this
         }, __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 195
+            lineNumber: 198
           },
           __self: this
         }), __jsx("div", {
           className: "column is-4 has-background-white-ter",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 196
+            lineNumber: 199
           },
           __self: this
         }, __jsx("a", {
@@ -14189,14 +14200,14 @@ var Meeting = /*#__PURE__*/function (_Component) {
           id: "0",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 197
+            lineNumber: 200
           },
           __self: this
         }, "calendar")), __jsx("div", {
           className: "column is-4 has-background-white-ter",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 201
+            lineNumber: 204
           },
           __self: this
         }, __jsx("a", {
@@ -14205,28 +14216,28 @@ var Meeting = /*#__PURE__*/function (_Component) {
           id: "1",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 202
+            lineNumber: 205
           },
           __self: this
         }, "free text")), __jsx("div", {
           className: "column",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 206
-          },
-          __self: this
-        })), this.state.whichSection === 1 ? // note: should be 0 as default
-        __jsx(_components_Date_Calendar__WEBPACK_IMPORTED_MODULE_12__["default"], {
-          __source: {
-            fileName: _jsxFileName,
             lineNumber: 209
           },
           __self: this
-        }) : __jsx(_components_Date_FreeText__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        })), this.state.whichSection === 1 ? // note: should be 0 as default
+        __jsx(_components_Date_Calendar__WEBPACK_IMPORTED_MODULE_13__["default"], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 212
+          },
+          __self: this
+        }) : __jsx(_components_Date_FreeText__WEBPACK_IMPORTED_MODULE_12__["default"], {
           getPossibleDates: this.setPossibleDates,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 211
+            lineNumber: 214
           },
           __self: this
         }));
@@ -14235,7 +14246,7 @@ var Meeting = /*#__PURE__*/function (_Component) {
   }]);
 
   return Meeting;
-}(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_9__["Component"]);
 
 
 
