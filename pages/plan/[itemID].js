@@ -11,9 +11,11 @@ const ItemDetailsPage = () => {
 	const [optionsSelected, setOptionsSelected] = useState('');
 
 	useEffect(() => {
+		console.log("bug test")
 		getPlan();
-	});
+	},[]);
 
+	
 	const getPlan = async () => {
 		const doc = await axiosInstance.get('api/freeone', { params: { itemID } });
 		setItemDetails(doc.data);
