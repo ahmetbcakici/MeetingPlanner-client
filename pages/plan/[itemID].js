@@ -1,27 +1,30 @@
-import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+//import { useRouter } from 'next/router'; // not usable for class components, we can try to use withRouter as alternative 
+import { withRouter } from 'next/router';
+import React ,{ Component } from 'react';
 import Layout from '../../components/Layout';
 import axiosInstance from '../../config';
 
-const ItemDetailsPage = () => {
-	const router = useRouter();
-	const { itemID } = router.query;
-	const [itemDetails, setItemDetails] = useState('');
-	const [partipicantName, setPartipicantName] = useState('');
-	const [optionsSelected, setOptionsSelected] = useState('');
-
-	useEffect(() => {
-		console.log("bug test")
-		getPlan();
-	},[]);
-
+export default class ItemDetailsPage extends Component{
 	
-	const getPlan = async () => {
+	state={
+		partipicantName:'',
+		itemDetails:'',
+		optionsSelected:'',
+		itemID:'5e77a',
+	}
+
+	componentDidMount(){
+		this.getPlan();
+	}
+		
+	getPlan = async () => {
+		const {itemID} = this.state;
 		const doc = await axiosInstance.get('api/freeone', { params: { itemID } });
-		setItemDetails(doc.data);
+		this.setState({itemDetails:doc.data});
 	};
 
-	const postParticipant = async () => {
+	postParticipant = async () => {
+		const {partipicantName,optionsSelected,itemID} = this.state;
 		const doc = await axiosInstance.post(
 			'api/participant',
 			{ partipicantName, optionsSelected },
@@ -31,17 +34,19 @@ const ItemDetailsPage = () => {
 		console.log(doc);
 	};
 
-	const checkboxTest = async e => {
+	checkboxTest = async e => {
+		const {optionsSelected} = this.state;
 		if (e.target.checked) {
-			setOptionsSelected([...optionsSelected, e.target.id]);
+			this.setState({optionsSelected:[...optionsSelected, e.target.id]})
 			return;
 		}
 		let tempOptionsSelected = [...optionsSelected];
 		const check = tempOptionsSelected.indexOf(e.target.id);
 		if (check > -1) tempOptionsSelected.splice(check, 1);
-		setOptionsSelected(tempOptionsSelected);
+		this.setState({optionsSelected:tempOptionsSelected})
 	};
-
+	render (){
+		const {itemDetails} = this.state;
 	return (
 		<Layout>
 			<div className="container">
@@ -52,7 +57,7 @@ const ItemDetailsPage = () => {
 						<div className="is-fullwidth" style={{ padding: '.5rem', backgroundColor: '#C8E4FF' }}>
 							<p
 								onClick={() => {
-									console.log(optionsSelected);
+									console.log(this.state.optionsSelected);
 								}}>
 								Poll by <strong>{itemDetails.nameGenerater}</strong>
 							</p>
@@ -95,7 +100,7 @@ const ItemDetailsPage = () => {
 															type="text"
 															placeholder="Your name"
 															onChange={e => {
-																setPartipicantName(e.target.value);
+																this.setState({partipicantName:e.target.value})
 															}}
 														/>
 													</div>
@@ -112,7 +117,7 @@ const ItemDetailsPage = () => {
 																<input
 																	type="checkbox"
 																	id={index}
-																	onChange={checkboxTest}
+																	onChange={this.checkboxTest}
 																/>
 															</label>
 														</td>
@@ -122,7 +127,7 @@ const ItemDetailsPage = () => {
 									</tbody>
 								</table>
 								<p>
-									<a className="button is-link has-text-right" onClick={postParticipant}>
+									<a className="button is-link has-text-right" onClick={this.postParticipant}>
 										Save
 									</a>
 								</p>
@@ -137,7 +142,8 @@ const ItemDetailsPage = () => {
 			</div>
 		</Layout>
 	);
-};
+												}
 
-export default ItemDetailsPage;
+}
+//export default ItemDetailsPage;
 // 5e708dce790a493928aac6f0
