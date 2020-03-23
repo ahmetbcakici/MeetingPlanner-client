@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\plan\\[itemID].js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/plan/[itemID].js"],{
 
 /***/ "./components/Footer.js":
 /*!******************************!*\
@@ -11,7 +11,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\components\\Footer.js";
+var _jsxFileName = "/home/abugra/Desktop/MeetingPlanner-client/components/Footer.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -178,7 +178,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_Navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Navbar */ "./components/Navbar.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Footer */ "./components/Footer.js");
-var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\components\\Layout.js";
+var _jsxFileName = "/home/abugra/Desktop/MeetingPlanner-client/components/Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -282,7 +282,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\components\\Navbar.js";
+var _jsxFileName = "/home/abugra/Desktop/MeetingPlanner-client/components/Navbar.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -7255,12 +7255,12 @@ module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
 
 /***/ "./node_modules/next/dist/build/polyfills/object-assign.js":
 /*!***********************************************************************************************************************!*\
-  !*** delegated ./node_modules/next/dist/build/polyfills/object-assign.js from dll-reference dll_0fb095e325d7ebf261c3 ***!
+  !*** delegated ./node_modules/next/dist/build/polyfills/object-assign.js from dll-reference dll_82519ec661270f7f484f ***!
   \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_0fb095e325d7ebf261c3 */ "dll-reference dll_0fb095e325d7ebf261c3"))("./node_modules/next/dist/build/polyfills/object-assign.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_82519ec661270f7f484f */ "dll-reference dll_82519ec661270f7f484f"))("./node_modules/next/dist/build/polyfills/object-assign.js");
 
 /***/ }),
 
@@ -7276,10 +7276,10 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=C%3A%5CUsers%5CAhmet%20Bugra%20Cakici%5CDesktop%5CMeetingPlaner-client%5Cpages%5Cplan%5C%5BitemID%5D.js!./":
-/*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=C%3A%5CUsers%5CAhmet%20Bugra%20Cakici%5CDesktop%5CMeetingPlaner-client%5Cpages%5Cplan%5C%5BitemID%5D.js ***!
-  \***************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=%2Fhome%2Fabugra%2FDesktop%2FMeetingPlanner-client%2Fpages%2Fplan%2F%5BitemID%5D.js!./":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=%2Fhome%2Fabugra%2FDesktop%2FMeetingPlanner-client%2Fpages%2Fplan%2F%5BitemID%5D.js ***!
+  \*******************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10282,12 +10282,12 @@ module.exports = exports['default'];
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_0fb095e325d7ebf261c3 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_82519ec661270f7f484f ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_0fb095e325d7ebf261c3 */ "dll-reference dll_0fb095e325d7ebf261c3"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_82519ec661270f7f484f */ "dll-reference dll_82519ec661270f7f484f"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -10922,12 +10922,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_0fb095e325d7ebf261c3 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_82519ec661270f7f484f ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_0fb095e325d7ebf261c3 */ "dll-reference dll_0fb095e325d7ebf261c3"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_82519ec661270f7f484f */ "dll-reference dll_82519ec661270f7f484f"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -11398,12 +11398,12 @@ if (false) {} else {
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_0fb095e325d7ebf261c3 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_82519ec661270f7f484f ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_0fb095e325d7ebf261c3 */ "dll-reference dll_0fb095e325d7ebf261c3"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_82519ec661270f7f484f */ "dll-reference dll_82519ec661270f7f484f"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -13000,7 +13000,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config */ "./config.js");
 
 
-var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\pages\\plan\\[itemID].js";
+var _jsxFileName = "/home/abugra/Desktop/MeetingPlanner-client/pages/plan/[itemID].js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
@@ -13012,21 +13012,21 @@ var ItemDetailsPage = function ItemDetailsPage() {
   var router = Object(next_router__WEBPACK_IMPORTED_MODULE_3__["useRouter"])();
   var itemID = router.query.itemID;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(''),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(""),
       itemDetails = _useState[0],
       setItemDetails = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(''),
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(""),
       partipicantName = _useState2[0],
       setPartipicantName = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(''),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(""),
       optionsSelected = _useState3[0],
       setOptionsSelected = _useState3[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
     getPlan();
-  });
+  }, []); // use getinitialprops instead useeffect
 
   var getPlan = function getPlan() {
     var doc;
@@ -13035,7 +13035,7 @@ var ItemDetailsPage = function ItemDetailsPage() {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_5__["default"].get('api/freeone', {
+            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_5__["default"].get("api/freeone", {
               params: {
                 itemID: itemID
               }
@@ -13060,7 +13060,7 @@ var ItemDetailsPage = function ItemDetailsPage() {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_5__["default"].post('api/participant', {
+            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_5__["default"].post("api/participant", {
               partipicantName: partipicantName,
               optionsSelected: optionsSelected
             }, {
@@ -13113,52 +13113,52 @@ var ItemDetailsPage = function ItemDetailsPage() {
   return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 46
     },
     __self: this
   }, __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
-    },
-    __self: this
-  }, __jsx("br", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 46
-    },
-    __self: this
-  }), __jsx("div", {
-    className: "columns",
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 47
     },
     __self: this
-  }, __jsx("div", {
-    className: "column is-1",
+  }, __jsx("br", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 48
     },
     __self: this
   }), __jsx("div", {
-    className: "column",
+    className: "columns",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 49
     },
     __self: this
   }, __jsx("div", {
-    className: "is-fullwidth",
-    style: {
-      padding: '.5rem',
-      backgroundColor: '#C8E4FF'
-    },
+    className: "column is-1",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 50
+    },
+    __self: this
+  }), __jsx("div", {
+    className: "column",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "is-fullwidth",
+    style: {
+      padding: ".5rem",
+      backgroundColor: "#C8E4FF"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52
     },
     __self: this
   }, __jsx("p", {
@@ -13167,74 +13167,74 @@ var ItemDetailsPage = function ItemDetailsPage() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 56
     },
     __self: this
   }, "Poll by ", __jsx("strong", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 61
     },
     __self: this
   }, itemDetails.nameGenerater))), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 64
     },
     __self: this
   }), __jsx("div", {
     className: "columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 65
     },
     __self: this
   }, __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 66
     },
     __self: this
   }, __jsx("p", {
     className: "title has-text-info has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 67
     },
     __self: this
   }, itemDetails.boardTitle), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 70
     },
     __self: this
   }, itemDetails.description ? itemDetails.description : "Please indicate when you are available. Then click 'Save'."), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 75
     },
     __self: this
   }), __jsx("table", {
     className: "table is-bordered is-striped is-narrow is-hoverable is-fullwidth",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 76
     },
     __self: this
   }, __jsx("thead", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 77
     },
     __self: this
   }, __jsx("th", {
     style: {
-      border: 'none'
+      border: "none"
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 78
     },
     __self: this
   }), itemDetails.possibleDates ? itemDetails.possibleDates.map(function (element, index) {
@@ -13242,21 +13242,21 @@ var ItemDetailsPage = function ItemDetailsPage() {
       className: "has-background-grey-lighter has-text-centered",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 75
+        lineNumber: 83
       },
       __self: this
     }, element);
   }) : null), __jsx("tbody", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81
+      lineNumber: 89
     },
     __self: this
   }, __jsx("tr", {
     className: "be-first",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82
+      lineNumber: 90
     },
     __self: this
   }, __jsx("td", {
@@ -13264,39 +13264,39 @@ var ItemDetailsPage = function ItemDetailsPage() {
     colSpan: "100%",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 91
     },
     __self: this
   }, "Be the first to vote in this poll!")), __jsx("tr", {
     style: {
-      backgroundColor: '#C8E4FF'
+      backgroundColor: "#C8E4FF"
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 98
     },
     __self: this
   }, __jsx("td", {
     style: {
-      borderColor: 'white'
+      borderColor: "white"
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 99
     },
     __self: this
   }, __jsx("div", {
     "class": "field",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 100
     },
     __self: this
   }, __jsx("div", {
     "class": "control",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 101
     },
     __self: this
   }, __jsx("input", {
@@ -13308,25 +13308,25 @@ var ItemDetailsPage = function ItemDetailsPage() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 102
     },
     __self: this
   })))), itemDetails.possibleDates ? itemDetails.possibleDates.map(function (element, index) {
     return __jsx("td", {
       style: {
-        borderColor: 'white'
+        borderColor: "white"
       },
       className: "has-text-centered",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 106
+        lineNumber: 117
       },
       __self: this
     }, __jsx("label", {
       "class": "checkbox",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 109
+        lineNumber: 121
       },
       __self: this
     }, __jsx("input", {
@@ -13335,14 +13335,14 @@ var ItemDetailsPage = function ItemDetailsPage() {
       onChange: checkboxTest,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 110
+        lineNumber: 122
       },
       __self: this
     })));
   }) : null))), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 134
     },
     __self: this
   }, __jsx("a", {
@@ -13350,34 +13350,34 @@ var ItemDetailsPage = function ItemDetailsPage() {
     onClick: postParticipant,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 123
+      lineNumber: 135
     },
     __self: this
   }, "Save")), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127
+      lineNumber: 142
     },
     __self: this
   })), __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 129
+      lineNumber: 144
     },
     __self: this
   }), __jsx("div", {
     className: "column is-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 130
+      lineNumber: 145
     },
     __self: this
   }, "x"))), __jsx("div", {
     className: "column is-1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 133
+      lineNumber: 148
     },
     __self: this
   }))));
@@ -13387,28 +13387,28 @@ var ItemDetailsPage = function ItemDetailsPage() {
 
 /***/ }),
 
-/***/ 2:
-/*!*******************************************************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=C%3A%5CUsers%5CAhmet%20Bugra%20Cakici%5CDesktop%5CMeetingPlaner-client%5Cpages%5Cplan%5C%5BitemID%5D.js ***!
-  \*******************************************************************************************************************************************************************************************/
+/***/ 4:
+/*!***********************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=%2Fhome%2Fabugra%2FDesktop%2FMeetingPlanner-client%2Fpages%2Fplan%2F%5BitemID%5D.js ***!
+  \***********************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=C%3A%5CUsers%5CAhmet%20Bugra%20Cakici%5CDesktop%5CMeetingPlaner-client%5Cpages%5Cplan%5C%5BitemID%5D.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=C%3A%5CUsers%5CAhmet%20Bugra%20Cakici%5CDesktop%5CMeetingPlaner-client%5Cpages%5Cplan%5C%5BitemID%5D.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=%2Fhome%2Fabugra%2FDesktop%2FMeetingPlanner-client%2Fpages%2Fplan%2F%5BitemID%5D.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=%2Fhome%2Fabugra%2FDesktop%2FMeetingPlanner-client%2Fpages%2Fplan%2F%5BitemID%5D.js!./");
 
 
 /***/ }),
 
-/***/ "dll-reference dll_0fb095e325d7ebf261c3":
+/***/ "dll-reference dll_82519ec661270f7f484f":
 /*!*******************************************!*\
-  !*** external "dll_0fb095e325d7ebf261c3" ***!
+  !*** external "dll_82519ec661270f7f484f" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_0fb095e325d7ebf261c3;
+module.exports = dll_82519ec661270f7f484f;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[4,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=[itemID].js.map

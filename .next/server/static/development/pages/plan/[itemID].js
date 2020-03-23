@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -104,7 +104,7 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\components\\Footer.js";
+var _jsxFileName = "/home/abugra/Desktop/MeetingPlanner-client/components/Footer.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /* harmony default export */ __webpack_exports__["default"] = (() => {
@@ -271,7 +271,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_Navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Navbar */ "./components/Navbar.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Footer */ "./components/Footer.js");
-var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\components\\Layout.js";
+var _jsxFileName = "/home/abugra/Desktop/MeetingPlanner-client/components/Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -373,7 +373,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\components\\Navbar.js";
+var _jsxFileName = "/home/abugra/Desktop/MeetingPlanner-client/components/Navbar.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2399,7 +2399,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Layout */ "./components/Layout.js");
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ "./config.js");
-var _jsxFileName = "C:\\Users\\Ahmet Bugra Cakici\\Desktop\\MeetingPlaner-client\\pages\\plan\\[itemID].js";
+var _jsxFileName = "/home/abugra/Desktop/MeetingPlanner-client/pages/plan/[itemID].js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2415,21 +2415,21 @@ const ItemDetailsPage = () => {
   const {
     0: itemDetails,
     1: setItemDetails
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
   const {
     0: partipicantName,
     1: setPartipicantName
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
   const {
     0: optionsSelected,
     1: setOptionsSelected
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     getPlan();
-  });
+  }, []); // use getinitialprops instead useeffect
 
   const getPlan = async () => {
-    const doc = await _config__WEBPACK_IMPORTED_MODULE_3__["default"].get('api/freeone', {
+    const doc = await _config__WEBPACK_IMPORTED_MODULE_3__["default"].get("api/freeone", {
       params: {
         itemID
       }
@@ -2438,7 +2438,7 @@ const ItemDetailsPage = () => {
   };
 
   const postParticipant = async () => {
-    const doc = await _config__WEBPACK_IMPORTED_MODULE_3__["default"].post('api/participant', {
+    const doc = await _config__WEBPACK_IMPORTED_MODULE_3__["default"].post("api/participant", {
       partipicantName,
       optionsSelected
     }, {
@@ -2465,52 +2465,52 @@ const ItemDetailsPage = () => {
   return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 46
     },
     __self: undefined
   }, __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
-    },
-    __self: undefined
-  }, __jsx("br", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 46
-    },
-    __self: undefined
-  }), __jsx("div", {
-    className: "columns",
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 47
     },
     __self: undefined
-  }, __jsx("div", {
-    className: "column is-1",
+  }, __jsx("br", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 48
     },
     __self: undefined
   }), __jsx("div", {
-    className: "column",
+    className: "columns",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 49
     },
     __self: undefined
   }, __jsx("div", {
-    className: "is-fullwidth",
-    style: {
-      padding: '.5rem',
-      backgroundColor: '#C8E4FF'
-    },
+    className: "column is-1",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 50
+    },
+    __self: undefined
+  }), __jsx("div", {
+    className: "column",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51
+    },
+    __self: undefined
+  }, __jsx("div", {
+    className: "is-fullwidth",
+    style: {
+      padding: ".5rem",
+      backgroundColor: "#C8E4FF"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52
     },
     __self: undefined
   }, __jsx("p", {
@@ -2519,94 +2519,94 @@ const ItemDetailsPage = () => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 56
     },
     __self: undefined
   }, "Poll by ", __jsx("strong", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 61
     },
     __self: undefined
   }, itemDetails.nameGenerater))), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 64
     },
     __self: undefined
   }), __jsx("div", {
     className: "columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 65
     },
     __self: undefined
   }, __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 66
     },
     __self: undefined
   }, __jsx("p", {
     className: "title has-text-info has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 67
     },
     __self: undefined
   }, itemDetails.boardTitle), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 70
     },
     __self: undefined
   }, itemDetails.description ? itemDetails.description : "Please indicate when you are available. Then click 'Save'."), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 75
     },
     __self: undefined
   }), __jsx("table", {
     className: "table is-bordered is-striped is-narrow is-hoverable is-fullwidth",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 76
     },
     __self: undefined
   }, __jsx("thead", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 77
     },
     __self: undefined
   }, __jsx("th", {
     style: {
-      border: 'none'
+      border: "none"
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 78
     },
     __self: undefined
   }), itemDetails.possibleDates ? itemDetails.possibleDates.map((element, index) => __jsx("th", {
     className: "has-background-grey-lighter has-text-centered",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75
+      lineNumber: 83
     },
     __self: undefined
   }, element)) : null), __jsx("tbody", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81
+      lineNumber: 89
     },
     __self: undefined
   }, __jsx("tr", {
     className: "be-first",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82
+      lineNumber: 90
     },
     __self: undefined
   }, __jsx("td", {
@@ -2614,39 +2614,39 @@ const ItemDetailsPage = () => {
     colSpan: "100%",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 91
     },
     __self: undefined
   }, "Be the first to vote in this poll!")), __jsx("tr", {
     style: {
-      backgroundColor: '#C8E4FF'
+      backgroundColor: "#C8E4FF"
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 98
     },
     __self: undefined
   }, __jsx("td", {
     style: {
-      borderColor: 'white'
+      borderColor: "white"
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 99
     },
     __self: undefined
   }, __jsx("div", {
     class: "field",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 100
     },
     __self: undefined
   }, __jsx("div", {
     class: "control",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 101
     },
     __self: undefined
   }, __jsx("input", {
@@ -2658,24 +2658,24 @@ const ItemDetailsPage = () => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 102
     },
     __self: undefined
   })))), itemDetails.possibleDates ? itemDetails.possibleDates.map((element, index) => __jsx("td", {
     style: {
-      borderColor: 'white'
+      borderColor: "white"
     },
     className: "has-text-centered",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106
+      lineNumber: 117
     },
     __self: undefined
   }, __jsx("label", {
     class: "checkbox",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 121
     },
     __self: undefined
   }, __jsx("input", {
@@ -2684,13 +2684,13 @@ const ItemDetailsPage = () => {
     onChange: checkboxTest,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 122
     },
     __self: undefined
   })))) : null))), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 134
     },
     __self: undefined
   }, __jsx("a", {
@@ -2698,34 +2698,34 @@ const ItemDetailsPage = () => {
     onClick: postParticipant,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 123
+      lineNumber: 135
     },
     __self: undefined
   }, "Save")), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127
+      lineNumber: 142
     },
     __self: undefined
   })), __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 129
+      lineNumber: 144
     },
     __self: undefined
   }), __jsx("div", {
     className: "column is-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 130
+      lineNumber: 145
     },
     __self: undefined
   }, "x"))), __jsx("div", {
     className: "column is-1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 133
+      lineNumber: 148
     },
     __self: undefined
   }))));
@@ -2735,14 +2735,14 @@ const ItemDetailsPage = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 6:
 /*!**************************************!*\
   !*** multi ./pages/plan/[itemID].js ***!
   \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Ahmet Bugra Cakici\Desktop\MeetingPlaner-client\pages\plan\[itemID].js */"./pages/plan/[itemID].js");
+module.exports = __webpack_require__(/*! /home/abugra/Desktop/MeetingPlanner-client/pages/plan/[itemID].js */"./pages/plan/[itemID].js");
 
 
 /***/ }),
