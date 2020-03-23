@@ -12,14 +12,15 @@ const ItemDetailsPage = () => {
   const [optionsSelected, setOptionsSelected] = useState("");
 
   useEffect(() => {
-    getPlan();
-  },[]); // use getinitialprops instead useeffect
+    if(itemID) {
+      getPlan(itemID);
+    }
+  },[itemID]);
 
-  const getPlan = async () => {
+  const getPlan = async (itemID) => {
     const doc = await axiosInstance.get("api/freeone", { params: { itemID } });
     setItemDetails(doc.data);
   };
-
 
   const postParticipant = async () => {
     const doc = await axiosInstance.post(
