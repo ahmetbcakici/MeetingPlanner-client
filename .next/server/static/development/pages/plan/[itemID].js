@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2415,39 +2415,39 @@ const ItemDetailsPage = () => {
   const {
     0: itemDetails,
     1: setItemDetails
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
   const {
-    0: partipicantName,
-    1: setPartipicantName
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
+    0: participantName,
+    1: setParticipantName
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
   const {
     0: optionsSelected,
     1: setOptionsSelected
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    getPlan();
-  }, []); // use getinitialprops instead useeffect
+    if (itemID) getPlan(itemID);
+  }, [itemID]); //
 
-  const getPlan = async () => {
-    const doc = await _config__WEBPACK_IMPORTED_MODULE_3__["default"].get("api/freeone", {
+  const getPlan = async itemID => {
+    const doc = await _config__WEBPACK_IMPORTED_MODULE_3__["default"].get('api/freeone', {
       params: {
         itemID
       }
     });
+    console.log(doc.data);
     setItemDetails(doc.data);
   };
 
   const postParticipant = async () => {
-    const doc = await _config__WEBPACK_IMPORTED_MODULE_3__["default"].post("api/participant", {
-      partipicantName,
+    const doc = await _config__WEBPACK_IMPORTED_MODULE_3__["default"].post('api/participant', {
+      participantName,
       optionsSelected
     }, {
       params: {
         itemID
       }
-    }); // const doc = await axiosInstance.post('api/participant', { params: { itemID } });
-
-    console.log(doc);
+    });
+    console.log(doc.data);
   };
 
   const checkboxTest = async e => {
@@ -2465,52 +2465,52 @@ const ItemDetailsPage = () => {
   return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 44
     },
     __self: undefined
   }, __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 45
     },
     __self: undefined
   }, __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 46
     },
     __self: undefined
   }), __jsx("div", {
     className: "columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 47
     },
     __self: undefined
   }, __jsx("div", {
     className: "column is-1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 48
     },
     __self: undefined
   }), __jsx("div", {
     className: "column",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 49
     },
     __self: undefined
   }, __jsx("div", {
     className: "is-fullwidth",
     style: {
-      padding: ".5rem",
-      backgroundColor: "#C8E4FF"
+      padding: '.5rem',
+      backgroundColor: '#C8E4FF'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 50
     },
     __self: undefined
   }, __jsx("p", {
@@ -2519,94 +2519,94 @@ const ItemDetailsPage = () => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 54
     },
     __self: undefined
   }, "Poll by ", __jsx("strong", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 59
     },
     __self: undefined
   }, itemDetails.nameGenerater))), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 62
     },
     __self: undefined
   }), __jsx("div", {
     className: "columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 63
     },
     __self: undefined
   }, __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66
+      lineNumber: 64
     },
     __self: undefined
   }, __jsx("p", {
     className: "title has-text-info has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 65
     },
     __self: undefined
   }, itemDetails.boardTitle), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 68
     },
     __self: undefined
   }, itemDetails.description ? itemDetails.description : "Please indicate when you are available. Then click 'Save'."), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75
+      lineNumber: 73
     },
     __self: undefined
   }), __jsx("table", {
     className: "table is-bordered is-striped is-narrow is-hoverable is-fullwidth",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 74
     },
     __self: undefined
   }, __jsx("thead", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77
+      lineNumber: 75
     },
     __self: undefined
   }, __jsx("th", {
     style: {
-      border: "none"
+      border: 'none'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 76
     },
     __self: undefined
   }), itemDetails.possibleDates ? itemDetails.possibleDates.map((element, index) => __jsx("th", {
     className: "has-background-grey-lighter has-text-centered",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 81
     },
     __self: undefined
   }, element)) : null), __jsx("tbody", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 87
     },
     __self: undefined
   }, __jsx("tr", {
     className: "be-first",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 88
     },
     __self: undefined
   }, __jsx("td", {
@@ -2614,39 +2614,53 @@ const ItemDetailsPage = () => {
     colSpan: "100%",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 89
     },
     __self: undefined
-  }, "Be the first to vote in this poll!")), __jsx("tr", {
+  }, "Be the first to vote in this poll!")), itemDetails.participants ? itemDetails.participants.map(participant => {
+    return __jsx("tr", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 99
+      },
+      __self: undefined
+    }, __jsx("td", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 100
+      },
+      __self: undefined
+    }, participant.participantName), console.log(itemDetails.participants.optionsSelected));
+  }) : null, __jsx("tr", {
     style: {
-      backgroundColor: "#C8E4FF"
+      backgroundColor: '#C8E4FF'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 108
     },
     __self: undefined
   }, __jsx("td", {
     style: {
-      borderColor: "white"
+      borderColor: 'white'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 109
     },
     __self: undefined
   }, __jsx("div", {
     class: "field",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 110
     },
     __self: undefined
   }, __jsx("div", {
     class: "control",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101
+      lineNumber: 111
     },
     __self: undefined
   }, __jsx("input", {
@@ -2654,28 +2668,28 @@ const ItemDetailsPage = () => {
     type: "text",
     placeholder: "Your name",
     onChange: e => {
-      setPartipicantName(e.target.value);
+      setParticipantName(e.target.value);
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 112
     },
     __self: undefined
   })))), itemDetails.possibleDates ? itemDetails.possibleDates.map((element, index) => __jsx("td", {
     style: {
-      borderColor: "white"
+      borderColor: 'white'
     },
     className: "has-text-centered",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 117
+      lineNumber: 127
     },
     __self: undefined
   }, __jsx("label", {
     class: "checkbox",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 121
+      lineNumber: 131
     },
     __self: undefined
   }, __jsx("input", {
@@ -2684,13 +2698,13 @@ const ItemDetailsPage = () => {
     onChange: checkboxTest,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 132
     },
     __self: undefined
   })))) : null))), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 134
+      lineNumber: 144
     },
     __self: undefined
   }, __jsx("a", {
@@ -2698,34 +2712,34 @@ const ItemDetailsPage = () => {
     onClick: postParticipant,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 145
     },
     __self: undefined
   }, "Save")), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 142
+      lineNumber: 152
     },
     __self: undefined
   })), __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 144
+      lineNumber: 154
     },
     __self: undefined
   }), __jsx("div", {
     className: "column is-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145
+      lineNumber: 155
     },
     __self: undefined
   }, "x"))), __jsx("div", {
     className: "column is-1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 148
+      lineNumber: 158
     },
     __self: undefined
   }))));
@@ -2735,7 +2749,7 @@ const ItemDetailsPage = () => {
 
 /***/ }),
 
-/***/ 6:
+/***/ 4:
 /*!**************************************!*\
   !*** multi ./pages/plan/[itemID].js ***!
   \**************************************/

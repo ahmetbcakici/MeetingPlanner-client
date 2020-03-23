@@ -1,34 +1,32 @@
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
-import Layout from "../../components/Layout";
-import axiosInstance from "../../config";
+import {useRouter} from 'next/router';
+import {useState, useEffect} from 'react';
+import Layout from '../../components/Layout';
+import axiosInstance from '../../config';
 
 const ItemDetailsPage = () => {
-
   const router = useRouter();
-  const { itemID } = router.query;
-  const [itemDetails, setItemDetails] = useState("");
-  const [partipicantName, setPartipicantName] = useState("");
-  const [optionsSelected, setOptionsSelected] = useState("");
+  const {itemID} = router.query;
+  const [itemDetails, setItemDetails] = useState('');
+  const [participantName, setParticipantName] = useState('');
+  const [optionsSelected, setOptionsSelected] = useState('');
 
   useEffect(() => {
-    getPlan();
-  },[]); // use getinitialprops instead useeffect
+    if (itemID) getPlan(itemID);
+  }, [itemID]); //
 
-  const getPlan = async () => {
-    const doc = await axiosInstance.get("api/freeone", { params: { itemID } });
+  const getPlan = async (itemID) => {
+    const doc = await axiosInstance.get('api/freeone', {params: {itemID}});
+    console.log(doc.data);
     setItemDetails(doc.data);
   };
 
-
   const postParticipant = async () => {
     const doc = await axiosInstance.post(
-      "api/participant",
-      { partipicantName, optionsSelected },
-      { params: { itemID } }
+      'api/participant',
+      {participantName, optionsSelected},
+      {params: {itemID}}
     );
-    // const doc = await axiosInstance.post('api/participant', { params: { itemID } });
-    console.log(doc);
+    console.log(doc.data);
   };
 
   const checkboxTest = async e => {
@@ -47,11 +45,11 @@ const ItemDetailsPage = () => {
       <div className="container">
         <br />
         <div className="columns">
-          <div className="column is-1"></div>
+          <div className="column is-1" />
           <div className="column">
             <div
               className="is-fullwidth"
-              style={{ padding: ".5rem", backgroundColor: "#C8E4FF" }}
+              style={{padding: '.5rem', backgroundColor: '#C8E4FF'}}
             >
               <p
                 onClick={() => {
@@ -75,7 +73,7 @@ const ItemDetailsPage = () => {
                 <br />
                 <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                   <thead>
-                    <th style={{ border: "none" }}></th>
+                    <th style={{border: 'none'}} />
 
                     {/* Put possible dates as table headers */}
                     {itemDetails.possibleDates
@@ -95,8 +93,20 @@ const ItemDetailsPage = () => {
                         Be the first to vote in this poll!
                       </td>
                     </tr>
-                    <tr style={{ backgroundColor: "#C8E4FF" }}>
-                      <td style={{ borderColor: "white" }}>
+                    {itemDetails.participants
+                      ? itemDetails.participants.map(participant => {
+                          return (
+                            <tr>
+                              <td>{participant.participantName}</td>
+                              {console.log(
+                                itemDetails.participants.optionsSelected
+                              )}
+                            </tr>
+                          );
+                        })
+                      : null}
+                    <tr style={{backgroundColor: '#C8E4FF'}}>
+                      <td style={{borderColor: 'white'}}>
                         <div class="field">
                           <div class="control">
                             <input
@@ -104,18 +114,18 @@ const ItemDetailsPage = () => {
                               type="text"
                               placeholder="Your name"
                               onChange={e => {
-                                setPartipicantName(e.target.value);
+                                setParticipantName(e.target.value);
                               }}
                             />
                           </div>
                         </div>
                       </td>
 
-                      {/* Columns which has checkbox to check possible dates*/}
+                      {/* Columns which has checkbox to check possible dates */}
                       {itemDetails.possibleDates
                         ? itemDetails.possibleDates.map((element, index) => (
                             <td
-                              style={{ borderColor: "white" }}
+                              style={{borderColor: 'white'}}
                               className="has-text-centered"
                             >
                               <label class="checkbox">
@@ -141,11 +151,11 @@ const ItemDetailsPage = () => {
                 </p>
                 <br />
               </div>
-              <div className="column is-5"></div>
+              <div className="column is-5" />
               <div className="column is-2">x</div>
             </div>
           </div>
-          <div className="column is-1"></div>
+          <div className="column is-1" />
         </div>
       </div>
     </Layout>

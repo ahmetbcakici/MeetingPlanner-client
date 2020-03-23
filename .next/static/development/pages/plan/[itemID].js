@@ -13012,30 +13012,30 @@ var ItemDetailsPage = function ItemDetailsPage() {
   var router = Object(next_router__WEBPACK_IMPORTED_MODULE_3__["useRouter"])();
   var itemID = router.query.itemID;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(""),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(''),
       itemDetails = _useState[0],
       setItemDetails = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(""),
-      partipicantName = _useState2[0],
-      setPartipicantName = _useState2[1];
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(''),
+      participantName = _useState2[0],
+      setParticipantName = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(""),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(''),
       optionsSelected = _useState3[0],
       setOptionsSelected = _useState3[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
-    getPlan();
-  }, []); // use getinitialprops instead useeffect
+    if (itemID) getPlan(itemID);
+  }, [itemID]); //
 
-  var getPlan = function getPlan() {
+  var getPlan = function getPlan(itemID) {
     var doc;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.async(function getPlan$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_5__["default"].get("api/freeone", {
+            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_5__["default"].get('api/freeone', {
               params: {
                 itemID: itemID
               }
@@ -13043,9 +13043,10 @@ var ItemDetailsPage = function ItemDetailsPage() {
 
           case 2:
             doc = _context.sent;
+            console.log(doc.data);
             setItemDetails(doc.data);
 
-          case 4:
+          case 5:
           case "end":
             return _context.stop();
         }
@@ -13060,8 +13061,8 @@ var ItemDetailsPage = function ItemDetailsPage() {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_5__["default"].post("api/participant", {
-              partipicantName: partipicantName,
+            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_5__["default"].post('api/participant', {
+              participantName: participantName,
               optionsSelected: optionsSelected
             }, {
               params: {
@@ -13071,8 +13072,7 @@ var ItemDetailsPage = function ItemDetailsPage() {
 
           case 2:
             doc = _context2.sent;
-            // const doc = await axiosInstance.post('api/participant', { params: { itemID } });
-            console.log(doc);
+            console.log(doc.data);
 
           case 4:
           case "end":
@@ -13113,52 +13113,52 @@ var ItemDetailsPage = function ItemDetailsPage() {
   return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 44
     },
     __self: this
   }, __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 45
     },
     __self: this
   }, __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 46
     },
     __self: this
   }), __jsx("div", {
     className: "columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 47
     },
     __self: this
   }, __jsx("div", {
     className: "column is-1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 48
     },
     __self: this
   }), __jsx("div", {
     className: "column",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 49
     },
     __self: this
   }, __jsx("div", {
     className: "is-fullwidth",
     style: {
-      padding: ".5rem",
-      backgroundColor: "#C8E4FF"
+      padding: '.5rem',
+      backgroundColor: '#C8E4FF'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 50
     },
     __self: this
   }, __jsx("p", {
@@ -13167,74 +13167,74 @@ var ItemDetailsPage = function ItemDetailsPage() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 54
     },
     __self: this
   }, "Poll by ", __jsx("strong", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 59
     },
     __self: this
   }, itemDetails.nameGenerater))), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 62
     },
     __self: this
   }), __jsx("div", {
     className: "columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 63
     },
     __self: this
   }, __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66
+      lineNumber: 64
     },
     __self: this
   }, __jsx("p", {
     className: "title has-text-info has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 65
     },
     __self: this
   }, itemDetails.boardTitle), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 68
     },
     __self: this
   }, itemDetails.description ? itemDetails.description : "Please indicate when you are available. Then click 'Save'."), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75
+      lineNumber: 73
     },
     __self: this
   }), __jsx("table", {
     className: "table is-bordered is-striped is-narrow is-hoverable is-fullwidth",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 74
     },
     __self: this
   }, __jsx("thead", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77
+      lineNumber: 75
     },
     __self: this
   }, __jsx("th", {
     style: {
-      border: "none"
+      border: 'none'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 76
     },
     __self: this
   }), itemDetails.possibleDates ? itemDetails.possibleDates.map(function (element, index) {
@@ -13242,21 +13242,21 @@ var ItemDetailsPage = function ItemDetailsPage() {
       className: "has-background-grey-lighter has-text-centered",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 83
+        lineNumber: 81
       },
       __self: this
     }, element);
   }) : null), __jsx("tbody", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 87
     },
     __self: this
   }, __jsx("tr", {
     className: "be-first",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 88
     },
     __self: this
   }, __jsx("td", {
@@ -13264,39 +13264,53 @@ var ItemDetailsPage = function ItemDetailsPage() {
     colSpan: "100%",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 89
     },
     __self: this
-  }, "Be the first to vote in this poll!")), __jsx("tr", {
+  }, "Be the first to vote in this poll!")), itemDetails.participants ? itemDetails.participants.map(function (participant) {
+    return __jsx("tr", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 99
+      },
+      __self: this
+    }, __jsx("td", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 100
+      },
+      __self: this
+    }, participant.participantName), console.log(itemDetails.participants.optionsSelected));
+  }) : null, __jsx("tr", {
     style: {
-      backgroundColor: "#C8E4FF"
+      backgroundColor: '#C8E4FF'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 108
     },
     __self: this
   }, __jsx("td", {
     style: {
-      borderColor: "white"
+      borderColor: 'white'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 109
     },
     __self: this
   }, __jsx("div", {
     "class": "field",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 110
     },
     __self: this
   }, __jsx("div", {
     "class": "control",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101
+      lineNumber: 111
     },
     __self: this
   }, __jsx("input", {
@@ -13304,29 +13318,29 @@ var ItemDetailsPage = function ItemDetailsPage() {
     type: "text",
     placeholder: "Your name",
     onChange: function onChange(e) {
-      setPartipicantName(e.target.value);
+      setParticipantName(e.target.value);
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 112
     },
     __self: this
   })))), itemDetails.possibleDates ? itemDetails.possibleDates.map(function (element, index) {
     return __jsx("td", {
       style: {
-        borderColor: "white"
+        borderColor: 'white'
       },
       className: "has-text-centered",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 117
+        lineNumber: 127
       },
       __self: this
     }, __jsx("label", {
       "class": "checkbox",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 121
+        lineNumber: 131
       },
       __self: this
     }, __jsx("input", {
@@ -13335,14 +13349,14 @@ var ItemDetailsPage = function ItemDetailsPage() {
       onChange: checkboxTest,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 122
+        lineNumber: 132
       },
       __self: this
     })));
   }) : null))), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 134
+      lineNumber: 144
     },
     __self: this
   }, __jsx("a", {
@@ -13350,34 +13364,34 @@ var ItemDetailsPage = function ItemDetailsPage() {
     onClick: postParticipant,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 145
     },
     __self: this
   }, "Save")), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 142
+      lineNumber: 152
     },
     __self: this
   })), __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 144
+      lineNumber: 154
     },
     __self: this
   }), __jsx("div", {
     className: "column is-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145
+      lineNumber: 155
     },
     __self: this
   }, "x"))), __jsx("div", {
     className: "column is-1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 148
+      lineNumber: 158
     },
     __self: this
   }))));
@@ -13387,7 +13401,7 @@ var ItemDetailsPage = function ItemDetailsPage() {
 
 /***/ }),
 
-/***/ 4:
+/***/ 1:
 /*!***********************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=%2Fhome%2Fabugra%2FDesktop%2FMeetingPlanner-client%2Fpages%2Fplan%2F%5BitemID%5D.js ***!
   \***********************************************************************************************************************************************************************/
@@ -13410,5 +13424,5 @@ module.exports = dll_82519ec661270f7f484f;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=[itemID].js.map
