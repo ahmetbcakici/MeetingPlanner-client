@@ -1,2 +1,12 @@
 node_modules
 notesForDevelopment.txt
+
+# see: https://codeconqueror.com/blog/a-good-gitignore-for-next-js
+# next.js build output
+.next
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# intellij idea ide
+.idea
