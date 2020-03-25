@@ -25,6 +25,7 @@ const ItemDetailsPage = () => {
       {participantName, optionsSelected},
       {params: {itemID}}
     );
+    getPlan(itemID);
   };
 
   const checkboxTest = async e => {
@@ -65,7 +66,7 @@ const ItemDetailsPage = () => {
               style={{padding: '.5rem', backgroundColor: '#C8E4FF'}}
             >
               <p>
-                Poll by <strong>{itemDetails.nameGenerater}</strong>
+                Poll by <strong>{itemDetails.nameOwner}</strong>
               </p>
             </div>
             <br />
@@ -88,7 +89,10 @@ const ItemDetailsPage = () => {
                       {/* Put possible dates as table headers */}
                       {itemDetails.possibleDates
                         ? itemDetails.possibleDates.map((element, index) => (
-                            <th key={index} className="has-background-grey-lighter has-text-centered">
+                            <th
+                              key={index}
+                              className="has-background-grey-lighter has-text-centered"
+                            >
                               {element}
                             </th>
                           ))

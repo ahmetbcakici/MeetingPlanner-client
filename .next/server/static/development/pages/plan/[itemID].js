@@ -2446,6 +2446,7 @@ const ItemDetailsPage = () => {
         itemID
       }
     });
+    getPlan(itemID);
   };
 
   const checkboxTest = async e => {
@@ -2472,7 +2473,7 @@ const ItemDetailsPage = () => {
             key: index,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 48
+              lineNumber: 49
             },
             __self: undefined
           }, "X");
@@ -2481,7 +2482,7 @@ const ItemDetailsPage = () => {
             key: index,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 50
+              lineNumber: 51
             },
             __self: undefined
           }, "yok");
@@ -2493,41 +2494,41 @@ const ItemDetailsPage = () => {
   return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 58
     },
     __self: undefined
   }, __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 59
     },
     __self: undefined
   }, __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 60
     },
     __self: undefined
   }), __jsx("div", {
     className: "columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 61
     },
     __self: undefined
   }, __jsx("div", {
     className: "column is-1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 62
     },
     __self: undefined
   }), __jsx("div", {
     className: "column",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 63
     },
     __self: undefined
   }, __jsx("div", {
@@ -2538,77 +2539,77 @@ const ItemDetailsPage = () => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 64
     },
     __self: undefined
   }, __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 68
     },
     __self: undefined
   }, "Poll by ", __jsx("strong", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 69
     },
     __self: undefined
-  }, itemDetails.nameGenerater))), __jsx("br", {
+  }, itemDetails.nameOwner))), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 72
     },
     __self: undefined
   }), __jsx("div", {
     className: "columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72
+      lineNumber: 73
     },
     __self: undefined
   }, __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73
+      lineNumber: 74
     },
     __self: undefined
   }, __jsx("p", {
     className: "title has-text-info has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74
+      lineNumber: 75
     },
     __self: undefined
   }, itemDetails.boardTitle), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77
+      lineNumber: 78
     },
     __self: undefined
   }, itemDetails.description ? itemDetails.description : "Please indicate when you are available. Then click 'Save'."), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82
+      lineNumber: 83
     },
     __self: undefined
   }), __jsx("table", {
     className: "table is-bordered is-striped is-narrow is-hoverable is-fullwidth",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 84
     },
     __self: undefined
   }, __jsx("thead", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84
+      lineNumber: 85
     },
     __self: undefined
   }, __jsx("tr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 86
     },
     __self: undefined
   }, __jsx("th", {
@@ -2617,7 +2618,7 @@ const ItemDetailsPage = () => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86
+      lineNumber: 87
     },
     __self: undefined
   }), itemDetails.possibleDates ? itemDetails.possibleDates.map((element, index) => __jsx("th", {
@@ -2625,20 +2626,20 @@ const ItemDetailsPage = () => {
     className: "has-background-grey-lighter has-text-centered",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 92
     },
     __self: undefined
   }, element)) : null)), __jsx("tbody", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 102
     },
     __self: undefined
   }, __jsx("tr", {
     className: "be-first",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 103
     },
     __self: undefined
   }, __jsx("td", {
@@ -2646,7 +2647,7 @@ const ItemDetailsPage = () => {
     colSpan: "100%",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 104
     },
     __self: undefined
   }, "Be the first to vote in this poll!")), itemDetails.participants ? itemDetails.participants.map((item, index) => {
@@ -2654,13 +2655,13 @@ const ItemDetailsPage = () => {
       key: index,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 111
+        lineNumber: 115
       },
       __self: undefined
     }, __jsx("td", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 112
+        lineNumber: 116
       },
       __self: undefined
     }, item.participantName), returnHTML(item));
@@ -2670,7 +2671,7 @@ const ItemDetailsPage = () => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119
+      lineNumber: 123
     },
     __self: undefined
   }, __jsx("td", {
@@ -2679,21 +2680,21 @@ const ItemDetailsPage = () => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 120
+      lineNumber: 124
     },
     __self: undefined
   }, __jsx("div", {
     className: "field",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 121
+      lineNumber: 125
     },
     __self: undefined
   }, __jsx("div", {
     className: "control",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 126
     },
     __self: undefined
   }, __jsx("input", {
@@ -2705,7 +2706,7 @@ const ItemDetailsPage = () => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 123
+      lineNumber: 127
     },
     __self: undefined
   })))), itemDetails.possibleDates ? itemDetails.possibleDates.map((element, index) => __jsx("td", {
@@ -2716,14 +2717,14 @@ const ItemDetailsPage = () => {
     className: "has-text-centered",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 138
+      lineNumber: 142
     },
     __self: undefined
   }, __jsx("label", {
     className: "checkbox",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 143
+      lineNumber: 147
     },
     __self: undefined
   }, __jsx("input", {
@@ -2732,13 +2733,13 @@ const ItemDetailsPage = () => {
     onChange: checkboxTest,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 144
+      lineNumber: 148
     },
     __self: undefined
   })))) : null))), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 156
+      lineNumber: 160
     },
     __self: undefined
   }, __jsx("a", {
@@ -2746,34 +2747,34 @@ const ItemDetailsPage = () => {
     onClick: postParticipant,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 157
+      lineNumber: 161
     },
     __self: undefined
   }, "Save")), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 164
+      lineNumber: 168
     },
     __self: undefined
   })), __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 166
+      lineNumber: 170
     },
     __self: undefined
   }), __jsx("div", {
     className: "column is-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 167
+      lineNumber: 171
     },
     __self: undefined
   }, "x"))), __jsx("div", {
     className: "column is-1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 170
+      lineNumber: 174
     },
     __self: undefined
   }))));
