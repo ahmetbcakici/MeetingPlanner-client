@@ -14,21 +14,19 @@ const ItemDetailsPage = () => {
     if (itemID) getPlan(itemID);
   }, [itemID]); //
 
-  const getPlan = async (itemID) => {
+  const getPlan = async itemID => {
     const doc = await axiosInstance.get('api/freeone', {params: {itemID}});
-    console.log(doc.data);
     setItemDetails(doc.data);
   };
 
   const postParticipant = async () => {
-    const doc = await axiosInstance.post(
+    const res = await axiosInstance.post(
       'api/participant',
       {participantName, optionsSelected},
       {params: {itemID}}
     );
-    console.log(doc.data);
   };
-
+  //ihlas yapı recai
   const checkboxTest = async e => {
     if (e.target.checked) {
       setOptionsSelected([...optionsSelected, e.target.id]);
@@ -51,11 +49,7 @@ const ItemDetailsPage = () => {
               className="is-fullwidth"
               style={{padding: '.5rem', backgroundColor: '#C8E4FF'}}
             >
-              <p
-                onClick={() => {
-                  console.log(optionsSelected);
-                }}
-              >
+              <p>
                 Poll by <strong>{itemDetails.nameGenerater}</strong>
               </p>
             </div>
@@ -73,16 +67,18 @@ const ItemDetailsPage = () => {
                 <br />
                 <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                   <thead>
-                    <th style={{border: 'none'}} />
+                    <tr>
+                      <th style={{border: 'none'}} />
 
-                    {/* Put possible dates as table headers */}
-                    {itemDetails.possibleDates
-                      ? itemDetails.possibleDates.map((element, index) => (
-                          <th className="has-background-grey-lighter has-text-centered">
-                            {element}
-                          </th>
-                        ))
-                      : null}
+                      {/* Put possible dates as table headers */}
+                      {itemDetails.possibleDates
+                        ? itemDetails.possibleDates.map((element, index) => (
+                            <th className="has-background-grey-lighter has-text-centered">
+                              {element}
+                            </th>
+                          ))
+                        : null}
+                    </tr>
                   </thead>
                   <tbody>
                     <tr className="be-first">
@@ -93,24 +89,32 @@ const ItemDetailsPage = () => {
                         Be the first to vote in this poll!
                       </td>
                     </tr>
+
                     {itemDetails.participants
-                      ? itemDetails.participants.map(participant => {
+                      ? itemDetails.participants.map(item => {
                           return (
                             <tr>
-                              <td>{participant.participantName}</td>
-                              {console.log(
-                                itemDetails.participants.optionsSelected
+                              <td>{item.participantName}</td>
+                              {itemDetails.possibleDates.map(
+                                (option, index) => {
+                                  item.optionsSelected.includes(index) ? (
+                                    <td>{item}</td>
+                                  ) : (
+                                    <td>yok</td>
+                                  );
+                                }
                               )}
                             </tr>
                           );
                         })
                       : null}
+
                     <tr style={{backgroundColor: '#C8E4FF'}}>
                       <td style={{borderColor: 'white'}}>
-                        <div class="field">
-                          <div class="control">
+                        <div className="field">
+                          <div className="control">
                             <input
-                              class="input is-primary"
+                              className="input is-primary"
                               type="text"
                               placeholder="Your name"
                               onChange={e => {
@@ -128,7 +132,7 @@ const ItemDetailsPage = () => {
                               style={{borderColor: 'white'}}
                               className="has-text-centered"
                             >
-                              <label class="checkbox">
+                              <label className="checkbox">
                                 <input
                                   type="checkbox"
                                   id={index}

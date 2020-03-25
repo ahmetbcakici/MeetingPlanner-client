@@ -13043,10 +13043,9 @@ var ItemDetailsPage = function ItemDetailsPage() {
 
           case 2:
             doc = _context.sent;
-            console.log(doc.data);
             setItemDetails(doc.data);
 
-          case 5:
+          case 4:
           case "end":
             return _context.stop();
         }
@@ -13055,7 +13054,7 @@ var ItemDetailsPage = function ItemDetailsPage() {
   };
 
   var postParticipant = function postParticipant() {
-    var doc;
+    var res;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.async(function postParticipant$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -13071,16 +13070,16 @@ var ItemDetailsPage = function ItemDetailsPage() {
             }));
 
           case 2:
-            doc = _context2.sent;
-            console.log(doc.data);
+            res = _context2.sent;
 
-          case 4:
+          case 3:
           case "end":
             return _context2.stop();
         }
       }
     });
-  };
+  }; //ihlas yapı recai
+
 
   var checkboxTest = function checkboxTest(e) {
     var tempOptionsSelected, check;
@@ -13113,41 +13112,41 @@ var ItemDetailsPage = function ItemDetailsPage() {
   return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 42
     },
     __self: this
   }, __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 43
     },
     __self: this
   }, __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 44
     },
     __self: this
   }), __jsx("div", {
     className: "columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 45
     },
     __self: this
   }, __jsx("div", {
     className: "column is-1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 46
     },
     __self: this
   }), __jsx("div", {
     className: "column",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 47
     },
     __self: this
   }, __jsx("div", {
@@ -13158,74 +13157,77 @@ var ItemDetailsPage = function ItemDetailsPage() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 48
     },
     __self: this
   }, __jsx("p", {
-    onClick: function onClick() {
-      console.log(optionsSelected);
-    },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 52
     },
     __self: this
   }, "Poll by ", __jsx("strong", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 53
     },
     __self: this
   }, itemDetails.nameGenerater))), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 56
     },
     __self: this
   }), __jsx("div", {
     className: "columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 57
     },
     __self: this
   }, __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 58
     },
     __self: this
   }, __jsx("p", {
     className: "title has-text-info has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 59
     },
     __self: this
   }, itemDetails.boardTitle), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 62
     },
     __self: this
   }, itemDetails.description ? itemDetails.description : "Please indicate when you are available. Then click 'Save'."), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73
+      lineNumber: 67
     },
     __self: this
   }), __jsx("table", {
     className: "table is-bordered is-striped is-narrow is-hoverable is-fullwidth",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74
+      lineNumber: 68
     },
     __self: this
   }, __jsx("thead", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75
+      lineNumber: 69
+    },
+    __self: this
+  }, __jsx("tr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70
     },
     __self: this
   }, __jsx("th", {
@@ -13234,7 +13236,7 @@ var ItemDetailsPage = function ItemDetailsPage() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 71
     },
     __self: this
   }), itemDetails.possibleDates ? itemDetails.possibleDates.map(function (element, index) {
@@ -13242,21 +13244,21 @@ var ItemDetailsPage = function ItemDetailsPage() {
       className: "has-background-grey-lighter has-text-centered",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 81
+        lineNumber: 76
       },
       __self: this
     }, element);
-  }) : null), __jsx("tbody", {
+  }) : null)), __jsx("tbody", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 83
     },
     __self: this
   }, __jsx("tr", {
     className: "be-first",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 84
     },
     __self: this
   }, __jsx("td", {
@@ -13264,30 +13266,44 @@ var ItemDetailsPage = function ItemDetailsPage() {
     colSpan: "100%",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 85
     },
     __self: this
-  }, "Be the first to vote in this poll!")), itemDetails.participants ? itemDetails.participants.map(function (participant) {
+  }, "Be the first to vote in this poll!")), itemDetails.participants ? itemDetails.participants.map(function (item) {
     return __jsx("tr", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 99
+        lineNumber: 96
       },
       __self: this
     }, __jsx("td", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 100
+        lineNumber: 97
       },
       __self: this
-    }, participant.participantName), console.log(itemDetails.participants.optionsSelected));
+    }, item.participantName), itemDetails.possibleDates.map(function (option, index) {
+      item.optionsSelected.includes(index) ? __jsx("td", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 101
+        },
+        __self: this
+      }, item) : __jsx("td", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 103
+        },
+        __self: this
+      }, "yok");
+    }));
   }) : null, __jsx("tr", {
     style: {
       backgroundColor: '#C8E4FF'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108
+      lineNumber: 112
     },
     __self: this
   }, __jsx("td", {
@@ -13296,25 +13312,25 @@ var ItemDetailsPage = function ItemDetailsPage() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 113
     },
     __self: this
   }, __jsx("div", {
-    "class": "field",
+    className: "field",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 114
     },
     __self: this
   }, __jsx("div", {
-    "class": "control",
+    className: "control",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 115
     },
     __self: this
   }, __jsx("input", {
-    "class": "input is-primary",
+    className: "input is-primary",
     type: "text",
     placeholder: "Your name",
     onChange: function onChange(e) {
@@ -13322,7 +13338,7 @@ var ItemDetailsPage = function ItemDetailsPage() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 116
     },
     __self: this
   })))), itemDetails.possibleDates ? itemDetails.possibleDates.map(function (element, index) {
@@ -13333,14 +13349,14 @@ var ItemDetailsPage = function ItemDetailsPage() {
       className: "has-text-centered",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 127
+        lineNumber: 131
       },
       __self: this
     }, __jsx("label", {
-      "class": "checkbox",
+      className: "checkbox",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 131
+        lineNumber: 135
       },
       __self: this
     }, __jsx("input", {
@@ -13349,14 +13365,14 @@ var ItemDetailsPage = function ItemDetailsPage() {
       onChange: checkboxTest,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 132
+        lineNumber: 136
       },
       __self: this
     })));
   }) : null))), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 144
+      lineNumber: 148
     },
     __self: this
   }, __jsx("a", {
@@ -13364,34 +13380,34 @@ var ItemDetailsPage = function ItemDetailsPage() {
     onClick: postParticipant,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145
+      lineNumber: 149
     },
     __self: this
   }, "Save")), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 152
+      lineNumber: 156
     },
     __self: this
   })), __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 154
+      lineNumber: 158
     },
     __self: this
   }), __jsx("div", {
     className: "column is-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 155
+      lineNumber: 159
     },
     __self: this
   }, "x"))), __jsx("div", {
     className: "column is-1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 158
+      lineNumber: 162
     },
     __self: this
   }))));
@@ -13401,7 +13417,7 @@ var ItemDetailsPage = function ItemDetailsPage() {
 
 /***/ }),
 
-/***/ 1:
+/***/ 3:
 /*!***********************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=%2Fhome%2Fabugra%2FDesktop%2FMeetingPlanner-client%2Fpages%2Fplan%2F%5BitemID%5D.js ***!
   \***********************************************************************************************************************************************************************/
@@ -13424,5 +13440,5 @@ module.exports = dll_82519ec661270f7f484f;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[3,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=[itemID].js.map
