@@ -26,7 +26,7 @@ const ItemDetailsPage = () => {
       {params: {itemID}}
     );
   };
-  //ihlas yapı recai
+
   const checkboxTest = async e => {
     if (e.target.checked) {
       setOptionsSelected([...optionsSelected, e.target.id]);
@@ -36,6 +36,21 @@ const ItemDetailsPage = () => {
     const check = tempOptionsSelected.indexOf(e.target.id);
     if (check > -1) tempOptionsSelected.splice(check, 1);
     setOptionsSelected(tempOptionsSelected);
+  };
+
+  const returnHTML = item => {
+    if (Array.isArray(itemDetails.possibleDates)) {
+      const possibleDates = itemDetails.possibleDates;
+      return possibleDates.map((option, index) => {
+        const isContainIndex = item.optionsSelected.includes(index);
+        console.log(isContainIndex);
+        if (isContainIndex) {
+          return <td key={index}>X</td>;
+        } else {
+          return <td key={index}>yok</td>;
+        }
+      });
+    }
   };
 
   return (
@@ -73,7 +88,7 @@ const ItemDetailsPage = () => {
                       {/* Put possible dates as table headers */}
                       {itemDetails.possibleDates
                         ? itemDetails.possibleDates.map((element, index) => (
-                            <th className="has-background-grey-lighter has-text-centered">
+                            <th key={index} className="has-background-grey-lighter has-text-centered">
                               {element}
                             </th>
                           ))
@@ -91,19 +106,11 @@ const ItemDetailsPage = () => {
                     </tr>
 
                     {itemDetails.participants
-                      ? itemDetails.participants.map(item => {
+                      ? itemDetails.participants.map((item, index) => {
                           return (
-                            <tr>
+                            <tr key={index}>
                               <td>{item.participantName}</td>
-                              {itemDetails.possibleDates.map(
-                                (option, index) => {
-                                  item.optionsSelected.includes(index) ? (
-                                    <td>{item}</td>
-                                  ) : (
-                                    <td>yok</td>
-                                  );
-                                }
-                              )}
+                              {returnHTML(item)}
                             </tr>
                           );
                         })
@@ -129,6 +136,7 @@ const ItemDetailsPage = () => {
                       {itemDetails.possibleDates
                         ? itemDetails.possibleDates.map((element, index) => (
                             <td
+                              key={index}
                               style={{borderColor: 'white'}}
                               className="has-text-centered"
                             >

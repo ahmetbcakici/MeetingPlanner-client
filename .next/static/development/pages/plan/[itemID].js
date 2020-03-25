@@ -12989,53 +12989,56 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Layout */ "./components/Layout.js");
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config */ "./config.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/array/is-array */ "./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Layout */ "./components/Layout.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../config */ "./config.js");
+
 
 
 var _jsxFileName = "/home/abugra/Desktop/MeetingPlanner-client/pages/plan/[itemID].js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
 
 
 
 
 
 var ItemDetailsPage = function ItemDetailsPage() {
-  var router = Object(next_router__WEBPACK_IMPORTED_MODULE_3__["useRouter"])();
+  var router = Object(next_router__WEBPACK_IMPORTED_MODULE_4__["useRouter"])();
   var itemID = router.query.itemID;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(''),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(''),
       itemDetails = _useState[0],
       setItemDetails = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(''),
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(''),
       participantName = _useState2[0],
       setParticipantName = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(''),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(''),
       optionsSelected = _useState3[0],
       setOptionsSelected = _useState3[1];
 
-  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
     if (itemID) getPlan(itemID);
   }, [itemID]); //
 
   var getPlan = function getPlan(itemID) {
     var doc;
-    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.async(function getPlan$(_context) {
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.async(function getPlan$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_5__["default"].get('api/freeone', {
+            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_6__["default"].get('api/freeone', {
               params: {
                 itemID: itemID
               }
@@ -13055,12 +13058,12 @@ var ItemDetailsPage = function ItemDetailsPage() {
 
   var postParticipant = function postParticipant() {
     var res;
-    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.async(function postParticipant$(_context2) {
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.async(function postParticipant$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_5__["default"].post('api/participant', {
+            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_6__["default"].post('api/participant', {
               participantName: participantName,
               optionsSelected: optionsSelected
             }, {
@@ -13078,12 +13081,11 @@ var ItemDetailsPage = function ItemDetailsPage() {
         }
       }
     });
-  }; //ihlas yapı recai
-
+  };
 
   var checkboxTest = function checkboxTest(e) {
     var tempOptionsSelected, check;
-    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.async(function checkboxTest$(_context3) {
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.async(function checkboxTest$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
@@ -13092,11 +13094,11 @@ var ItemDetailsPage = function ItemDetailsPage() {
               break;
             }
 
-            setOptionsSelected([].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(optionsSelected), [e.target.id]));
+            setOptionsSelected([].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(optionsSelected), [e.target.id]));
             return _context3.abrupt("return");
 
           case 3:
-            tempOptionsSelected = Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(optionsSelected);
+            tempOptionsSelected = Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(optionsSelected);
             check = tempOptionsSelected.indexOf(e.target.id);
             if (check > -1) tempOptionsSelected.splice(check, 1);
             setOptionsSelected(tempOptionsSelected);
@@ -13109,44 +13111,74 @@ var ItemDetailsPage = function ItemDetailsPage() {
     });
   };
 
-  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  var returnHTML = function returnHTML(item) {
+    if (_babel_runtime_corejs2_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0___default()(itemDetails.possibleDates)) {
+      var possibleDates = itemDetails.possibleDates;
+      return possibleDates.map(function (option, index) {
+        var isContainIndex = item.optionsSelected.includes(index);
+        console.log(isContainIndex);
+
+        if (isContainIndex) {
+          return __jsx("td", {
+            key: index,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 48
+            },
+            __self: this
+          }, "X");
+        } else {
+          return __jsx("td", {
+            key: index,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 50
+            },
+            __self: this
+          }, "yok");
+        }
+      });
+    }
+  };
+
+  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 57
     },
     __self: this
   }, __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 58
     },
     __self: this
   }, __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 59
     },
     __self: this
   }), __jsx("div", {
     className: "columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 60
     },
     __self: this
   }, __jsx("div", {
     className: "column is-1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 61
     },
     __self: this
   }), __jsx("div", {
     className: "column",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 62
     },
     __self: this
   }, __jsx("div", {
@@ -13157,77 +13189,77 @@ var ItemDetailsPage = function ItemDetailsPage() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 63
     },
     __self: this
   }, __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 67
     },
     __self: this
   }, "Poll by ", __jsx("strong", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 68
     },
     __self: this
   }, itemDetails.nameGenerater))), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 71
     },
     __self: this
   }), __jsx("div", {
     className: "columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 72
     },
     __self: this
   }, __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 73
     },
     __self: this
   }, __jsx("p", {
     className: "title has-text-info has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 74
     },
     __self: this
   }, itemDetails.boardTitle), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 77
     },
     __self: this
   }, itemDetails.description ? itemDetails.description : "Please indicate when you are available. Then click 'Save'."), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 82
     },
     __self: this
   }), __jsx("table", {
     className: "table is-bordered is-striped is-narrow is-hoverable is-fullwidth",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 83
     },
     __self: this
   }, __jsx("thead", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 84
     },
     __self: this
   }, __jsx("tr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 85
     },
     __self: this
   }, __jsx("th", {
@@ -13236,29 +13268,30 @@ var ItemDetailsPage = function ItemDetailsPage() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 86
     },
     __self: this
   }), itemDetails.possibleDates ? itemDetails.possibleDates.map(function (element, index) {
     return __jsx("th", {
+      key: index,
       className: "has-background-grey-lighter has-text-centered",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 76
+        lineNumber: 91
       },
       __self: this
     }, element);
   }) : null)), __jsx("tbody", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 98
     },
     __self: this
   }, __jsx("tr", {
     className: "be-first",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84
+      lineNumber: 99
     },
     __self: this
   }, __jsx("td", {
@@ -13266,44 +13299,31 @@ var ItemDetailsPage = function ItemDetailsPage() {
     colSpan: "100%",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 100
     },
     __self: this
-  }, "Be the first to vote in this poll!")), itemDetails.participants ? itemDetails.participants.map(function (item) {
+  }, "Be the first to vote in this poll!")), itemDetails.participants ? itemDetails.participants.map(function (item, index) {
     return __jsx("tr", {
+      key: index,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 96
+        lineNumber: 111
       },
       __self: this
     }, __jsx("td", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 97
+        lineNumber: 112
       },
       __self: this
-    }, item.participantName), itemDetails.possibleDates.map(function (option, index) {
-      item.optionsSelected.includes(index) ? __jsx("td", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 101
-        },
-        __self: this
-      }, item) : __jsx("td", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 103
-        },
-        __self: this
-      }, "yok");
-    }));
+    }, item.participantName), returnHTML(item));
   }) : null, __jsx("tr", {
     style: {
       backgroundColor: '#C8E4FF'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 119
     },
     __self: this
   }, __jsx("td", {
@@ -13312,21 +13332,21 @@ var ItemDetailsPage = function ItemDetailsPage() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113
+      lineNumber: 120
     },
     __self: this
   }, __jsx("div", {
     className: "field",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 114
+      lineNumber: 121
     },
     __self: this
   }, __jsx("div", {
     className: "control",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 115
+      lineNumber: 122
     },
     __self: this
   }, __jsx("input", {
@@ -13338,25 +13358,26 @@ var ItemDetailsPage = function ItemDetailsPage() {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 116
+      lineNumber: 123
     },
     __self: this
   })))), itemDetails.possibleDates ? itemDetails.possibleDates.map(function (element, index) {
     return __jsx("td", {
+      key: index,
       style: {
         borderColor: 'white'
       },
       className: "has-text-centered",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 131
+        lineNumber: 138
       },
       __self: this
     }, __jsx("label", {
       className: "checkbox",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 135
+        lineNumber: 143
       },
       __self: this
     }, __jsx("input", {
@@ -13365,14 +13386,14 @@ var ItemDetailsPage = function ItemDetailsPage() {
       onChange: checkboxTest,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 136
+        lineNumber: 144
       },
       __self: this
     })));
   }) : null))), __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 148
+      lineNumber: 156
     },
     __self: this
   }, __jsx("a", {
@@ -13380,34 +13401,34 @@ var ItemDetailsPage = function ItemDetailsPage() {
     onClick: postParticipant,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149
+      lineNumber: 157
     },
     __self: this
   }, "Save")), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 156
+      lineNumber: 164
     },
     __self: this
   })), __jsx("div", {
     className: "column is-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 158
+      lineNumber: 166
     },
     __self: this
   }), __jsx("div", {
     className: "column is-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 159
+      lineNumber: 167
     },
     __self: this
   }, "x"))), __jsx("div", {
     className: "column is-1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 162
+      lineNumber: 170
     },
     __self: this
   }))));
