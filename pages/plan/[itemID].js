@@ -9,6 +9,8 @@ const ItemDetailsPage = () => {
   const [itemDetails, setItemDetails] = useState('');
   const [participantName, setParticipantName] = useState('');
   const [optionsSelected, setOptionsSelected] = useState('');
+  const [senderName, setSenderName] = useState('');
+  const [comment, setComment] = useState('');
 
   useEffect(() => {
     if (itemID) getPlan(itemID);
@@ -28,7 +30,16 @@ const ItemDetailsPage = () => {
     getPlan(itemID);
   };
 
-  const checkboxTest = async e => {
+  const postComment = async () => {
+    const res = await axiosInstance.post(
+      'api/comment',
+      {senderName, comment},
+      {params: {itemID}}
+    );
+    getPlan(itemID);
+  };
+
+  const handleCheckboxVote = async e => {
     if (e.target.checked) {
       setOptionsSelected([...optionsSelected, e.target.id]);
       return;
@@ -39,19 +50,19 @@ const ItemDetailsPage = () => {
     setOptionsSelected(tempOptionsSelected);
   };
 
-  const returnHTML = item => {
+  const returnVotes = item => {
     if (Array.isArray(itemDetails.possibleDates)) {
-      const possibleDates = itemDetails.possibleDates;
+      const {possibleDates} = itemDetails;
       return possibleDates.map((option, index) => {
         const isContainIndex = item.optionsSelected.includes(index);
-        console.log(isContainIndex);
-        if (isContainIndex) {
-          return <td key={index}>X</td>;
-        } else {
-          return <td key={index}>yok</td>;
-        }
+        if (isContainIndex) return <td key={index}>X</td>;
+        else return <td key={index}></td>;
       });
     }
+  };
+
+  const showComments = () => {
+    console.log('object');
   };
 
   return (
@@ -62,11 +73,11 @@ const ItemDetailsPage = () => {
           <div className="column is-1" />
           <div className="column">
             <div
-              className="is-fullwidth"
-              style={{padding: '.5rem', backgroundColor: '#C8E4FF'}}
+              className="is-fullwidth has-background-special-blue"
+              style={{padding: '.5rem'}}
             >
               <p>
-                Poll by <strong>{itemDetails.nameOwner}</strong>
+                Poll by <strong>{itemDetails.ownerName}</strong>
               </p>
             </div>
             <br />
@@ -84,7 +95,7 @@ const ItemDetailsPage = () => {
                 <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                   <thead>
                     <tr>
-                      <th style={{border: 'none'}} />
+                      <th className="border-none" />
 
                       {/* Put possible dates as table headers */}
                       {itemDetails.possibleDates
@@ -114,23 +125,21 @@ const ItemDetailsPage = () => {
                           return (
                             <tr key={index}>
                               <td>{item.participantName}</td>
-                              {returnHTML(item)}
+                              {returnVotes(item)}
                             </tr>
                           );
                         })
                       : null}
 
-                    <tr style={{backgroundColor: '#C8E4FF'}}>
-                      <td style={{borderColor: 'white'}}>
+                    <tr className="has-background-special-blue">
+                      <td className="border-color-white">
                         <div className="field">
                           <div className="control">
                             <input
                               className="input is-primary"
                               type="text"
                               placeholder="Your name"
-                              onChange={e => {
-                                setParticipantName(e.target.value);
-                              }}
+                              onChange={e => setParticipantName(e.target.value)}
                             />
                           </div>
                         </div>
@@ -141,14 +150,13 @@ const ItemDetailsPage = () => {
                         ? itemDetails.possibleDates.map((element, index) => (
                             <td
                               key={index}
-                              style={{borderColor: 'white'}}
-                              className="has-text-centered"
+                              className="has-text-centered border-color-white"
                             >
                               <label className="checkbox">
                                 <input
                                   type="checkbox"
                                   id={index}
-                                  onChange={checkboxTest}
+                                  onChange={handleCheckboxVote}
                                 />
                               </label>
                             </td>
@@ -168,12 +176,112 @@ const ItemDetailsPage = () => {
                 <br />
               </div>
               <div className="column is-5" />
-              <div className="column is-2">x</div>
+              <div className="column is-2">
+                <p>
+                  <i className="fas fa-eye"></i> CHANGE VIEW
+                </p>
+              </div>
             </div>
           </div>
           <div className="column is-1" />
         </div>
+        <div className="columns">
+          <div className="column is-1" />
+          <div className="column">
+            <p className="title has-text-info has-text-weight-normal">
+              Comments &nbsp;
+              <a href="#" onClick={showComments}>
+                <i className="fas fa-plus-circle has-text-success"></i>
+              </a>
+            </p>
+
+            {/* Send comments area */}
+            <div className="columns has-background-special-blue">
+              <div className="column is-11">
+                <div className="field is-inline-block">
+                  <div className="control">
+                    <input
+                      className="input is-primary"
+                      type="text"
+                      placeholder="Your name"
+                      onChange={e => setSenderName(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="field">
+                  <div className="control">
+                    <textarea
+                      className="textarea"
+                      rows={2}
+                      placeholder="Your message"
+                      onChange={e => setComment(e.target.value)}
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div className="column is-1">
+                <button
+                  className="button is-link has-text-white is-fullwidth"
+                  onClick={postComment}
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+
+            <br />
+
+            {/* List available comments area */}
+            {itemDetails
+              ? itemDetails.comments.map(data => (
+                  <div className="columns">
+                    <div className="column is-1 has-text-centered">
+                      <span className="dot">{data.senderName[0]}</span>
+                    </div>
+                    <div className="column has-background-white-ter">
+                      <p>
+                        <span className="is-size-7">
+                          <strong>{data.senderName}</strong> &nbsp; · &nbsp;{' '}
+                          <span className="text-muted">19 hours ago</span>
+                        </span>
+                      </p>
+                      <p>{data.comment}</p>
+                    </div>
+                  </div>
+                ))
+              : null}
+          </div>
+          <div className="column is-1" />
+        </div>
+        <br />
       </div>
+
+      <style jsx>
+        {`
+          .dot {
+            color: white;
+            font-size: 1.5rem;
+            height: 2.5rem;
+            width: 2.5rem;
+            background-color: #007fff;
+            border-radius: 50%;
+            display: inline-block;
+          }
+          .has-background-special-blue {
+            background-color: #c8e4ff !important;
+          }
+          .border-none {
+            border: none !important;
+          }
+          .border-color-white {
+            border-color: white !important;
+          }
+          .text-muted {
+            color: #868e96 !important;
+          }
+        `}
+      </style>
     </Layout>
   );
 };

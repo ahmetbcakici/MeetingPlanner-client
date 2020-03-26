@@ -12144,6 +12144,699 @@ try {
 
 /***/ }),
 
+/***/ "./node_modules/string-hash/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/string-hash/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function hash(str) {
+  var hash = 5381,
+      i    = str.length;
+
+  while(i) {
+    hash = (hash * 33) ^ str.charCodeAt(--i);
+  }
+
+  /* JavaScript does bitwise operations (like XOR, above) on 32-bit signed
+   * integers. Since we want the results to be always positive, convert the
+   * signed int to an unsigned by doing an unsigned bitshift. */
+  return hash >>> 0;
+}
+
+module.exports = hash;
+
+
+/***/ }),
+
+/***/ "./node_modules/styled-jsx/dist/lib/stylesheet.js":
+/*!********************************************************!*\
+  !*** ./node_modules/styled-jsx/dist/lib/stylesheet.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+exports.__esModule = true;
+exports["default"] = void 0;
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/*
+Based on Glamor's sheet
+https://github.com/threepointone/glamor/blob/667b480d31b3721a905021b26e1290ce92ca2879/src/sheet.js
+*/
+var isProd = typeof process !== 'undefined' && process.env && "development" === 'production';
+
+var isString = function isString(o) {
+  return Object.prototype.toString.call(o) === '[object String]';
+};
+
+var StyleSheet =
+/*#__PURE__*/
+function () {
+  function StyleSheet(_temp) {
+    var _ref = _temp === void 0 ? {} : _temp,
+        _ref$name = _ref.name,
+        name = _ref$name === void 0 ? 'stylesheet' : _ref$name,
+        _ref$optimizeForSpeed = _ref.optimizeForSpeed,
+        optimizeForSpeed = _ref$optimizeForSpeed === void 0 ? isProd : _ref$optimizeForSpeed,
+        _ref$isBrowser = _ref.isBrowser,
+        isBrowser = _ref$isBrowser === void 0 ? typeof window !== 'undefined' : _ref$isBrowser;
+
+    invariant(isString(name), '`name` must be a string');
+    this._name = name;
+    this._deletedRulePlaceholder = "#" + name + "-deleted-rule____{}";
+    invariant(typeof optimizeForSpeed === 'boolean', '`optimizeForSpeed` must be a boolean');
+    this._optimizeForSpeed = optimizeForSpeed;
+    this._isBrowser = isBrowser;
+    this._serverSheet = undefined;
+    this._tags = [];
+    this._injected = false;
+    this._rulesCount = 0;
+    var node = this._isBrowser && document.querySelector('meta[property="csp-nonce"]');
+    this._nonce = node ? node.getAttribute('content') : null;
+  }
+
+  var _proto = StyleSheet.prototype;
+
+  _proto.setOptimizeForSpeed = function setOptimizeForSpeed(bool) {
+    invariant(typeof bool === 'boolean', '`setOptimizeForSpeed` accepts a boolean');
+    invariant(this._rulesCount === 0, 'optimizeForSpeed cannot be when rules have already been inserted');
+    this.flush();
+    this._optimizeForSpeed = bool;
+    this.inject();
+  };
+
+  _proto.isOptimizeForSpeed = function isOptimizeForSpeed() {
+    return this._optimizeForSpeed;
+  };
+
+  _proto.inject = function inject() {
+    var _this = this;
+
+    invariant(!this._injected, 'sheet already injected');
+    this._injected = true;
+
+    if (this._isBrowser && this._optimizeForSpeed) {
+      this._tags[0] = this.makeStyleTag(this._name);
+      this._optimizeForSpeed = 'insertRule' in this.getSheet();
+
+      if (!this._optimizeForSpeed) {
+        if (!isProd) {
+          console.warn('StyleSheet: optimizeForSpeed mode not supported falling back to standard mode.');
+        }
+
+        this.flush();
+        this._injected = true;
+      }
+
+      return;
+    }
+
+    this._serverSheet = {
+      cssRules: [],
+      insertRule: function insertRule(rule, index) {
+        if (typeof index === 'number') {
+          _this._serverSheet.cssRules[index] = {
+            cssText: rule
+          };
+        } else {
+          _this._serverSheet.cssRules.push({
+            cssText: rule
+          });
+        }
+
+        return index;
+      },
+      deleteRule: function deleteRule(index) {
+        _this._serverSheet.cssRules[index] = null;
+      }
+    };
+  };
+
+  _proto.getSheetForTag = function getSheetForTag(tag) {
+    if (tag.sheet) {
+      return tag.sheet;
+    } // this weirdness brought to you by firefox
+
+
+    for (var i = 0; i < document.styleSheets.length; i++) {
+      if (document.styleSheets[i].ownerNode === tag) {
+        return document.styleSheets[i];
+      }
+    }
+  };
+
+  _proto.getSheet = function getSheet() {
+    return this.getSheetForTag(this._tags[this._tags.length - 1]);
+  };
+
+  _proto.insertRule = function insertRule(rule, index) {
+    invariant(isString(rule), '`insertRule` accepts only strings');
+
+    if (!this._isBrowser) {
+      if (typeof index !== 'number') {
+        index = this._serverSheet.cssRules.length;
+      }
+
+      this._serverSheet.insertRule(rule, index);
+
+      return this._rulesCount++;
+    }
+
+    if (this._optimizeForSpeed) {
+      var sheet = this.getSheet();
+
+      if (typeof index !== 'number') {
+        index = sheet.cssRules.length;
+      } // this weirdness for perf, and chrome's weird bug
+      // https://stackoverflow.com/questions/20007992/chrome-suddenly-stopped-accepting-insertrule
+
+
+      try {
+        sheet.insertRule(rule, index);
+      } catch (error) {
+        if (!isProd) {
+          console.warn("StyleSheet: illegal rule: \n\n" + rule + "\n\nSee https://stackoverflow.com/q/20007992 for more info");
+        }
+
+        return -1;
+      }
+    } else {
+      var insertionPoint = this._tags[index];
+
+      this._tags.push(this.makeStyleTag(this._name, rule, insertionPoint));
+    }
+
+    return this._rulesCount++;
+  };
+
+  _proto.replaceRule = function replaceRule(index, rule) {
+    if (this._optimizeForSpeed || !this._isBrowser) {
+      var sheet = this._isBrowser ? this.getSheet() : this._serverSheet;
+
+      if (!rule.trim()) {
+        rule = this._deletedRulePlaceholder;
+      }
+
+      if (!sheet.cssRules[index]) {
+        // @TBD Should we throw an error?
+        return index;
+      }
+
+      sheet.deleteRule(index);
+
+      try {
+        sheet.insertRule(rule, index);
+      } catch (error) {
+        if (!isProd) {
+          console.warn("StyleSheet: illegal rule: \n\n" + rule + "\n\nSee https://stackoverflow.com/q/20007992 for more info");
+        } // In order to preserve the indices we insert a deleteRulePlaceholder
+
+
+        sheet.insertRule(this._deletedRulePlaceholder, index);
+      }
+    } else {
+      var tag = this._tags[index];
+      invariant(tag, "old rule at index `" + index + "` not found");
+      tag.textContent = rule;
+    }
+
+    return index;
+  };
+
+  _proto.deleteRule = function deleteRule(index) {
+    if (!this._isBrowser) {
+      this._serverSheet.deleteRule(index);
+
+      return;
+    }
+
+    if (this._optimizeForSpeed) {
+      this.replaceRule(index, '');
+    } else {
+      var tag = this._tags[index];
+      invariant(tag, "rule at index `" + index + "` not found");
+      tag.parentNode.removeChild(tag);
+      this._tags[index] = null;
+    }
+  };
+
+  _proto.flush = function flush() {
+    this._injected = false;
+    this._rulesCount = 0;
+
+    if (this._isBrowser) {
+      this._tags.forEach(function (tag) {
+        return tag && tag.parentNode.removeChild(tag);
+      });
+
+      this._tags = [];
+    } else {
+      // simpler on server
+      this._serverSheet.cssRules = [];
+    }
+  };
+
+  _proto.cssRules = function cssRules() {
+    var _this2 = this;
+
+    if (!this._isBrowser) {
+      return this._serverSheet.cssRules;
+    }
+
+    return this._tags.reduce(function (rules, tag) {
+      if (tag) {
+        rules = rules.concat(Array.prototype.map.call(_this2.getSheetForTag(tag).cssRules, function (rule) {
+          return rule.cssText === _this2._deletedRulePlaceholder ? null : rule;
+        }));
+      } else {
+        rules.push(null);
+      }
+
+      return rules;
+    }, []);
+  };
+
+  _proto.makeStyleTag = function makeStyleTag(name, cssString, relativeToTag) {
+    if (cssString) {
+      invariant(isString(cssString), 'makeStyleTag acceps only strings as second parameter');
+    }
+
+    var tag = document.createElement('style');
+    if (this._nonce) tag.setAttribute('nonce', this._nonce);
+    tag.type = 'text/css';
+    tag.setAttribute("data-" + name, '');
+
+    if (cssString) {
+      tag.appendChild(document.createTextNode(cssString));
+    }
+
+    var head = document.head || document.getElementsByTagName('head')[0];
+
+    if (relativeToTag) {
+      head.insertBefore(tag, relativeToTag);
+    } else {
+      head.appendChild(tag);
+    }
+
+    return tag;
+  };
+
+  _createClass(StyleSheet, [{
+    key: "length",
+    get: function get() {
+      return this._rulesCount;
+    }
+  }]);
+
+  return StyleSheet;
+}();
+
+exports["default"] = StyleSheet;
+
+function invariant(condition, message) {
+  if (!condition) {
+    throw new Error("StyleSheet: " + message + ".");
+  }
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/styled-jsx/dist/style.js":
+/*!***********************************************!*\
+  !*** ./node_modules/styled-jsx/dist/style.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.flush = flush;
+exports["default"] = void 0;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _stylesheetRegistry = _interopRequireDefault(__webpack_require__(/*! ./stylesheet-registry */ "./node_modules/styled-jsx/dist/stylesheet-registry.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+var styleSheetRegistry = new _stylesheetRegistry["default"]();
+
+var JSXStyle =
+/*#__PURE__*/
+function (_Component) {
+  _inheritsLoose(JSXStyle, _Component);
+
+  function JSXStyle(props) {
+    var _this;
+
+    _this = _Component.call(this, props) || this;
+    _this.prevProps = {};
+    return _this;
+  }
+
+  JSXStyle.dynamic = function dynamic(info) {
+    return info.map(function (tagInfo) {
+      var baseId = tagInfo[0];
+      var props = tagInfo[1];
+      return styleSheetRegistry.computeId(baseId, props);
+    }).join(' ');
+  } // probably faster than PureComponent (shallowEqual)
+  ;
+
+  var _proto = JSXStyle.prototype;
+
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(otherProps) {
+    return this.props.id !== otherProps.id || // We do this check because `dynamic` is an array of strings or undefined.
+    // These are the computed values for dynamic styles.
+    String(this.props.dynamic) !== String(otherProps.dynamic);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    styleSheetRegistry.remove(this.props);
+  };
+
+  _proto.render = function render() {
+    // This is a workaround to make the side effect async safe in the "render" phase.
+    // See https://github.com/zeit/styled-jsx/pull/484
+    if (this.shouldComponentUpdate(this.prevProps)) {
+      // Updates
+      if (this.prevProps.id) {
+        styleSheetRegistry.remove(this.prevProps);
+      }
+
+      styleSheetRegistry.add(this.props);
+      this.prevProps = this.props;
+    }
+
+    return null;
+  };
+
+  return JSXStyle;
+}(_react.Component);
+
+exports["default"] = JSXStyle;
+
+function flush() {
+  var cssRules = styleSheetRegistry.cssRules();
+  styleSheetRegistry.flush();
+  return cssRules;
+}
+
+/***/ }),
+
+/***/ "./node_modules/styled-jsx/dist/stylesheet-registry.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/styled-jsx/dist/stylesheet-registry.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports["default"] = void 0;
+
+var _stringHash = _interopRequireDefault(__webpack_require__(/*! string-hash */ "./node_modules/string-hash/index.js"));
+
+var _stylesheet = _interopRequireDefault(__webpack_require__(/*! ./lib/stylesheet */ "./node_modules/styled-jsx/dist/lib/stylesheet.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var sanitize = function sanitize(rule) {
+  return rule.replace(/\/style/gi, '\\/style');
+};
+
+var StyleSheetRegistry =
+/*#__PURE__*/
+function () {
+  function StyleSheetRegistry(_temp) {
+    var _ref = _temp === void 0 ? {} : _temp,
+        _ref$styleSheet = _ref.styleSheet,
+        styleSheet = _ref$styleSheet === void 0 ? null : _ref$styleSheet,
+        _ref$optimizeForSpeed = _ref.optimizeForSpeed,
+        optimizeForSpeed = _ref$optimizeForSpeed === void 0 ? false : _ref$optimizeForSpeed,
+        _ref$isBrowser = _ref.isBrowser,
+        isBrowser = _ref$isBrowser === void 0 ? typeof window !== 'undefined' : _ref$isBrowser;
+
+    this._sheet = styleSheet || new _stylesheet["default"]({
+      name: 'styled-jsx',
+      optimizeForSpeed: optimizeForSpeed
+    });
+
+    this._sheet.inject();
+
+    if (styleSheet && typeof optimizeForSpeed === 'boolean') {
+      this._sheet.setOptimizeForSpeed(optimizeForSpeed);
+
+      this._optimizeForSpeed = this._sheet.isOptimizeForSpeed();
+    }
+
+    this._isBrowser = isBrowser;
+    this._fromServer = undefined;
+    this._indices = {};
+    this._instancesCounts = {};
+    this.computeId = this.createComputeId();
+    this.computeSelector = this.createComputeSelector();
+  }
+
+  var _proto = StyleSheetRegistry.prototype;
+
+  _proto.add = function add(props) {
+    var _this = this;
+
+    if (undefined === this._optimizeForSpeed) {
+      this._optimizeForSpeed = Array.isArray(props.children);
+
+      this._sheet.setOptimizeForSpeed(this._optimizeForSpeed);
+
+      this._optimizeForSpeed = this._sheet.isOptimizeForSpeed();
+    }
+
+    if (this._isBrowser && !this._fromServer) {
+      this._fromServer = this.selectFromServer();
+      this._instancesCounts = Object.keys(this._fromServer).reduce(function (acc, tagName) {
+        acc[tagName] = 0;
+        return acc;
+      }, {});
+    }
+
+    var _this$getIdAndRules = this.getIdAndRules(props),
+        styleId = _this$getIdAndRules.styleId,
+        rules = _this$getIdAndRules.rules; // Deduping: just increase the instances count.
+
+
+    if (styleId in this._instancesCounts) {
+      this._instancesCounts[styleId] += 1;
+      return;
+    }
+
+    var indices = rules.map(function (rule) {
+      return _this._sheet.insertRule(rule);
+    }) // Filter out invalid rules
+    .filter(function (index) {
+      return index !== -1;
+    });
+    this._indices[styleId] = indices;
+    this._instancesCounts[styleId] = 1;
+  };
+
+  _proto.remove = function remove(props) {
+    var _this2 = this;
+
+    var _this$getIdAndRules2 = this.getIdAndRules(props),
+        styleId = _this$getIdAndRules2.styleId;
+
+    invariant(styleId in this._instancesCounts, "styleId: `" + styleId + "` not found");
+    this._instancesCounts[styleId] -= 1;
+
+    if (this._instancesCounts[styleId] < 1) {
+      var tagFromServer = this._fromServer && this._fromServer[styleId];
+
+      if (tagFromServer) {
+        tagFromServer.parentNode.removeChild(tagFromServer);
+        delete this._fromServer[styleId];
+      } else {
+        this._indices[styleId].forEach(function (index) {
+          return _this2._sheet.deleteRule(index);
+        });
+
+        delete this._indices[styleId];
+      }
+
+      delete this._instancesCounts[styleId];
+    }
+  };
+
+  _proto.update = function update(props, nextProps) {
+    this.add(nextProps);
+    this.remove(props);
+  };
+
+  _proto.flush = function flush() {
+    this._sheet.flush();
+
+    this._sheet.inject();
+
+    this._fromServer = undefined;
+    this._indices = {};
+    this._instancesCounts = {};
+    this.computeId = this.createComputeId();
+    this.computeSelector = this.createComputeSelector();
+  };
+
+  _proto.cssRules = function cssRules() {
+    var _this3 = this;
+
+    var fromServer = this._fromServer ? Object.keys(this._fromServer).map(function (styleId) {
+      return [styleId, _this3._fromServer[styleId]];
+    }) : [];
+
+    var cssRules = this._sheet.cssRules();
+
+    return fromServer.concat(Object.keys(this._indices).map(function (styleId) {
+      return [styleId, _this3._indices[styleId].map(function (index) {
+        return cssRules[index].cssText;
+      }).join(_this3._optimizeForSpeed ? '' : '\n')];
+    }) // filter out empty rules
+    .filter(function (rule) {
+      return Boolean(rule[1]);
+    }));
+  }
+  /**
+   * createComputeId
+   *
+   * Creates a function to compute and memoize a jsx id from a basedId and optionally props.
+   */
+  ;
+
+  _proto.createComputeId = function createComputeId() {
+    var cache = {};
+    return function (baseId, props) {
+      if (!props) {
+        return "jsx-" + baseId;
+      }
+
+      var propsToString = String(props);
+      var key = baseId + propsToString; // return `jsx-${hashString(`${baseId}-${propsToString}`)}`
+
+      if (!cache[key]) {
+        cache[key] = "jsx-" + (0, _stringHash["default"])(baseId + "-" + propsToString);
+      }
+
+      return cache[key];
+    };
+  }
+  /**
+   * createComputeSelector
+   *
+   * Creates a function to compute and memoize dynamic selectors.
+   */
+  ;
+
+  _proto.createComputeSelector = function createComputeSelector(selectoPlaceholderRegexp) {
+    if (selectoPlaceholderRegexp === void 0) {
+      selectoPlaceholderRegexp = /__jsx-style-dynamic-selector/g;
+    }
+
+    var cache = {};
+    return function (id, css) {
+      // Sanitize SSR-ed CSS.
+      // Client side code doesn't need to be sanitized since we use
+      // document.createTextNode (dev) and the CSSOM api sheet.insertRule (prod).
+      if (!this._isBrowser) {
+        css = sanitize(css);
+      }
+
+      var idcss = id + css;
+
+      if (!cache[idcss]) {
+        cache[idcss] = css.replace(selectoPlaceholderRegexp, id);
+      }
+
+      return cache[idcss];
+    };
+  };
+
+  _proto.getIdAndRules = function getIdAndRules(props) {
+    var _this4 = this;
+
+    var css = props.children,
+        dynamic = props.dynamic,
+        id = props.id;
+
+    if (dynamic) {
+      var styleId = this.computeId(id, dynamic);
+      return {
+        styleId: styleId,
+        rules: Array.isArray(css) ? css.map(function (rule) {
+          return _this4.computeSelector(styleId, rule);
+        }) : [this.computeSelector(styleId, css)]
+      };
+    }
+
+    return {
+      styleId: this.computeId(id),
+      rules: Array.isArray(css) ? css : [css]
+    };
+  }
+  /**
+   * selectFromServer
+   *
+   * Collects style tags from the document with id __jsx-XXX
+   */
+  ;
+
+  _proto.selectFromServer = function selectFromServer() {
+    var elements = Array.prototype.slice.call(document.querySelectorAll('[id^="__jsx-"]'));
+    return elements.reduce(function (acc, element) {
+      var id = element.id.slice(2);
+      acc[id] = element;
+      return acc;
+    }, {});
+  };
+
+  return StyleSheetRegistry;
+}();
+
+exports["default"] = StyleSheetRegistry;
+
+function invariant(condition, message) {
+  if (!condition) {
+    throw new Error("StyleSheetRegistry: " + message + ".");
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/styled-jsx/style.js":
+/*!******************************************!*\
+  !*** ./node_modules/styled-jsx/style.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./dist/style */ "./node_modules/styled-jsx/dist/style.js")
+
+
+/***/ }),
+
 /***/ "./node_modules/url/url.js":
 /*!*********************************!*\
   !*** ./node_modules/url/url.js ***!
@@ -12994,40 +13687,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Layout */ "./components/Layout.js");
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../config */ "./config.js");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-jsx/style */ "./node_modules/styled-jsx/style.js");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Layout */ "./components/Layout.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../config */ "./config.js");
 
 
 
 var _jsxFileName = "/home/abugra/Desktop/MeetingPlanner-client/pages/plan/[itemID].js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement;
 
 
 
 
 
 var ItemDetailsPage = function ItemDetailsPage() {
-  var router = Object(next_router__WEBPACK_IMPORTED_MODULE_4__["useRouter"])();
+  var router = Object(next_router__WEBPACK_IMPORTED_MODULE_5__["useRouter"])();
   var itemID = router.query.itemID;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(''),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_4__["useState"])(''),
       itemDetails = _useState[0],
       setItemDetails = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(''),
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_4__["useState"])(''),
       participantName = _useState2[0],
       setParticipantName = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(''),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_4__["useState"])(''),
       optionsSelected = _useState3[0],
       setOptionsSelected = _useState3[1];
 
-  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
+  var _useState4 = Object(react__WEBPACK_IMPORTED_MODULE_4__["useState"])(''),
+      senderName = _useState4[0],
+      setSenderName = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_4__["useState"])(''),
+      comment = _useState5[0],
+      setComment = _useState5[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_4__["useEffect"])(function () {
     if (itemID) getPlan(itemID);
   }, [itemID]); //
 
@@ -13038,7 +13742,7 @@ var ItemDetailsPage = function ItemDetailsPage() {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_6__["default"].get('api/freeone', {
+            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_7__["default"].get('api/freeone', {
               params: {
                 itemID: itemID
               }
@@ -13063,7 +13767,7 @@ var ItemDetailsPage = function ItemDetailsPage() {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_6__["default"].post('api/participant', {
+            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_7__["default"].post('api/participant', {
               participantName: participantName,
               optionsSelected: optionsSelected
             }, {
@@ -13084,19 +13788,47 @@ var ItemDetailsPage = function ItemDetailsPage() {
     });
   };
 
-  var checkboxTest = function checkboxTest(e) {
-    var tempOptionsSelected, check;
-    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.async(function checkboxTest$(_context3) {
+  var postComment = function postComment() {
+    var res;
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.async(function postComment$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
+            _context3.next = 2;
+            return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.awrap(_config__WEBPACK_IMPORTED_MODULE_7__["default"].post('api/comment', {
+              senderName: senderName,
+              comment: comment
+            }, {
+              params: {
+                itemID: itemID
+              }
+            }));
+
+          case 2:
+            res = _context3.sent;
+            getPlan(itemID);
+
+          case 4:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    });
+  };
+
+  var handleCheckboxVote = function handleCheckboxVote(e) {
+    var tempOptionsSelected, check;
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.async(function handleCheckboxVote$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
             if (!e.target.checked) {
-              _context3.next = 3;
+              _context4.next = 3;
               break;
             }
 
             setOptionsSelected([].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(optionsSelected), [e.target.id]));
-            return _context3.abrupt("return");
+            return _context4.abrupt("return");
 
           case 3:
             tempOptionsSelected = Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(optionsSelected);
@@ -13106,340 +13838,570 @@ var ItemDetailsPage = function ItemDetailsPage() {
 
           case 7:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
       }
     });
   };
 
-  var returnHTML = function returnHTML(item) {
+  var returnVotes = function returnVotes(item) {
     if (_babel_runtime_corejs2_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0___default()(itemDetails.possibleDates)) {
       var possibleDates = itemDetails.possibleDates;
       return possibleDates.map(function (option, index) {
         var isContainIndex = item.optionsSelected.includes(index);
-        console.log(isContainIndex);
-
-        if (isContainIndex) {
-          return __jsx("td", {
-            key: index,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 49
-            },
-            __self: this
-          }, "X");
-        } else {
-          return __jsx("td", {
-            key: index,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 51
-            },
-            __self: this
-          }, "yok");
-        }
+        if (isContainIndex) return __jsx("td", {
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 58
+          },
+          __self: this
+        }, "X");else return __jsx("td", {
+          key: index,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 59
+          },
+          __self: this
+        });
       });
     }
   };
 
-  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 58
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "container",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 59
-    },
-    __self: this
-  }, __jsx("br", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 60
-    },
-    __self: this
-  }), __jsx("div", {
-    className: "columns",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 61
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "column is-1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 62
-    },
-    __self: this
-  }), __jsx("div", {
-    className: "column",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 63
-    },
-    __self: this
-  }, __jsx("div", {
-    className: "is-fullwidth",
-    style: {
-      padding: '.5rem',
-      backgroundColor: '#C8E4FF'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 64
-    },
-    __self: this
-  }, __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 68
-    },
-    __self: this
-  }, "Poll by ", __jsx("strong", {
+  var showComments = function showComments() {
+    console.log('object');
+  };
+
+  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 69
     },
     __self: this
-  }, itemDetails.nameOwner))), __jsx("br", {
+  }, __jsx("div", {
+    className: "jsx-2703236575" + " " + "container",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70
+    },
+    __self: this
+  }, __jsx("br", {
+    className: "jsx-2703236575",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71
+    },
+    __self: this
+  }), __jsx("div", {
+    className: "jsx-2703236575" + " " + "columns",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 72
     },
     __self: this
-  }), __jsx("div", {
-    className: "columns",
+  }, __jsx("div", {
+    className: "jsx-2703236575" + " " + "column is-1",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 73
     },
     __self: this
-  }, __jsx("div", {
-    className: "column is-5",
+  }), __jsx("div", {
+    className: "jsx-2703236575" + " " + "column",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 74
     },
     __self: this
-  }, __jsx("p", {
-    className: "title has-text-info has-text-weight-normal",
+  }, __jsx("div", {
+    style: {
+      padding: '.5rem'
+    },
+    className: "jsx-2703236575" + " " + "is-fullwidth has-background-special-blue",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 75
     },
     __self: this
-  }, itemDetails.boardTitle), __jsx("p", {
+  }, __jsx("p", {
+    className: "jsx-2703236575",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 79
     },
     __self: this
-  }, itemDetails.description ? itemDetails.description : "Please indicate when you are available. Then click 'Save'."), __jsx("br", {
+  }, "Poll by ", __jsx("strong", {
+    className: "jsx-2703236575",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80
+    },
+    __self: this
+  }, itemDetails.ownerName))), __jsx("br", {
+    className: "jsx-2703236575",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 83
     },
     __self: this
-  }), __jsx("table", {
-    className: "table is-bordered is-striped is-narrow is-hoverable is-fullwidth",
+  }), __jsx("div", {
+    className: "jsx-2703236575" + " " + "columns",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 84
     },
     __self: this
-  }, __jsx("thead", {
+  }, __jsx("div", {
+    className: "jsx-2703236575" + " " + "column is-5",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 85
     },
     __self: this
-  }, __jsx("tr", {
+  }, __jsx("p", {
+    className: "jsx-2703236575" + " " + "title has-text-info has-text-weight-normal",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 86
     },
     __self: this
-  }, __jsx("th", {
-    style: {
-      border: 'none'
-    },
+  }, itemDetails.boardTitle), __jsx("p", {
+    className: "jsx-2703236575",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 89
+    },
+    __self: this
+  }, itemDetails.description ? itemDetails.description : "Please indicate when you are available. Then click 'Save'."), __jsx("br", {
+    className: "jsx-2703236575",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 94
+    },
+    __self: this
+  }), __jsx("table", {
+    className: "jsx-2703236575" + " " + "table is-bordered is-striped is-narrow is-hoverable is-fullwidth",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95
+    },
+    __self: this
+  }, __jsx("thead", {
+    className: "jsx-2703236575",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96
+    },
+    __self: this
+  }, __jsx("tr", {
+    className: "jsx-2703236575",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 97
+    },
+    __self: this
+  }, __jsx("th", {
+    className: "jsx-2703236575" + " " + "border-none",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 98
     },
     __self: this
   }), itemDetails.possibleDates ? itemDetails.possibleDates.map(function (element, index) {
     return __jsx("th", {
       key: index,
-      className: "has-background-grey-lighter has-text-centered",
+      className: "jsx-2703236575" + " " + "has-background-grey-lighter has-text-centered",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 92
+        lineNumber: 103
       },
       __self: this
     }, element);
   }) : null)), __jsx("tbody", {
+    className: "jsx-2703236575",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 113
     },
     __self: this
   }, __jsx("tr", {
-    className: "be-first",
+    className: "jsx-2703236575" + " " + "be-first",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103
+      lineNumber: 114
     },
     __self: this
   }, __jsx("td", {
-    className: "has-background-primary has-text-white",
     colSpan: "100%",
+    className: "jsx-2703236575" + " " + "has-background-primary has-text-white",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 104
+      lineNumber: 115
     },
     __self: this
   }, "Be the first to vote in this poll!")), itemDetails.participants ? itemDetails.participants.map(function (item, index) {
     return __jsx("tr", {
       key: index,
+      className: "jsx-2703236575",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 115
+        lineNumber: 126
       },
       __self: this
     }, __jsx("td", {
+      className: "jsx-2703236575",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 116
+        lineNumber: 127
       },
       __self: this
-    }, item.participantName), returnHTML(item));
+    }, item.participantName), returnVotes(item));
   }) : null, __jsx("tr", {
-    style: {
-      backgroundColor: '#C8E4FF'
-    },
+    className: "jsx-2703236575" + " " + "has-background-special-blue",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 123
+      lineNumber: 134
     },
     __self: this
   }, __jsx("td", {
-    style: {
-      borderColor: 'white'
-    },
+    className: "jsx-2703236575" + " " + "border-color-white",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 124
+      lineNumber: 135
     },
     __self: this
   }, __jsx("div", {
-    className: "field",
+    className: "jsx-2703236575" + " " + "field",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 125
+      lineNumber: 136
     },
     __self: this
   }, __jsx("div", {
-    className: "control",
+    className: "jsx-2703236575" + " " + "control",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 126
+      lineNumber: 137
     },
     __self: this
   }, __jsx("input", {
-    className: "input is-primary",
     type: "text",
     placeholder: "Your name",
     onChange: function onChange(e) {
-      setParticipantName(e.target.value);
+      return setParticipantName(e.target.value);
     },
+    className: "jsx-2703236575" + " " + "input is-primary",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127
+      lineNumber: 138
     },
     __self: this
   })))), itemDetails.possibleDates ? itemDetails.possibleDates.map(function (element, index) {
     return __jsx("td", {
       key: index,
-      style: {
-        borderColor: 'white'
-      },
-      className: "has-text-centered",
+      className: "jsx-2703236575" + " " + "has-text-centered border-color-white",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 142
+        lineNumber: 151
       },
       __self: this
     }, __jsx("label", {
-      className: "checkbox",
+      className: "jsx-2703236575" + " " + "checkbox",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 147
+        lineNumber: 155
       },
       __self: this
     }, __jsx("input", {
       type: "checkbox",
       id: index,
-      onChange: checkboxTest,
+      onChange: handleCheckboxVote,
+      className: "jsx-2703236575",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 148
+        lineNumber: 156
       },
       __self: this
     })));
   }) : null))), __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 160
-    },
-    __self: this
-  }, __jsx("a", {
-    className: "button is-link has-text-right",
-    onClick: postParticipant,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 161
-    },
-    __self: this
-  }, "Save")), __jsx("br", {
+    className: "jsx-2703236575",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 168
     },
     __self: this
-  })), __jsx("div", {
-    className: "column is-5",
+  }, __jsx("a", {
+    onClick: postParticipant,
+    className: "jsx-2703236575" + " " + "button is-link has-text-right",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 170
+      lineNumber: 169
+    },
+    __self: this
+  }, "Save")), __jsx("br", {
+    className: "jsx-2703236575",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 176
+    },
+    __self: this
+  })), __jsx("div", {
+    className: "jsx-2703236575" + " " + "column is-5",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 178
     },
     __self: this
   }), __jsx("div", {
-    className: "column is-2",
+    className: "jsx-2703236575" + " " + "column is-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 171
+      lineNumber: 179
     },
     __self: this
-  }, "x"))), __jsx("div", {
-    className: "column is-1",
+  }, __jsx("p", {
+    className: "jsx-2703236575",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 174
+      lineNumber: 180
     },
     __self: this
-  }))));
+  }, __jsx("i", {
+    className: "jsx-2703236575" + " " + "fas fa-eye",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 181
+    },
+    __self: this
+  }), " CHANGE VIEW")))), __jsx("div", {
+    className: "jsx-2703236575" + " " + "column is-1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 186
+    },
+    __self: this
+  })), __jsx("div", {
+    className: "jsx-2703236575" + " " + "columns",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 188
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "jsx-2703236575" + " " + "column is-1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 189
+    },
+    __self: this
+  }), __jsx("div", {
+    className: "jsx-2703236575" + " " + "column",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 190
+    },
+    __self: this
+  }, __jsx("p", {
+    className: "jsx-2703236575" + " " + "title has-text-info has-text-weight-normal",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 191
+    },
+    __self: this
+  }, "Comments \xA0", __jsx("a", {
+    href: "#",
+    onClick: showComments,
+    className: "jsx-2703236575",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 193
+    },
+    __self: this
+  }, __jsx("i", {
+    className: "jsx-2703236575" + " " + "fas fa-plus-circle has-text-success",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 194
+    },
+    __self: this
+  }))), __jsx("div", {
+    className: "jsx-2703236575" + " " + "columns has-background-special-blue",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 199
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "jsx-2703236575" + " " + "column is-11",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 200
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "jsx-2703236575" + " " + "field is-inline-block",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 201
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "jsx-2703236575" + " " + "control",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 202
+    },
+    __self: this
+  }, __jsx("input", {
+    type: "text",
+    placeholder: "Your name",
+    onChange: function onChange(e) {
+      return setSenderName(e.target.value);
+    },
+    className: "jsx-2703236575" + " " + "input is-primary",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 203
+    },
+    __self: this
+  }))), __jsx("div", {
+    className: "jsx-2703236575" + " " + "field",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 212
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "jsx-2703236575" + " " + "control",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 213
+    },
+    __self: this
+  }, __jsx("textarea", {
+    rows: 2,
+    placeholder: "Your message",
+    onChange: function onChange(e) {
+      return setComment(e.target.value);
+    },
+    className: "jsx-2703236575" + " " + "textarea",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 214
+    },
+    __self: this
+  })))), __jsx("div", {
+    className: "jsx-2703236575" + " " + "column is-1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 223
+    },
+    __self: this
+  }, __jsx("button", {
+    onClick: postComment,
+    className: "jsx-2703236575" + " " + "button is-link has-text-white is-fullwidth",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 224
+    },
+    __self: this
+  }, "Submit"))), __jsx("br", {
+    className: "jsx-2703236575",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 233
+    },
+    __self: this
+  }), itemDetails ? itemDetails.comments.map(function (data) {
+    return __jsx("div", {
+      className: "jsx-2703236575" + " " + "columns",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 238
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "jsx-2703236575" + " " + "column is-1 has-text-centered",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 239
+      },
+      __self: this
+    }, __jsx("span", {
+      className: "jsx-2703236575" + " " + "dot",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 240
+      },
+      __self: this
+    }, data.senderName[0])), __jsx("div", {
+      className: "jsx-2703236575" + " " + "column has-background-white-ter",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 242
+      },
+      __self: this
+    }, __jsx("p", {
+      className: "jsx-2703236575",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 243
+      },
+      __self: this
+    }, __jsx("span", {
+      className: "jsx-2703236575" + " " + "is-size-7",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 244
+      },
+      __self: this
+    }, __jsx("strong", {
+      className: "jsx-2703236575",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 245
+      },
+      __self: this
+    }, data.senderName), " \xA0 \xB7 \xA0", ' ', __jsx("span", {
+      className: "jsx-2703236575" + " " + "text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 246
+      },
+      __self: this
+    }, "19 hours ago"))), __jsx("p", {
+      className: "jsx-2703236575",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 249
+      },
+      __self: this
+    }, data.comment)));
+  }) : null), __jsx("div", {
+    className: "jsx-2703236575" + " " + "column is-1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 255
+    },
+    __self: this
+  })), __jsx("br", {
+    className: "jsx-2703236575",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 257
+    },
+    __self: this
+  })), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    id: "2703236575",
+    __self: this
+  }, ".dot.jsx-2703236575{color:white;font-size:1.5rem;height:2.5rem;width:2.5rem;background-color:#007fff;border-radius:50%;display:inline-block;}.has-background-special-blue.jsx-2703236575{background-color:#c8e4ff !important;}.border-none.jsx-2703236575{border:none !important;}.border-color-white.jsx-2703236575{border-color:white !important;}.text-muted.jsx-2703236575{color:#868e96 !important;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FidWdyYS9EZXNrdG9wL01lZXRpbmdQbGFubmVyLWNsaWVudC9wYWdlcy9wbGFuL1tpdGVtSURdLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQW9RUyxBQUd5QixBQVN3QixBQUdiLEFBR08sQUFHTCxZQWpCUixXQVluQixFQU1BLElBakJnQixDQWNoQixNQU5BLE9BUGUsYUFDWSx5QkFDUCxrQkFDRyxxQkFDdkIiLCJmaWxlIjoiL2hvbWUvYWJ1Z3JhL0Rlc2t0b3AvTWVldGluZ1BsYW5uZXItY2xpZW50L3BhZ2VzL3BsYW4vW2l0ZW1JRF0uanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge3VzZVJvdXRlcn0gZnJvbSAnbmV4dC9yb3V0ZXInO1xuaW1wb3J0IHt1c2VTdGF0ZSwgdXNlRWZmZWN0fSBmcm9tICdyZWFjdCc7XG5pbXBvcnQgTGF5b3V0IGZyb20gJy4uLy4uL2NvbXBvbmVudHMvTGF5b3V0JztcbmltcG9ydCBheGlvc0luc3RhbmNlIGZyb20gJy4uLy4uL2NvbmZpZyc7XG5cbmNvbnN0IEl0ZW1EZXRhaWxzUGFnZSA9ICgpID0+IHtcbiAgY29uc3Qgcm91dGVyID0gdXNlUm91dGVyKCk7XG4gIGNvbnN0IHtpdGVtSUR9ID0gcm91dGVyLnF1ZXJ5O1xuICBjb25zdCBbaXRlbURldGFpbHMsIHNldEl0ZW1EZXRhaWxzXSA9IHVzZVN0YXRlKCcnKTtcbiAgY29uc3QgW3BhcnRpY2lwYW50TmFtZSwgc2V0UGFydGljaXBhbnROYW1lXSA9IHVzZVN0YXRlKCcnKTtcbiAgY29uc3QgW29wdGlvbnNTZWxlY3RlZCwgc2V0T3B0aW9uc1NlbGVjdGVkXSA9IHVzZVN0YXRlKCcnKTtcbiAgY29uc3QgW3NlbmRlck5hbWUsIHNldFNlbmRlck5hbWVdID0gdXNlU3RhdGUoJycpO1xuICBjb25zdCBbY29tbWVudCwgc2V0Q29tbWVudF0gPSB1c2VTdGF0ZSgnJyk7XG5cbiAgdXNlRWZmZWN0KCgpID0+IHtcbiAgICBpZiAoaXRlbUlEKSBnZXRQbGFuKGl0ZW1JRCk7XG4gIH0sIFtpdGVtSURdKTsgLy9cblxuICBjb25zdCBnZXRQbGFuID0gYXN5bmMgaXRlbUlEID0+IHtcbiAgICBjb25zdCBkb2MgPSBhd2FpdCBheGlvc0luc3RhbmNlLmdldCgnYXBpL2ZyZWVvbmUnLCB7cGFyYW1zOiB7aXRlbUlEfX0pO1xuICAgIHNldEl0ZW1EZXRhaWxzKGRvYy5kYXRhKTtcbiAgfTtcblxuICBjb25zdCBwb3N0UGFydGljaXBhbnQgPSBhc3luYyAoKSA9PiB7XG4gICAgY29uc3QgcmVzID0gYXdhaXQgYXhpb3NJbnN0YW5jZS5wb3N0KFxuICAgICAgJ2FwaS9wYXJ0aWNpcGFudCcsXG4gICAgICB7cGFydGljaXBhbnROYW1lLCBvcHRpb25zU2VsZWN0ZWR9LFxuICAgICAge3BhcmFtczoge2l0ZW1JRH19XG4gICAgKTtcbiAgICBnZXRQbGFuKGl0ZW1JRCk7XG4gIH07XG5cbiAgY29uc3QgcG9zdENvbW1lbnQgPSBhc3luYyAoKSA9PiB7XG4gICAgY29uc3QgcmVzID0gYXdhaXQgYXhpb3NJbnN0YW5jZS5wb3N0KFxuICAgICAgJ2FwaS9jb21tZW50JyxcbiAgICAgIHtzZW5kZXJOYW1lLCBjb21tZW50fSxcbiAgICAgIHtwYXJhbXM6IHtpdGVtSUR9fVxuICAgICk7XG4gICAgZ2V0UGxhbihpdGVtSUQpO1xuICB9O1xuXG4gIGNvbnN0IGhhbmRsZUNoZWNrYm94Vm90ZSA9IGFzeW5jIGUgPT4ge1xuICAgIGlmIChlLnRhcmdldC5jaGVja2VkKSB7XG4gICAgICBzZXRPcHRpb25zU2VsZWN0ZWQoWy4uLm9wdGlvbnNTZWxlY3RlZCwgZS50YXJnZXQuaWRdKTtcbiAgICAgIHJldHVybjtcbiAgICB9XG4gICAgbGV0IHRlbXBPcHRpb25zU2VsZWN0ZWQgPSBbLi4ub3B0aW9uc1NlbGVjdGVkXTtcbiAgICBjb25zdCBjaGVjayA9IHRlbXBPcHRpb25zU2VsZWN0ZWQuaW5kZXhPZihlLnRhcmdldC5pZCk7XG4gICAgaWYgKGNoZWNrID4gLTEpIHRlbXBPcHRpb25zU2VsZWN0ZWQuc3BsaWNlKGNoZWNrLCAxKTtcbiAgICBzZXRPcHRpb25zU2VsZWN0ZWQodGVtcE9wdGlvbnNTZWxlY3RlZCk7XG4gIH07XG5cbiAgY29uc3QgcmV0dXJuVm90ZXMgPSBpdGVtID0+IHtcbiAgICBpZiAoQXJyYXkuaXNBcnJheShpdGVtRGV0YWlscy5wb3NzaWJsZURhdGVzKSkge1xuICAgICAgY29uc3Qge3Bvc3NpYmxlRGF0ZXN9ID0gaXRlbURldGFpbHM7XG4gICAgICByZXR1cm4gcG9zc2libGVEYXRlcy5tYXAoKG9wdGlvbiwgaW5kZXgpID0+IHtcbiAgICAgICAgY29uc3QgaXNDb250YWluSW5kZXggPSBpdGVtLm9wdGlvbnNTZWxlY3RlZC5pbmNsdWRlcyhpbmRleCk7XG4gICAgICAgIGlmIChpc0NvbnRhaW5JbmRleCkgcmV0dXJuIDx0ZCBrZXk9e2luZGV4fT5YPC90ZD47XG4gICAgICAgIGVsc2UgcmV0dXJuIDx0ZCBrZXk9e2luZGV4fT48L3RkPjtcbiAgICAgIH0pO1xuICAgIH1cbiAgfTtcblxuICBjb25zdCBzaG93Q29tbWVudHMgPSAoKSA9PiB7XG4gICAgY29uc29sZS5sb2coJ29iamVjdCcpO1xuICB9O1xuXG4gIHJldHVybiAoXG4gICAgPExheW91dD5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29udGFpbmVyXCI+XG4gICAgICAgIDxiciAvPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbHVtbnNcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbHVtbiBpcy0xXCIgLz5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbHVtblwiPlxuICAgICAgICAgICAgPGRpdlxuICAgICAgICAgICAgICBjbGFzc05hbWU9XCJpcy1mdWxsd2lkdGggaGFzLWJhY2tncm91bmQtc3BlY2lhbC1ibHVlXCJcbiAgICAgICAgICAgICAgc3R5bGU9e3twYWRkaW5nOiAnLjVyZW0nfX1cbiAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgPHA+XG4gICAgICAgICAgICAgICAgUG9sbCBieSA8c3Ryb25nPntpdGVtRGV0YWlscy5vd25lck5hbWV9PC9zdHJvbmc+XG4gICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPGJyIC8+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbHVtbnNcIj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb2x1bW4gaXMtNVwiPlxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRpdGxlIGhhcy10ZXh0LWluZm8gaGFzLXRleHQtd2VpZ2h0LW5vcm1hbFwiPlxuICAgICAgICAgICAgICAgICAge2l0ZW1EZXRhaWxzLmJvYXJkVGl0bGV9XG4gICAgICAgICAgICAgICAgPC9wPlxuICAgICAgICAgICAgICAgIDxwPlxuICAgICAgICAgICAgICAgICAge2l0ZW1EZXRhaWxzLmRlc2NyaXB0aW9uXG4gICAgICAgICAgICAgICAgICAgID8gaXRlbURldGFpbHMuZGVzY3JpcHRpb25cbiAgICAgICAgICAgICAgICAgICAgOiBcIlBsZWFzZSBpbmRpY2F0ZSB3aGVuIHlvdSBhcmUgYXZhaWxhYmxlLiBUaGVuIGNsaWNrICdTYXZlJy5cIn1cbiAgICAgICAgICAgICAgICA8L3A+XG4gICAgICAgICAgICAgICAgPGJyIC8+XG4gICAgICAgICAgICAgICAgPHRhYmxlIGNsYXNzTmFtZT1cInRhYmxlIGlzLWJvcmRlcmVkIGlzLXN0cmlwZWQgaXMtbmFycm93IGlzLWhvdmVyYWJsZSBpcy1mdWxsd2lkdGhcIj5cbiAgICAgICAgICAgICAgICAgIDx0aGVhZD5cbiAgICAgICAgICAgICAgICAgICAgPHRyPlxuICAgICAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJib3JkZXItbm9uZVwiIC8+XG5cbiAgICAgICAgICAgICAgICAgICAgICB7LyogUHV0IHBvc3NpYmxlIGRhdGVzIGFzIHRhYmxlIGhlYWRlcnMgKi99XG4gICAgICAgICAgICAgICAgICAgICAge2l0ZW1EZXRhaWxzLnBvc3NpYmxlRGF0ZXNcbiAgICAgICAgICAgICAgICAgICAgICAgID8gaXRlbURldGFpbHMucG9zc2libGVEYXRlcy5tYXAoKGVsZW1lbnQsIGluZGV4KSA9PiAoXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPHRoXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk9e2luZGV4fVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwiaGFzLWJhY2tncm91bmQtZ3JleS1saWdodGVyIGhhcy10ZXh0LWNlbnRlcmVkXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICB7ZWxlbWVudH1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L3RoPlxuICAgICAgICAgICAgICAgICAgICAgICAgICApKVxuICAgICAgICAgICAgICAgICAgICAgICAgOiBudWxsfVxuICAgICAgICAgICAgICAgICAgICA8L3RyPlxuICAgICAgICAgICAgICAgICAgPC90aGVhZD5cbiAgICAgICAgICAgICAgICAgIDx0Ym9keT5cbiAgICAgICAgICAgICAgICAgICAgPHRyIGNsYXNzTmFtZT1cImJlLWZpcnN0XCI+XG4gICAgICAgICAgICAgICAgICAgICAgPHRkXG4gICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJoYXMtYmFja2dyb3VuZC1wcmltYXJ5IGhhcy10ZXh0LXdoaXRlXCJcbiAgICAgICAgICAgICAgICAgICAgICAgIGNvbFNwYW49XCIxMDAlXCJcbiAgICAgICAgICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgICAgICAgICBCZSB0aGUgZmlyc3QgdG8gdm90ZSBpbiB0aGlzIHBvbGwhXG4gICAgICAgICAgICAgICAgICAgICAgPC90ZD5cbiAgICAgICAgICAgICAgICAgICAgPC90cj5cblxuICAgICAgICAgICAgICAgICAgICB7aXRlbURldGFpbHMucGFydGljaXBhbnRzXG4gICAgICAgICAgICAgICAgICAgICAgPyBpdGVtRGV0YWlscy5wYXJ0aWNpcGFudHMubWFwKChpdGVtLCBpbmRleCkgPT4ge1xuICAgICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDx0ciBrZXk9e2luZGV4fT5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDx0ZD57aXRlbS5wYXJ0aWNpcGFudE5hbWV9PC90ZD5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHtyZXR1cm5Wb3RlcyhpdGVtKX1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L3RyPlxuICAgICAgICAgICAgICAgICAgICAgICAgICApO1xuICAgICAgICAgICAgICAgICAgICAgICAgfSlcbiAgICAgICAgICAgICAgICAgICAgICA6IG51bGx9XG5cbiAgICAgICAgICAgICAgICAgICAgPHRyIGNsYXNzTmFtZT1cImhhcy1iYWNrZ3JvdW5kLXNwZWNpYWwtYmx1ZVwiPlxuICAgICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJib3JkZXItY29sb3Itd2hpdGVcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmllbGRcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb250cm9sXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPGlucHV0XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJpbnB1dCBpcy1wcmltYXJ5XCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU9XCJ0ZXh0XCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiWW91ciBuYW1lXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXtlID0+IHNldFBhcnRpY2lwYW50TmFtZShlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICA8L3RkPlxuXG4gICAgICAgICAgICAgICAgICAgICAgey8qIENvbHVtbnMgd2hpY2ggaGFzIGNoZWNrYm94IHRvIGNoZWNrIHBvc3NpYmxlIGRhdGVzICovfVxuICAgICAgICAgICAgICAgICAgICAgIHtpdGVtRGV0YWlscy5wb3NzaWJsZURhdGVzXG4gICAgICAgICAgICAgICAgICAgICAgICA/IGl0ZW1EZXRhaWxzLnBvc3NpYmxlRGF0ZXMubWFwKChlbGVtZW50LCBpbmRleCkgPT4gKFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDx0ZFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5PXtpbmRleH1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cImhhcy10ZXh0LWNlbnRlcmVkIGJvcmRlci1jb2xvci13aGl0ZVwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImNoZWNrYm94XCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxpbnB1dFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU9XCJjaGVja2JveFwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWQ9e2luZGV4fVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXtoYW5kbGVDaGVja2JveFZvdGV9XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2xhYmVsPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICkpXG4gICAgICAgICAgICAgICAgICAgICAgICA6IG51bGx9XG4gICAgICAgICAgICAgICAgICAgIDwvdHI+XG4gICAgICAgICAgICAgICAgICA8L3Rib2R5PlxuICAgICAgICAgICAgICAgIDwvdGFibGU+XG4gICAgICAgICAgICAgICAgPHA+XG4gICAgICAgICAgICAgICAgICA8YVxuICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJidXR0b24gaXMtbGluayBoYXMtdGV4dC1yaWdodFwiXG4gICAgICAgICAgICAgICAgICAgIG9uQ2xpY2s9e3Bvc3RQYXJ0aWNpcGFudH1cbiAgICAgICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICAgICAgU2F2ZVxuICAgICAgICAgICAgICAgICAgPC9hPlxuICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgICA8YnIgLz5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sdW1uIGlzLTVcIiAvPlxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbHVtbiBpcy0yXCI+XG4gICAgICAgICAgICAgICAgPHA+XG4gICAgICAgICAgICAgICAgICA8aSBjbGFzc05hbWU9XCJmYXMgZmEtZXllXCI+PC9pPiBDSEFOR0UgVklFV1xuICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbHVtbiBpcy0xXCIgLz5cbiAgICAgICAgPC9kaXY+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sdW1uc1wiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sdW1uIGlzLTFcIiAvPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sdW1uXCI+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0aXRsZSBoYXMtdGV4dC1pbmZvIGhhcy10ZXh0LXdlaWdodC1ub3JtYWxcIj5cbiAgICAgICAgICAgICAgQ29tbWVudHMgJm5ic3A7XG4gICAgICAgICAgICAgIDxhIGhyZWY9XCIjXCIgb25DbGljaz17c2hvd0NvbW1lbnRzfT5cbiAgICAgICAgICAgICAgICA8aSBjbGFzc05hbWU9XCJmYXMgZmEtcGx1cy1jaXJjbGUgaGFzLXRleHQtc3VjY2Vzc1wiPjwvaT5cbiAgICAgICAgICAgICAgPC9hPlxuICAgICAgICAgICAgPC9wPlxuXG4gICAgICAgICAgICB7LyogU2VuZCBjb21tZW50cyBhcmVhICovfVxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb2x1bW5zIGhhcy1iYWNrZ3JvdW5kLXNwZWNpYWwtYmx1ZVwiPlxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbHVtbiBpcy0xMVwiPlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmllbGQgaXMtaW5saW5lLWJsb2NrXCI+XG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbnRyb2xcIj5cbiAgICAgICAgICAgICAgICAgICAgPGlucHV0XG4gICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwiaW5wdXQgaXMtcHJpbWFyeVwiXG4gICAgICAgICAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxuICAgICAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiWW91ciBuYW1lXCJcbiAgICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17ZSA9PiBzZXRTZW5kZXJOYW1lKGUudGFyZ2V0LnZhbHVlKX1cbiAgICAgICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmaWVsZFwiPlxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb250cm9sXCI+XG4gICAgICAgICAgICAgICAgICAgIDx0ZXh0YXJlYVxuICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInRleHRhcmVhXCJcbiAgICAgICAgICAgICAgICAgICAgICByb3dzPXsyfVxuICAgICAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiWW91ciBtZXNzYWdlXCJcbiAgICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17ZSA9PiBzZXRDb21tZW50KGUudGFyZ2V0LnZhbHVlKX1cbiAgICAgICAgICAgICAgICAgICAgPjwvdGV4dGFyZWE+XG4gICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sdW1uIGlzLTFcIj5cbiAgICAgICAgICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJidXR0b24gaXMtbGluayBoYXMtdGV4dC13aGl0ZSBpcy1mdWxsd2lkdGhcIlxuICAgICAgICAgICAgICAgICAgb25DbGljaz17cG9zdENvbW1lbnR9XG4gICAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgICAgU3VibWl0XG4gICAgICAgICAgICAgICAgPC9idXR0b24+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgIDxiciAvPlxuXG4gICAgICAgICAgICB7LyogTGlzdCBhdmFpbGFibGUgY29tbWVudHMgYXJlYSAqL31cbiAgICAgICAgICAgIHtpdGVtRGV0YWlsc1xuICAgICAgICAgICAgICA/IGl0ZW1EZXRhaWxzLmNvbW1lbnRzLm1hcChkYXRhID0+IChcbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sdW1uc1wiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbHVtbiBpcy0xIGhhcy10ZXh0LWNlbnRlcmVkXCI+XG4gICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZG90XCI+e2RhdGEuc2VuZGVyTmFtZVswXX08L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbHVtbiBoYXMtYmFja2dyb3VuZC13aGl0ZS10ZXJcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8cD5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImlzLXNpemUtN1wiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICA8c3Ryb25nPntkYXRhLnNlbmRlck5hbWV9PC9zdHJvbmc+ICZuYnNwOyDCtyAmbmJzcDt7JyAnfVxuICAgICAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCI+MTkgaG91cnMgYWdvPC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgICAgPC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgICAgICAgICA8cD57ZGF0YS5jb21tZW50fTwvcD5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICApKVxuICAgICAgICAgICAgICA6IG51bGx9XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjb2x1bW4gaXMtMVwiIC8+XG4gICAgICAgIDwvZGl2PlxuICAgICAgICA8YnIgLz5cbiAgICAgIDwvZGl2PlxuXG4gICAgICA8c3R5bGUganN4PlxuICAgICAgICB7YFxuICAgICAgICAgIC5kb3Qge1xuICAgICAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICAgICAgZm9udC1zaXplOiAxLjVyZW07XG4gICAgICAgICAgICBoZWlnaHQ6IDIuNXJlbTtcbiAgICAgICAgICAgIHdpZHRoOiAyLjVyZW07XG4gICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDA3ZmZmO1xuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNTAlO1xuICAgICAgICAgICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICAgICAgICAgIH1cbiAgICAgICAgICAuaGFzLWJhY2tncm91bmQtc3BlY2lhbC1ibHVlIHtcbiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNjOGU0ZmYgIWltcG9ydGFudDtcbiAgICAgICAgICB9XG4gICAgICAgICAgLmJvcmRlci1ub25lIHtcbiAgICAgICAgICAgIGJvcmRlcjogbm9uZSAhaW1wb3J0YW50O1xuICAgICAgICAgIH1cbiAgICAgICAgICAuYm9yZGVyLWNvbG9yLXdoaXRlIHtcbiAgICAgICAgICAgIGJvcmRlci1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcbiAgICAgICAgICB9XG4gICAgICAgICAgLnRleHQtbXV0ZWQge1xuICAgICAgICAgICAgY29sb3I6ICM4NjhlOTYgIWltcG9ydGFudDtcbiAgICAgICAgICB9XG4gICAgICAgIGB9XG4gICAgICA8L3N0eWxlPlxuICAgIDwvTGF5b3V0PlxuICApO1xufTtcblxuZXhwb3J0IGRlZmF1bHQgSXRlbURldGFpbHNQYWdlO1xuLy8gNWU3MDhkY2U3OTBhNDkzOTI4YWFjNmYwXG4iXX0= */\n/*@ sourceURL=/home/abugra/Desktop/MeetingPlanner-client/pages/plan/[itemID].js */"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ItemDetailsPage); // 5e708dce790a493928aac6f0
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!***********************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fplan%2F%5BitemID%5D&absolutePagePath=%2Fhome%2Fabugra%2FDesktop%2FMeetingPlanner-client%2Fpages%2Fplan%2F%5BitemID%5D.js ***!
   \***********************************************************************************************************************************************************************/
@@ -13462,5 +14424,5 @@ module.exports = dll_82519ec661270f7f484f;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[4,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=[itemID].js.map
