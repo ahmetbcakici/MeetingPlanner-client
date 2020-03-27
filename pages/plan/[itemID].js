@@ -8,11 +8,13 @@ const ItemDetailsPage = () => {
   const {itemID} = router.query;
   const [itemDetails, setItemDetails] = useState('');
   const [isThereParticipant, setIsThereParticipant] = useState(false);
-  const [isThereComment, setIsThereComment] = useState(false);
   const [participantName, setParticipantName] = useState('');
   const [optionsSelected, setOptionsSelected] = useState('');
   const [senderName, setSenderName] = useState('');
   const [comment, setComment] = useState('');
+  const [sendCommentSectionDisplay, setSendCommentSectionDisplay] = useState(
+    'none'
+  );
 
   useEffect(() => {
     if (itemID) getPlan(itemID);
@@ -24,9 +26,6 @@ const ItemDetailsPage = () => {
     if (doc.data.participants.length > 0) {
       setIsThereParticipant(true);
     }
-    if (doc.data.comments.length > 0) {
-      setIsThereComment(true);
-    }
   };
 
   const postParticipant = async () => {
@@ -36,6 +35,8 @@ const ItemDetailsPage = () => {
       {params: {itemID}}
     );
     getPlan(itemID);
+    setParticipantName('');
+    setOptionsSelected('');
   };
 
   const postComment = async () => {
@@ -63,14 +64,33 @@ const ItemDetailsPage = () => {
       const {possibleDates} = itemDetails;
       return possibleDates.map((option, index) => {
         const isContainIndex = item.optionsSelected.includes(index);
-        if (isContainIndex) return <td key={index}>X</td>;
-        else return <td key={index}></td>;
+        if (isContainIndex)
+          return (
+            <td
+              key={index}
+              className="has-text-centered"
+              style={{backgroundColor: '#b8eba4'}}
+            >
+              <i className="fas fa-check" style={{color: '#008623'}}></i>
+            </td>
+          );
+        else
+          return (
+            <td
+              key={index}
+              className="has-text-centered"
+              style={{backgroundColor: '#EDB7B7'}}
+            >
+              <i className="fas fa-times" style={{color: '#FF0000'}}></i>
+            </td>
+          );
       });
     }
   };
 
-  const showComments = () => {
-    console.log('object');
+  const handleClickSendComment = () => {
+    let displayValue = sendCommentSectionDisplay === '' ? 'none' : '';
+    setSendCommentSectionDisplay(displayValue);
   };
 
   return (
@@ -110,7 +130,7 @@ const ItemDetailsPage = () => {
                         ? itemDetails.possibleDates.map((element, index) => (
                             <th
                               key={index}
-                              className="has-background-grey-lighter has-text-centered"
+                              className="has-background-grey-lighter has-text-centered border-color-white"
                             >
                               {element}
                             </th>
@@ -135,7 +155,9 @@ const ItemDetailsPage = () => {
                       ? itemDetails.participants.map((item, index) => {
                           return (
                             <tr key={index}>
-                              <td>{item.participantName}</td>
+                              <td className="has-background-special-blue border-color-white">
+                                {item.participantName}
+                              </td>
                               {returnVotes(item)}
                             </tr>
                           );
@@ -147,9 +169,10 @@ const ItemDetailsPage = () => {
                         <div className="field">
                           <div className="control">
                             <input
-                              className="input is-primary"
+                              className="input is-primary is-size-6"
                               type="text"
                               placeholder="Your name"
+                              value={participantName}
                               onChange={e => setParticipantName(e.target.value)}
                             />
                           </div>
@@ -163,10 +186,14 @@ const ItemDetailsPage = () => {
                               key={index}
                               className="has-text-centered border-color-white"
                             >
-                              <label className="checkbox">
+                              <label className="checkbox ">
                                 <input
-                                  type="checkbox"
                                   id={index}
+                                  type="checkbox"
+                                  style={{
+                                    transform: 'scale(1.5)',
+                                    border: 'none',
+                                  }}
                                   onChange={handleCheckboxVote}
                                 />
                               </label>
@@ -201,7 +228,7 @@ const ItemDetailsPage = () => {
           <div className="column">
             <p className="title has-text-info has-text-weight-normal">
               Comments &nbsp;
-              <a onClick={showComments}>
+              <a onClick={handleClickSendComment}>
                 <i className="fas fa-plus-circle has-text-success"></i>
               </a>
             </p>
@@ -209,7 +236,7 @@ const ItemDetailsPage = () => {
             {/* Send comments area */}
             <div
               className="columns has-background-special-blue"
-              style={{display: isThereComment ? '' : 'none'}}
+              style={{display: sendCommentSectionDisplay}}
             >
               <div className="column is-11">
                 <div className="field is-inline-block">
@@ -286,6 +313,12 @@ const ItemDetailsPage = () => {
           }
           .has-background-special-blue {
             background-color: #c8e4ff !important;
+          }
+          .has-background-special-green {
+            background-color: #b8eba4 !important;
+          }
+          .has-text-special-green {
+            color: #008623 !important;
           }
           .border-none {
             border: none !important;
