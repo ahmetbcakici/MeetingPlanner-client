@@ -7,6 +7,8 @@ const ItemDetailsPage = () => {
   const router = useRouter();
   const {itemID} = router.query;
   const [itemDetails, setItemDetails] = useState('');
+  const [isThereParticipant, setIsThereParticipant] = useState(false);
+  const [isThereComment, setIsThereComment] = useState(false);
   const [participantName, setParticipantName] = useState('');
   const [optionsSelected, setOptionsSelected] = useState('');
   const [senderName, setSenderName] = useState('');
@@ -19,6 +21,12 @@ const ItemDetailsPage = () => {
   const getPlan = async itemID => {
     const doc = await axiosInstance.get('api/freeone', {params: {itemID}});
     setItemDetails(doc.data);
+    if (doc.data.participants.length > 0) {
+      setIsThereParticipant(true);
+    }
+    if (doc.data.comments.length > 0) {
+      setIsThereComment(true);
+    }
   };
 
   const postParticipant = async () => {
@@ -111,7 +119,10 @@ const ItemDetailsPage = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="be-first">
+                    <tr
+                      className="be-first"
+                      style={{display: !isThereParticipant ? '' : 'none'}}
+                    >
                       <td
                         className="has-background-primary has-text-white"
                         colSpan="100%"
@@ -190,13 +201,16 @@ const ItemDetailsPage = () => {
           <div className="column">
             <p className="title has-text-info has-text-weight-normal">
               Comments &nbsp;
-              <a href="#" onClick={showComments}>
+              <a onClick={showComments}>
                 <i className="fas fa-plus-circle has-text-success"></i>
               </a>
             </p>
 
             {/* Send comments area */}
-            <div className="columns has-background-special-blue">
+            <div
+              className="columns has-background-special-blue"
+              style={{display: isThereComment ? '' : 'none'}}
+            >
               <div className="column is-11">
                 <div className="field is-inline-block">
                   <div className="control">
@@ -233,24 +247,26 @@ const ItemDetailsPage = () => {
             <br />
 
             {/* List available comments area */}
-            {itemDetails
-              ? itemDetails.comments.map(data => (
-                  <div className="columns">
-                    <div className="column is-1 has-text-centered">
-                      <span className="dot">{data.senderName[0]}</span>
+            <div>
+              {itemDetails
+                ? itemDetails.comments.map(data => (
+                    <div className="columns p-1-rem">
+                      <div className="column is-1 has-text-centered">
+                        <span className="dot">{data.senderName[0]}</span>
+                      </div>
+                      <div className="column has-background-white-ter">
+                        <p>
+                          <span className="is-size-7">
+                            <strong>{data.senderName}</strong> &nbsp; · &nbsp;{' '}
+                            <span className="text-muted">19 hours ago</span>
+                          </span>
+                        </p>
+                        <p>{data.comment}</p>
+                      </div>
                     </div>
-                    <div className="column has-background-white-ter">
-                      <p>
-                        <span className="is-size-7">
-                          <strong>{data.senderName}</strong> &nbsp; · &nbsp;{' '}
-                          <span className="text-muted">19 hours ago</span>
-                        </span>
-                      </p>
-                      <p>{data.comment}</p>
-                    </div>
-                  </div>
-                ))
-              : null}
+                  ))
+                : null}
+            </div>
           </div>
           <div className="column is-1" />
         </div>
@@ -279,6 +295,9 @@ const ItemDetailsPage = () => {
           }
           .text-muted {
             color: #868e96 !important;
+          }
+          .p-1-rem {
+            padding-bottom: 1rem !important;
           }
         `}
       </style>
