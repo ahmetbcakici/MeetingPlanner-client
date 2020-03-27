@@ -28,6 +28,10 @@
     "/plan/[itemID]": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
+    ],
+    "/plan/meeting": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ]
   }
 }

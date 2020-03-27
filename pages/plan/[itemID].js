@@ -18,12 +18,12 @@ const ItemDetailsPage = () => {
 
   useEffect(() => {
     if (itemID) getPlan(itemID);
-  }, [itemID]); //
+  }, [itemID]);
 
   const getPlan = async itemID => {
     const doc = await axiosInstance.get('api/freeone', {params: {itemID}});
     setItemDetails(doc.data);
-    if (doc.data.participants.length > 0) {
+    if (doc.data && doc.data.participants.length > 0) {
       setIsThereParticipant(true);
     }
   };
@@ -104,125 +104,126 @@ const ItemDetailsPage = () => {
               className="is-fullwidth has-background-special-blue"
               style={{padding: '.5rem'}}
             >
+              {/* Owner name of the poll */}
               <p>
                 Poll by <strong>{itemDetails.ownerName}</strong>
               </p>
             </div>
             <br />
-            <div className="columns">
-              <div className="column is-5">
-                <p className="title has-text-info has-text-weight-normal">
-                  {itemDetails.boardTitle}
-                </p>
-                <p>
-                  {itemDetails.description
-                    ? itemDetails.description
-                    : "Please indicate when you are available. Then click 'Save'."}
-                </p>
-                <br />
-                <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-                  <thead>
-                    <tr>
-                      <th className="border-none" />
+            {/* Title of the poll */}
+            <p className="title has-text-info has-text-weight-normal">
+              {itemDetails.boardTitle}
+            </p>
+            {/* Description of the poll */}
+            <p>
+              {itemDetails.description
+                ? itemDetails.description
+                : "Please indicate when you are available. Then click 'Save'."}
+            </p>
+            <br />
+            {/* List existing votes & give new votes area */}
+            <div className="votes-area">
+              <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                  <tr>
+                    <th className="border-none" />
 
-                      {/* Put possible dates as table headers */}
-                      {itemDetails.possibleDates
-                        ? itemDetails.possibleDates.map((element, index) => (
-                            <th
-                              key={index}
-                              className="has-background-grey-lighter has-text-centered border-color-white"
-                            >
-                              {element}
-                            </th>
-                          ))
-                        : null}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr
-                      className="be-first"
-                      style={{display: !isThereParticipant ? '' : 'none'}}
-                    >
-                      <td
-                        className="has-background-primary has-text-white"
-                        colSpan="100%"
-                      >
-                        Be the first to vote in this poll!
-                      </td>
-                    </tr>
-
-                    {itemDetails.participants
-                      ? itemDetails.participants.map((item, index) => {
-                          return (
-                            <tr key={index}>
-                              <td className="has-background-special-blue border-color-white">
-                                {item.participantName}
-                              </td>
-                              {returnVotes(item)}
-                            </tr>
-                          );
-                        })
+                    {/* Put possible dates as table headers */}
+                    {itemDetails.possibleDates
+                      ? itemDetails.possibleDates.map((element, index) => (
+                          <th
+                            key={index}
+                            className="has-background-grey-lighter has-text-centered border-color-white possible-dates-cell"
+                          >
+                            {element}
+                          </th>
+                        ))
                       : null}
-
-                    <tr className="has-background-special-blue">
-                      <td className="border-color-white">
-                        <div className="field">
-                          <div className="control">
-                            <input
-                              className="input is-primary is-size-6"
-                              type="text"
-                              placeholder="Your name"
-                              value={participantName}
-                              onChange={e => setParticipantName(e.target.value)}
-                            />
-                          </div>
-                        </div>
-                      </td>
-
-                      {/* Columns which has checkbox to check possible dates */}
-                      {itemDetails.possibleDates
-                        ? itemDetails.possibleDates.map((element, index) => (
-                            <td
-                              key={index}
-                              className="has-text-centered border-color-white"
-                            >
-                              <label className="checkbox ">
-                                <input
-                                  id={index}
-                                  type="checkbox"
-                                  style={{
-                                    transform: 'scale(1.5)',
-                                    border: 'none',
-                                  }}
-                                  onChange={handleCheckboxVote}
-                                />
-                              </label>
-                            </td>
-                          ))
-                        : null}
-                    </tr>
-                  </tbody>
-                </table>
-                <p>
-                  <a
-                    className="button is-link has-text-right"
-                    onClick={postParticipant}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    className="be-first"
+                    style={{display: !isThereParticipant ? '' : 'none'}}
                   >
-                    Save
-                  </a>
-                </p>
-                <br />
-              </div>
-              <div className="column is-5" />
-              <div className="column is-2">
-                <p>
-                  <i className="fas fa-eye"></i> CHANGE VIEW
-                </p>
-              </div>
+                    <td
+                      className="has-background-primary has-text-white"
+                      colSpan="100%"
+                    >
+                      Be the first to vote in this poll!
+                    </td>
+                  </tr>
+
+                  {itemDetails.participants
+                    ? itemDetails.participants.map((item, index) => {
+                        return (
+                          <tr key={index}>
+                            <td className="has-background-special-blue border-color-white">
+                              {item.participantName}
+                            </td>
+                            {returnVotes(item)}
+                          </tr>
+                        );
+                      })
+                    : null}
+
+                  <tr className="has-background-special-blue">
+                    <td className="participant-name-cell border-color-white">
+                      <div className="field">
+                        <div className="control">
+                          <input
+                            className="input is-primary is-size-6"
+                            type="text"
+                            placeholder="Your name"
+                            maxLength={20}
+                            value={participantName}
+                            onChange={e => setParticipantName(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                    </td>
+
+                    {/* Columns which has checkbox to check possible dates */}
+                    {itemDetails.possibleDates
+                      ? itemDetails.possibleDates.map((element, index) => (
+                          <td
+                            key={index}
+                            className="has-text-centered border-color-white"
+                          >
+                            <label className="checkbox ">
+                              <input
+                                id={index}
+                                type="checkbox"
+                                style={{
+                                  transform: 'scale(1.5)',
+                                  border: 'none',
+                                }}
+                                onChange={handleCheckboxVote}
+                              />
+                            </label>
+                          </td>
+                        ))
+                      : null}
+                  </tr>
+                </tbody>
+              </table>
             </div>
+            <p>
+              <a
+                className="button is-link has-text-right"
+                onClick={postParticipant}
+              >
+                Save
+              </a>
+            </p>
+            <br />
+            <p>
+              <i className="fas fa-eye"></i> CHANGE VIEW
+            </p>
           </div>
           <div className="column is-1" />
         </div>
+        {/* Comments Area */}
         <div className="columns">
           <div className="column is-1" />
           <div className="column">
@@ -331,6 +332,16 @@ const ItemDetailsPage = () => {
           }
           .p-1-rem {
             padding-bottom: 1rem !important;
+          }
+          .votes-area {
+            max-width: 65% !important;
+          }
+          .possible-dates-cell {
+            min-width: 1rem;
+            max-width: 3rem;
+          }
+          .participant-name-cell {
+            max-width: 4rem;
           }
         `}
       </style>
