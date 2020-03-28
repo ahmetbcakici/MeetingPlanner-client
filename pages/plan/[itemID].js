@@ -35,10 +35,7 @@ const ItemDetailsPage = () => {
       {params: {itemID}}
     );
     getPlan(itemID);
-    setParticipantName('');
-    const checkboxes = document.getElementsByClassName('checkbox-vote');
-    checkboxes.forEach(element => console.log(element))
-
+    clearFields();
   };
 
   const postComment = async () => {
@@ -93,6 +90,15 @@ const ItemDetailsPage = () => {
   const handleClickSendComment = () => {
     let displayValue = sendCommentSectionDisplay === '' ? 'none' : '';
     setSendCommentSectionDisplay(displayValue);
+  };
+
+  const clearFields = () => {
+    const checkboxes = document.querySelectorAll('.checkbox-vote');
+    checkboxes.forEach(element => {
+      element.checked = false;
+    });
+    setOptionsSelected('');
+    setParticipantName('');
   };
 
   return (
