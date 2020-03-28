@@ -10,8 +10,8 @@ export default class Meeting extends Component {
     whichSection: 0,
     pollTitle: '',
     additionalDescriptions: '',
-    userName: '',
-    emailAddress: '',
+    ownerName: '',
+    ownerEmail: '',
     possibleDates: '',
     clientID: '',
   };
@@ -32,12 +32,12 @@ export default class Meeting extends Component {
     this.setState({additionalDescriptions: e.target.value});
   };
 
-  setUserName = e => {
-    this.setState({userName: e.target.value});
+  setOwnerName = e => {
+    this.setState({ownerName: e.target.value});
   };
 
-  setEmailAddress = e => {
-    this.setState({emailAddress: e.target.value});
+  setOwnerEmail = e => {
+    this.setState({ownerEmail: e.target.value});
   };
 
   setPossibleDates = async pd => {
@@ -53,16 +53,16 @@ export default class Meeting extends Component {
     const {
       pollTitle,
       additionalDescriptions,
-      userName,
-      emailAddress,
+      ownerName,
+      ownerEmail,
       possibleDates,
     } = this.state;
 
     const returnedClientID = await axiosInstance.post('api/freeone', {
       pollTitle,
       additionalDescriptions,
-      userName,
-      emailAddress,
+      ownerName,
+      ownerEmail,
       possibleDates,
     });
 
@@ -144,8 +144,8 @@ export default class Meeting extends Component {
                         <input
                           className="input"
                           type="text"
-                          value={this.state.userName}
-                          onChange={this.setUserName}
+                          value={this.state.ownerName}
+                          onChange={this.setOwnerName}
                         />
                       </div>
                     </div>
@@ -158,8 +158,8 @@ export default class Meeting extends Component {
                         <input
                           className="input"
                           type="email"
-                          value={this.state.emailAddress}
-                          onChange={this.setEmailAddress}
+                          value={this.state.ownerEmail}
+                          onChange={this.setOwnerEmail}
                         />
                       </div>
                     </div>
@@ -248,13 +248,13 @@ export default class Meeting extends Component {
                 Send invitations
               </p>
               <div className="box" style={{backgroundColor: '#C8E4FF'}}>
-                <p> The link to your poll is: </p>
+                <p> The link to share your poll is: </p>
                 <div className="field">
                   <div className="control has-text-centered">
                     <input
                       className="input is-primary is-size-6 w-75"
                       type="text"
-                      value={this.state.clientID}
+                      value={`domain.com/plan/${this.state.clientID}`}
                       readOnly
                     />
                   </div>
@@ -270,8 +270,8 @@ export default class Meeting extends Component {
                     <input
                       className="input is-primary is-size-6 w-75"
                       type="text"
-					  value="Coming soon!"
-					  	disabled
+                      value="Coming soon!"
+                      disabled
                       readOnly
                     />
                   </div>

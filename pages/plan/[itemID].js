@@ -36,7 +36,9 @@ const ItemDetailsPage = () => {
     );
     getPlan(itemID);
     setParticipantName('');
-    setOptionsSelected('');
+    const checkboxes = document.getElementsByClassName('checkbox-vote');
+    checkboxes.forEach(element => console.log(element))
+
   };
 
   const postComment = async () => {
@@ -190,9 +192,10 @@ const ItemDetailsPage = () => {
                             key={index}
                             className="has-text-centered border-color-white"
                           >
-                            <label className="checkbox ">
+                            <label className="checkbox">
                               <input
                                 id={index}
+                                className="checkbox-vote"
                                 type="checkbox"
                                 style={{
                                   transform: 'scale(1.5)',
