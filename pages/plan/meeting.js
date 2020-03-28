@@ -16,6 +16,10 @@ export default class Meeting extends Component {
     clientID: '',
   };
 
+  componentDidMount() {
+    console.log(this.props.url)
+  }
+
   handleNextButton = () => {
     this.setState({whichPage: 1});
   };
@@ -80,7 +84,7 @@ export default class Meeting extends Component {
           >
             <div className="columns has-text-centered">
               <div className="column" />
-              <div className="column">General information</div>
+              <div className="column"> General information </div>
               <div className="column">
                 <i className="fa fa-lg fa-chevron-right" />
               </div>
@@ -96,7 +100,6 @@ export default class Meeting extends Component {
               <div className="column" />
             </div>
           </div>
-
           <div>
             <div className="has-background-white">
               <br />
@@ -121,7 +124,6 @@ export default class Meeting extends Component {
                         />
                       </div>
                     </div>
-
                     <div className="field">
                       <label className="label has-text-weight-normal">
                         Additional descriptions:
@@ -135,7 +137,6 @@ export default class Meeting extends Component {
                         />
                       </div>
                     </div>
-
                     <div className="field">
                       <label className="label has-text-weight-normal">
                         Your name:
@@ -149,7 +150,6 @@ export default class Meeting extends Component {
                         />
                       </div>
                     </div>
-
                     <div className="field">
                       <label className="label has-text-weight-normal">
                         Your email address:
@@ -163,13 +163,11 @@ export default class Meeting extends Component {
                         />
                       </div>
                     </div>
-
                     <span className="is-size-7 has-text-grey">
                       We will send you an email with the link to your poll and
-                      the admin area. That's all you will receive - we hate spam
+                      the admin area.That 's all you will receive - we hate spam
                       too.
                     </span>
-
                     <br />
                     <br />
                     <div className="field">
@@ -183,16 +181,15 @@ export default class Meeting extends Component {
                       </div>
                     </div>
                   </div>
-
                   {/* Box of tip */}
                   <div className="box has-background-white-ter">
                     <article className="media">
                       <div className="media-content">
                         <div className="content">
                           <p>
-                            <strong>Tip: </strong> If you have multiple polls
+                            <strong> Tip: </strong> If you have multiple polls
                             you can easily organize and manage them with a free
-                            Xoyondo account. <a href="/register">Sign up!</a>
+                            Xoyondo account. <a href="/register"> Sign up! </a>
                           </p>
                         </div>
                       </div>
@@ -239,10 +236,10 @@ export default class Meeting extends Component {
     } else if (this.state.whichPage === 2) {
       return (
         <Layout>
-          {/* <h1>{this.state.clientID}</h1> */}
-          <br />
+          
+          {/* <h1>{this.state.clientID}</h1> */} <br />
           <div className="columns">
-            <div className="column is-4"></div>
+            <div className="column is-4" />
             <div className="column has-text-centered">
               <p className="title has-text-info has-text-weight-normal">
                 Send invitations
@@ -276,16 +273,16 @@ export default class Meeting extends Component {
                     />
                   </div>
                   <small className="is-size-7 text-muted">
-                    <i className="fas fa-exclamation-triangle"></i> Do not send
+                    <i className="fas fa-exclamation-triangle" /> Do not send
                     this link to your participants.
                   </small>
                 </div>
               </div>
             </div>
-            <div className="column is-4"></div>
+            <div className="column is-4" />
           </div>
-
           <style jsx>
+            
             {`
               .w-75 {
                 width: 75% !important;

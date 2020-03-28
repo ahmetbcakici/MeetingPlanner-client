@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import Link from 'next/link';
+import GithubCorner from 'react-github-corner';
 
 export default () => {
   return (
@@ -7,8 +8,15 @@ export default () => {
       className="navbar is-info"
       role="navigation"
       aria-label="main navigation"
-      style={{zIndex: 0}}
     >
+      <GithubCorner
+        href={'https://github.com/ahmetbcakici/MeetingPlanner-client'}
+        bannerColor="#151513"
+        octoColor="#fff"
+        size={115}
+        direction="right"
+      />
+
       <div className="container">
         <div className="navbar-brand">
           <Link href="/">
