@@ -222,7 +222,7 @@ const ItemDetailsPage = () => {
                 className="button is-link has-text-right"
                 onClick={postParticipant}
               >
-                Save
+                Vote
               </a>
             </p>
             <br />

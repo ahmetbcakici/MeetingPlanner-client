@@ -1,19 +1,24 @@
-import React, {Component} from 'react';
 import Layout from '../../components/Layout';
 import axiosInstance from '../../config';
 import Date_FreeText from '../../components/Date_FreeText';
 import Date_Calendar from '../../components/Date_Calendar';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {useRouter} from 'next/router';
 
 export default () => {
+  const router = useRouter();
+
   const [whichPage, setWhichPage] = useState(0);
   const [whichSection, setWhichSection] = useState(0);
   const [pollTitle, setPollTitle] = useState('');
   const [additionalDescriptions, setAdditionalDescriptions] = useState('');
   const [ownerName, setOwnerName] = useState('');
   const [ownerEmail, setOwnerEmail] = useState('');
-  //const [possibleDates, setPossibleDates] = useState([]);
   const [clientID, setClientID] = useState('');
+
+  useEffect(() => {
+    router.query ? setPollTitle(router.query.meetingPollTitle) : null;
+  }, [router.query]);
 
   const handleNextButton = () => {
     setWhichPage(1);
@@ -36,7 +41,7 @@ export default () => {
       possibleDates,
     });
     setClientID(returnedClientID.data);
-    //setWhichPage(2);
+    setWhichPage(2);
   };
 
   const firstPage = () => (
@@ -262,12 +267,11 @@ export default () => {
     </Layout>
   );
 
-  const Retturn = () => {
-    console.log('here');
+  const pageToShow = () => {
     if (whichPage === 0) return firstPage();
     else if (whichPage === 1) return secondPage();
-    else if (whichPage === 2) return thirdPage();
+    else return thirdPage();
   };
 
-  return Retturn();
+  return pageToShow();
 };
