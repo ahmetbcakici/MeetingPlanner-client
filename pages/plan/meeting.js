@@ -36,7 +36,7 @@ export default () => {
       possibleDates,
     });
     setClientID(returnedClientID.data);
-    setWhichPage(2);
+    //setWhichPage(2);
   };
 
   const firstPage = () => (
@@ -203,7 +203,7 @@ export default () => {
     </Layout>
   );
 
-  const thirdPage = () => {
+  const thirdPage = () => (
     <Layout>
       {/* <h1>{clientID}</h1> */} <br />
       <div className="columns">
@@ -259,8 +259,8 @@ export default () => {
           }
         `}
       </style>
-    </Layout>;
-  };
+    </Layout>
+  );
 
   const Retturn = () => {
     console.log('here');

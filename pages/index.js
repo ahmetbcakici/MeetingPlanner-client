@@ -29,7 +29,7 @@ const Index = () => (
                           type="text"
                           placeholder="What are you planning?"
                         />
-                        <Link href="/plan/meeting">
+                        <Link href="/plan/meeting" pompa="bla">
                           <button className="button is-info is-size-5">
                             Plan
                           </button>
