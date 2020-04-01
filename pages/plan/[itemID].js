@@ -45,6 +45,9 @@ const ItemDetailsPage = () => {
       {params: {itemID}}
     );
     getPlan(itemID);
+    setComment('');
+    setSenderName('');
+    console.log("ss")
   };
 
   const handleCheckboxVote = async e => {
@@ -217,6 +220,7 @@ const ItemDetailsPage = () => {
                 </tbody>
               </table>
             </div>
+            <br/>
             <p>
               <a
                 className="button is-link has-text-right"
@@ -226,9 +230,9 @@ const ItemDetailsPage = () => {
               </a>
             </p>
             <br />
-            <p>
+            {/* <p>
               <i className="fas fa-eye"></i> CHANGE VIEW
-            </p>
+            </p> */}
           </div>
           <div className="column is-1" />
         </div>
@@ -255,6 +259,7 @@ const ItemDetailsPage = () => {
                       className="input is-primary"
                       type="text"
                       placeholder="Your name"
+                      value={senderName}
                       onChange={e => setSenderName(e.target.value)}
                     />
                   </div>
@@ -266,6 +271,7 @@ const ItemDetailsPage = () => {
                       className="textarea"
                       rows={2}
                       placeholder="Your message"
+                      value={comment}
                       onChange={e => setComment(e.target.value)}
                     ></textarea>
                   </div>

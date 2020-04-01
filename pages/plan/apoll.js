@@ -1,9 +1,18 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {useRouter} from 'next/router';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import MoreOptions from '../../components/MoreOptions';
 
 export default () => {
+  const router = useRouter();
+
+  const [pollTitle, setPollTitle] = useState('');
+
+  useEffect(() => {
+    router.query ? setPollTitle(router.query.anonPollTitle) : null;
+  }, [router.query]);
+
   return (
     <Layout>
       {/* Bar which has steps to generate opinion poll */}
@@ -12,13 +21,13 @@ export default () => {
         style={{paddingTop: '1rem', paddingBottom: '1rem'}}
       >
         <div className="columns has-text-centered">
-          <div className="column"></div>
+          <div className="column" />
           <div className="column">Generate polls</div>
           <div className="column">
-            <i className="fa fa-lg fa-chevron-right"></i>
+            <i className="fa fa-lg fa-chevron-right" />
           </div>
           <div className="column has-text-grey-light">Invite participants</div>
-          <div className="column"></div>
+          <div className="column" />
         </div>
       </div>
 
@@ -27,7 +36,7 @@ export default () => {
           <br />
           <br />
           <div className="columns">
-            <div className="column"></div>
+            <div className="column" />
             <div className="column is-5">
               <p className="title has-text-link has-text-centered has-text-weight-normal">
                 Generate an anonymous poll
@@ -40,7 +49,12 @@ export default () => {
                     Poll question / title:{' '}
                   </label>
                   <div className="control">
-                    <input className="input" type="text" />
+                    <input
+                      className="input"
+                      type="text"
+                      value={pollTitle}
+                      onChange={e => setPollTitle(e.target.value)}
+                    />
                   </div>
                 </div>
 
@@ -57,7 +71,7 @@ export default () => {
 
                         <p className="control">
                           <a className="button is-static">
-                            <i className="fas fa-trash-alt"></i>
+                            <i className="fas fa-trash-alt" />
                           </a>
                         </p>
                       </div>
@@ -151,7 +165,7 @@ export default () => {
                 </article>
               </div>
             </div>
-            <div className="column"></div>
+            <div className="column" />
           </div>
         </div>
         <br />

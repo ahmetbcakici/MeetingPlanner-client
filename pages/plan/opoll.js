@@ -1,9 +1,18 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {useRouter} from 'next/router';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import MoreOptions from '../../components/MoreOptions';
 
 export default () => {
+  const router = useRouter();
+
+  const [pollTitle, setPollTitle] = useState('');
+
+  useEffect(() => {
+    router.query ? setPollTitle(router.query.opinionPollTitle) : null;
+  }, [router.query]);
+
   return (
     <Layout>
       {/* Bar which has steps to generate opinion poll */}
@@ -40,7 +49,12 @@ export default () => {
                     Poll question / title:{' '}
                   </label>
                   <div className="control">
-                    <input className="input" type="text" />
+                    <input
+                      className="input"
+                      type="text"
+                      value={pollTitle}
+                      onChange={e => setPollTitle(e.target.value)}
+                    />
                   </div>
                 </div>
 

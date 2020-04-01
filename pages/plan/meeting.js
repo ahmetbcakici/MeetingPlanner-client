@@ -186,7 +186,7 @@ export default () => {
             onClick={e => setWhichSection(parseInt(e.target.id))}
             id="0"
           >
-            calendar
+            Date Picker
           </a>
         </div>
         <div className="column is-4 has-background-white-ter">
@@ -195,7 +195,7 @@ export default () => {
             onClick={e => setWhichSection(parseInt(e.target.id))}
             id="1"
           >
-            free text
+            Free Text
           </a>
         </div>
         <div className="column" />
@@ -224,7 +224,7 @@ export default () => {
                 <input
                   className="input is-primary is-size-6 w-75"
                   type="text"
-                  value={`domain.com/plan/${clientID}`}
+                  value={`localhost:3000/plan/${clientID}`}
                   readOnly
                 />
               </div>

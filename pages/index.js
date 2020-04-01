@@ -4,6 +4,8 @@ import Link from 'next/link';
 
 const Index = () => {
   const [meetingPollTitle, setMeetingPollTitle] = useState('');
+  const [opinionPollTitle, setOpinionPollTitle] = useState('');
+  const [anonPollTitle, setAnonPollTitle] = useState('');
 
   return (
     <Layout>
@@ -146,7 +148,9 @@ const Index = () => {
             <br />
             <br />
             <p className="has-text-centered">
-              <a className="button is-info"> Start your own meeting poll! </a>
+              <Link href="/plan/meeting">
+                <a className="button is-info"> Start your own meeting poll! </a>
+              </Link>
             </p>
           </div>
         </div>
@@ -264,10 +268,20 @@ const Index = () => {
                             className="input is-inline is-size-5"
                             type="text"
                             placeholder="What are you planning?"
+                            value={opinionPollTitle}
+                            onChange={e => setOpinionPollTitle(e.target.value)}
                           />
-                          <button className="button is-info is-size-5">
-                            Plan
-                          </button>
+                          <Link
+                            href={{
+                              pathname: '/plan/opoll',
+                              query: {opinionPollTitle},
+                            }}
+                            as="/plan/opoll"
+                          >
+                            <button className="button is-info is-size-5">
+                              Plan
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -328,10 +342,20 @@ const Index = () => {
                             className="input is-inline is-size-5"
                             type="text"
                             placeholder="What are you planning?"
+                            value={anonPollTitle}
+                            onChange={e => setAnonPollTitle(e.target.value)}
                           />
-                          <button className="button is-info is-size-5">
-                            Plan
-                          </button>
+                          <Link
+                            href={{
+                              pathname: '/plan/apoll',
+                              query: {anonPollTitle},
+                            }}
+                            as="/plan/apoll"
+                          >
+                            <button className="button is-info is-size-5">
+                              Plan
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
